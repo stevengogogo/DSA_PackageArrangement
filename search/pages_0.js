@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cprojecttemplate_7',['CProjectTemplate',['../index.html',1,'']]]
+  ['package_20arrangement_7',['Package Arrangement',['../index.html',1,'']]]
 ];
