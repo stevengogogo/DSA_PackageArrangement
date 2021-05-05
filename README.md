@@ -5,11 +5,38 @@ Keywords: `Queue`, `Stack`, `Binary Tree (search, insert, delete, remove, balanc
 
 ## Problem statements
 
+- `L` production lines
+- `N` packages
+- `O` Operations
+
 
 ## Strategy
 
+- Production line
+  - Binomial Max Heap
+    - Doubly linked list
+  - Deque
+    - First-in-First out
+    - Linked array
+    ```julia
+    struct
+      int[] array
+      int* next_array
+    end
+    ```
 
+- Peaking a production line
+  - `getFirst`: `O(1)`
+  - `getLast`: `O(1)`
+  - `getMax`: `O(1)`
 
+- Operation
+  - `PopFirst`: `O(n)`
+  - `PopLast`: `O(n)`
+  - `PopMax`: `O(log n)`
+
+- Merge Production line
+  - Deque
 ## Queue
 
 
@@ -61,3 +88,8 @@ Keywords: `Queue`, `Stack`, `Binary Tree (search, insert, delete, remove, balanc
 - 用 Heap: 快速找到 max, first, last
 - Time complexity of merge: <O(n)
     - 方法: https://abitofcs.blogspot.com/2019/06/merging-heaps-in-olog-n.html
+
+
+## References
+1. Stack, Queue and Heap. [[GitBook](https://stephanosterburg.gitbook.io/scrapbook/coding/coding-interview/data-structures/heaps-stacks-queues)]
+2.
