@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['extm_0',['extm',['../structextm.html',1,'']]]
+  ['package_20arrangement_0',['Package Arrangement',['../index.html',1,'']]]
 ];
