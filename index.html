@@ -68,8 +68,43 @@ $(function() {
 <div class="textblock"><p><a class="anchor" id="md_README"></a> Keywords: <code>Queue</code>, <code>Stack</code>, <code>Binary Tree (search, insert, delete, remove, balance)</code></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Problem statements</h1>
+<ul>
+<li><code>L</code> production lines</li>
+<li><code>N</code> packages</li>
+<li><code>O</code> Operations</li>
+</ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Strategy</h1>
+<ul>
+<li>Production line<ul>
+<li>Binomial Max Heap<ul>
+<li>Doubly linked list</li>
+</ul>
+</li>
+<li>Deque<ul>
+<li>First-in-First out</li>
+<li>Linked array ```julia struct int[] array int* next_array end ```</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Peaking a production line<ul>
+<li><code>getFirst</code>: <code>O(1)</code></li>
+<li><code>getLast</code>: <code>O(1)</code></li>
+<li><code>getMax</code>: <code>O(1)</code></li>
+</ul>
+</li>
+<li>Operation<ul>
+<li><code>PopFirst</code>: <code>O(n)</code></li>
+<li><code>PopLast</code>: <code>O(n)</code></li>
+<li><code>PopMax</code>: <code>O(log n)</code></li>
+</ul>
+</li>
+<li>Merge Production line<ul>
+<li>Deque </li>
+</ul>
+</li>
+</ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Queue</h1>
 <h1><a class="anchor" id="autotoc_md4"></a>
@@ -117,10 +152,15 @@ Hints</h1>
 <ul>
 <li>用 Heap: 快速找到 max, first, last</li>
 <li>Time complexity of merge: &lt;O(n)<ul>
-<li>方法: <a href="https://abitofcs.blogspot.com/2019/06/merging-heaps-in-olog-n.html">https://abitofcs.blogspot.com/2019/06/merging-heaps-in-olog-n.html</a> </li>
+<li>方法: <a href="https://abitofcs.blogspot.com/2019/06/merging-heaps-in-olog-n.html">https://abitofcs.blogspot.com/2019/06/merging-heaps-in-olog-n.html</a></li>
 </ul>
 </li>
 </ul>
+<h1><a class="anchor" id="autotoc_md11"></a>
+References</h1>
+<ol type="1">
+<li>Stack, Queue and Heap. [<a href="https://stephanosterburg.gitbook.io/scrapbook/coding/coding-interview/data-structures/heaps-stacks-queues">GitBook</a>] 2. </li>
+</ol>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
