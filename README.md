@@ -5,11 +5,38 @@ Keywords: `Queue`, `Stack`, `Binary Tree (search, insert, delete, remove, balanc
 
 ## Problem statements
 
+- `L` production lines
+- `N` packages
+- `O` Operations
+
 
 ## Strategy
 
+- Production line
+  - Binomial Max Heap
+    - Doubly linked list
+  - Deque
+    - First-in-First out
+    - Linked array
+    ```julia
+    struct
+      int[] array
+      int* next_array
+    end
+    ```
 
+- Peaking a production line
+  - `getFirst`: `O(1)`
+  - `getLast`: `O(1)`
+  - `getMax`: `O(1)`
 
+- Operation
+  - `PopFirst`: `O(n)`
+  - `PopLast`: `O(n)`
+  - `PopMax`: `O(log n)`
+
+- Merge Production line
+  - Deque
 ## Queue
 
 
@@ -66,3 +93,8 @@ Keywords: `Queue`, `Stack`, `Binary Tree (search, insert, delete, remove, balanc
     - https://cs.stackexchange.com/questions/82793/merge-2-binary-heaps
     - https://medium.com/100-days-of-python/day-06-binomial-heap-88ca2edb8255
     - https://en.m.wikipedia.org/wiki/Binomial_heap
+
+
+## References
+1. Stack, Queue and Heap. [[GitBook](https://stephanosterburg.gitbook.io/scrapbook/coding/coding-interview/data-structures/heaps-stacks-queues)]
+2.
