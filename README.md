@@ -54,10 +54,15 @@ Keywords: `Queue`, `Stack`, `Binary Tree (search, insert, delete, remove, balanc
 
 
 
-## 
+## Idea
+
+- Merge 要求 `log(n)`
 
 ## Hints
 
 - 用 Heap: 快速找到 max, first, last
 - Time complexity of merge: <O(n)
     - 方法: https://abitofcs.blogspot.com/2019/06/merging-heaps-in-olog-n.html
+    - https://cs.stackexchange.com/questions/82793/merge-2-binary-heaps
+    - https://medium.com/100-days-of-python/day-06-binomial-heap-88ca2edb8255
+    - https://en.m.wikipedia.org/wiki/Binomial_heap
