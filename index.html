@@ -67,13 +67,16 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a> Keywords: <code>Queue</code>, <code>Stack</code>, <code>Binary Tree (search, insert, delete, remove, balance)</code></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
+Usage</h1>
+<p>See <a href="Problem.pdf">Problem Statement</a></p>
+<h1><a class="anchor" id="autotoc_md2"></a>
 Problem statements</h1>
 <ul>
 <li><code>L</code> production lines</li>
 <li><code>N</code> packages</li>
 <li><code>O</code> Operations</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md2"></a>
+<h1><a class="anchor" id="autotoc_md3"></a>
 Strategy</h1>
 <ul>
 <li>Production line<ul>
@@ -83,7 +86,7 @@ Strategy</h1>
 </li>
 <li>Deque<ul>
 <li>First-in-First out</li>
-<li>Linked array ```julia struct int[] array int* next_array end ```</li>
+<li>Doubly Linked list ```julia struct int[] array int* next_array int* prev_array end ```</li>
 </ul>
 </li>
 </ul>
@@ -105,18 +108,18 @@ Strategy</h1>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md3"></a>
-Queue</h1>
 <h1><a class="anchor" id="autotoc_md4"></a>
-Stack</h1>
+Queue</h1>
 <h1><a class="anchor" id="autotoc_md5"></a>
+Stack</h1>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Binary Tree Operation</h1>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 What is a "balanced" binary tree?</h2>
 <p><b>Ref</b>:</p><ul>
 <li><a href="https://appliedgo.net/balancedtree/">Balancing a binary search tree (GO)</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 AVL Tree</h1>
 <p><b>Ref</b></p><ul>
 <li><a href="https://appliedgo.net/balancedtree/">Balancing a binary search tree (GO)</a></li>
@@ -124,7 +127,7 @@ AVL Tree</h1>
 <li><a href="https://www.geeksforgeeks.org/avl-tree-set-2-deletion/">AVL Tree: Deletion (GreekforGeek)</a></li>
 <li><a href="https://josephjsf2.github.io/data/structure/and/algorithm/2019/06/22/avl-tree.html">資料結構與演算法：AVL Tree</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Time complexity with AVL Tree</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -145,12 +148,12 @@ Time complexity with AVL Tree</h2>
 <p><b>Ref</b>:</p><ul>
 <li><a href="https://josephjsf2.github.io/data/structure/and/algorithm/2019/06/22/avl-tree.html">資料結構與演算法：AVL Tree</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 Idea</h1>
 <ul>
 <li>Merge 要求 <code>log(n)</code></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md11"></a>
 Hints</h1>
 <ul>
 <li>用 Heap: 快速找到 max, first, last</li>
@@ -162,7 +165,7 @@ Hints</h1>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md12"></a>
 References</h1>
 <ol type="1">
 <li>Stack, Queue and Heap. [<a href="https://stephanosterburg.gitbook.io/scrapbook/coding/coding-interview/data-structures/heaps-stacks-queues">GitBook</a>] 2. </li>
