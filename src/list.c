@@ -20,8 +20,10 @@ packData init_packData(int n, int l){
     pd.lines = (prodLine*)malloc(sizeLines);
 
     // initialize
-    for(int i=0;i<=pd.N_Package;i++)
+    for(int i=0;i<=pd.N_Package;i++){
         pd.packs[i] = pk;
+        pd.packs->ID = i;
+    }
 
     for(int i=0;i<pd.N_Lines;i++)
         pd.lines[i] = pl;
@@ -53,6 +55,104 @@ void _killHeap(hnode* root){
     free(root);
 }
 
+//Linked list 
+
+void _insertlist(List* list, pack* pk){
+    //Check pk is new
+    assert(pk->avail == 0);
+    assert(pk->next==NULL);
+    assert(pk->prev==NULL);
+
+    if (list->first == NULL){ // Init
+        assert(list->last == NULL);
+        list->first = pk;
+        list->last = pk;
+    }
+    else{ // Continue
+        assert(list->last->next == NULL);
+        list->last->next = pk;
+        pk->prev = list->last;
+        list->last = pk;
+    }
+
+    pk->avail = 1; 
+}
+
+void _mergelist(List* listDst, List* listSrc){
+
+    if (listSrc->first==NULL){ //src is null
+        //Do nothing
+    }
+    else if (listDst->first == NULL){ //dst is null
+        listDst->first = listSrc->first;
+        listDst->last = listDst->last;
+    }
+    else{
+    assert(listSrc->last != NULL);
+    assert(listDst->last != NULL);
+
+    //wiring dst end
+    listDst->last->next = listSrc->first;
+    listSrc->first->prev = listDst->last;
+
+    //update dst end
+    listDst->last = listSrc->last;
+    
+    //Clear source
+    listSrc->first = NULL;
+    listSrc->last = NULL;
+    
+    }
+}
+
+
+int _popFirst(List* list){
+    assert(list->first!=NULL);
+    int val = list->first->ID;
+    list->first->avail = 0; // update availability
+
+    if(list->first == list->last){ //turn to null
+        list->first = NULL;
+        list->last = NULL;
+        
+    }
+    else{
+    //Rewiring
+    list->first = list->first->next; // move start
+    list->first->prev = NULL; // link start.prev to NULL
+
+    if(list->last == list->first) //turn to null
+        list->last = list->first;
+
+    }
+
+    return val;
+}
+
+int _popLast(List* list){
+    assert(list->first!=NULL);
+    int val = list->last->ID;
+    list->last->avail = 0; // update availability
+
+    if(list->first == list->last){ //turn to null
+        list->first = NULL;
+        list->last = NULL;
+        
+    }
+
+    else{
+    //Rewiring
+    list->last = list->last->prev; // move end
+    list->last->next = NULL; // link end.next to NULL
+
+    if(list->first == list->last) //turn to null
+        list->first = list->last;
+
+    }
+
+    return val;
+}
+
 
 //Struct
 
@@ -61,6 +161,7 @@ pack getNullPack(void){
     pk.avail = 0;
     pk.prev = NULL;
     pk.next = NULL;
+    pk.ID = INT_MIN;
     return pk;
 }
 

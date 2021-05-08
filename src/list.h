@@ -1,14 +1,29 @@
+/**
+ * @file list.h
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-05-08
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #ifndef LIST_H
 #define LIST_H
 
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
+
+#define INT_MIN -2147483647
 
 /** * package */
 typedef struct pack{
     int avail; //available?
     struct pack* prev;
     struct pack* next;
+    int ID;
 } pack;
 
 typedef struct List{
@@ -70,10 +85,11 @@ void _mergeHeap(hnode* rootDst, hnode* rootSrc);
 void _extractMaxHeap(hnode* root);
 void _killHeap(hnode* root);
 
-//Linked operation
-void _insertlist(List);
-void _mergelist(List);
-void _poplist(List);
+//Linked list 
+void _insertlist(List*, pack*);
+void _mergelist(List* dst, List* src);
+int _popFirst(List*);
+int _popLast(List*);
 
 
 //Struct
