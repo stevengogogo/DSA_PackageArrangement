@@ -29,8 +29,13 @@ void test_linklist(void){
     for(int i=1;i<80;i++)
         _popLast(&pd.lines[0].list);
 
+
+    kill_packData(pd);
+
+    pd = init_packData(100,100);
+
     _mergelist(&pd.lines[0].list, &pd.lines[1].list);
-    
+
     for(int i=0;i<101;i++)
         _insertlist(&pd.lines[1].list, &pd.packs[i]);
 

@@ -42,7 +42,7 @@ int main()
     for(int i=0;i<101;i++)
         _insertlist(&pd.lines[1].list, &pd.packs[i]);
 
-    for(int i=0;i<101;i++)
+    for(int i=1;i<=100;i++)
         _popFirst(&pd.lines[1].list);
     return 0;
 }
