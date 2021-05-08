@@ -2,6 +2,9 @@
 
 Keywords: `Queue`, `Stack`, `Binary Tree (search, insert, delete, remove, balance)`
 
+## Usage
+
+See [Problem Statement](Problem.pdf)
 
 ## Problem statements
 
@@ -17,13 +20,14 @@ Keywords: `Queue`, `Stack`, `Binary Tree (search, insert, delete, remove, balanc
     - Doubly linked list
   - Deque
     - First-in-First out
-    - Linked array
-    ```julia
-    struct
-      int[] array
-      int* next_array
-    end
-    ```
+    - Doubly Linked list
+      ```julia
+      struct
+        int[] array
+        int* next_array
+        int* prev_array
+      end
+      ```
 
 - Peaking a production line
   - `getFirst`: `O(1)`
