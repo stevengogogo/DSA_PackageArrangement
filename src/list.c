@@ -110,6 +110,12 @@ int _popFirst(List* list){
     assert(list->first!=NULL);
     int val = list->first->ID;
 
+    if(list->first == list->last){ //turn to null
+        list->first = NULL;
+        list->last = NULL;
+        
+    }
+    else{
     //Rewiring
     list->first->avail = 0; // update availability
     list->first = list->first->next; // move start
@@ -117,6 +123,9 @@ int _popFirst(List* list){
 
     if(list->last == list->first) //turn to null
         list->last = list->first;
+
+    }
+    
     return val;
 }
 

@@ -29,8 +29,18 @@ void test_linklist(void){
     for(int i=1;i<80;i++)
         _popLast(&pd.lines[0].list);
 
+    _mergelist(&pd.lines[0].list, &pd.lines[1].list);
+    
+    for(int i=0;i<101;i++)
+        _insertlist(&pd.lines[1].list, &pd.packs[i]);
+
+    for(int i=0;i<101;i++)
+        _popFirst(&pd.lines[1].list);
+
     TEST_CHECK(pd.lines[0].list.first == NULL);
     TEST_CHECK(pd.lines[0].list.last == NULL);
+    TEST_CHECK(pd.lines[1].list.first == NULL);
+    TEST_CHECK(pd.lines[1].list.last == NULL);
 
     kill_packData(pd);
 }
