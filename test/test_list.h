@@ -11,6 +11,7 @@ void test_init(void){
 void test_linklist(void){
     packData pd = init_packData(100,100);
 
+    //Poplast
     for(int i=0;i<40;i++)
         _insertlist(&pd.lines[0].list, &pd.packs[i]);
 
@@ -32,6 +33,7 @@ void test_linklist(void){
 
     kill_packData(pd);
 
+    //PopFirst
     pd = init_packData(100,100);
 
     _mergelist(&pd.lines[0].list, &pd.lines[1].list);
