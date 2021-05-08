@@ -2,10 +2,10 @@
 #define LIST_H
 
 #include <stdlib.h>
+#include <string.h>
 
 /** * package */
 typedef struct pack{
-    int val; //height
     int avail; //available?
     struct pack* prev;
     struct pack* next;
@@ -33,8 +33,9 @@ typedef struct{
     int N_Package;
     int N_Lines;
     prodLine* lines;
-    pack* packArr;
+    pack* packs;
 } packData;
+
 
 // Initiation and Deletion
 
@@ -45,8 +46,8 @@ typedef struct{
  * @param l number of lines
  * @return packData 
  */
-packData init_Problem(int n, int l);
-void kill_Problem(packData);
+packData init_packData(int n, int l);
+void kill_packData(packData);
 
 // Data management
 pack PushPack(packData, int i);
@@ -75,7 +76,9 @@ void _mergelist(List);
 void _poplist(List);
 
 
-
+//Struct
+pack getNullPack(void);
+prodLine getNullProdLine(void);
 
 
 
