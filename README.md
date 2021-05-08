@@ -103,6 +103,29 @@ See [Problem Statement](Problem.pdf)
     - https://en.m.wikipedia.org/wiki/Binomial_heap
 
 
+## Free a binary tree
+
+```
+deallocate (node):
+    //do nothing if passed a non-existent node
+    if node is null
+        return
+
+    //now onto the recursion
+    deallocate(left node)
+    deallocate(right node)
+
+    free node
+```
+
+Ref: [stackoverflow](https://stackoverflow.com/questions/9181146/freeing-memory-of-a-binary-tree-c)
+
+
+## Returning a void function
+
+Ref: [web](https://www.cs.fsu.edu/~cop3014p/lectures/ch7/index.html)
+
 ## References
 1. Stack, Queue and Heap. [[GitBook](https://stephanosterburg.gitbook.io/scrapbook/coding/coding-interview/data-structures/heaps-stacks-queues)]
 2.
+
