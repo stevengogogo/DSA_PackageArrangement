@@ -1,8 +1,8 @@
 var indexSectionsWithContent =
 {
-  0: "hlpu",
+  0: "hlmpu",
   1: "hlp",
-  2: "u",
+  2: "mu",
   3: "p"
 };
 
