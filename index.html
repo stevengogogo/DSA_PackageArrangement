@@ -167,6 +167,22 @@ Hints</h1>
 </li>
 </ul>
 <h1><a class="anchor" id="autotoc_md12"></a>
+Free a binary tree</h1>
+<div class="fragment"><div class="line">deallocate (node):</div>
+<div class="line">    //do nothing if passed a non-existent node</div>
+<div class="line">    if node is null</div>
+<div class="line">        return</div>
+<div class="line"> </div>
+<div class="line">    //now onto the recursion</div>
+<div class="line">    deallocate(left node)</div>
+<div class="line">    deallocate(right node)</div>
+<div class="line"> </div>
+<div class="line">    free node</div>
+</div><!-- fragment --><p>Ref: <a href="https://stackoverflow.com/questions/9181146/freeing-memory-of-a-binary-tree-c">stackoverflow</a></p>
+<h1><a class="anchor" id="autotoc_md13"></a>
+Returning a void function</h1>
+<p>Ref: <a href="https://www.cs.fsu.edu/~cop3014p/lectures/ch7/index.html">web</a></p>
+<h1><a class="anchor" id="autotoc_md14"></a>
 References</h1>
 <ol type="1">
 <li>Stack, Queue and Heap. [<a href="https://stephanosterburg.gitbook.io/scrapbook/coding/coding-interview/data-structures/heaps-stacks-queues">GitBook</a>] 2. </li>
