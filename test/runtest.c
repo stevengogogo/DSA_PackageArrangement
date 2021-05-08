@@ -9,6 +9,6 @@
 // Run TESTs 
 TEST_LIST = {
     {"Utility", test_utils},
-    {"linked list", test_list},
+    {"problem initiation", test_init},
     {NULL, NULL} // Terminate the test
 };
