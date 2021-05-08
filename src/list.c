@@ -90,7 +90,7 @@ void _mergelist(List* listDst, List* listSrc){
     else{
     assert(listSrc->last != NULL);
     assert(listDst->last != NULL);
-    
+
     //wiring dst end
     listDst->last->next = listSrc->first;
     listSrc->first->prev = listDst->last;
@@ -124,6 +124,15 @@ int _popLast(List* list){
     assert(list->first!=NULL);
     int val = list->last->ID;
 
+
+    if(list->first == list->last){ //turn to null
+        list->first = NULL;
+        list->last = NULL;
+        
+    }
+
+    else{
+
     //Rewiring
     list->last->avail = 0; // update availability
     list->last = list->last->prev; // move end
@@ -131,6 +140,9 @@ int _popLast(List* list){
 
     if(list->first == list->last) //turn to null
         list->first = list->last;
+
+    }
+
     return val;
 }
 
