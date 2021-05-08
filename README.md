@@ -15,6 +15,9 @@ See [Problem Statement](Problem.pdf)
 
 ## Strategy
 
+![image](https://user-images.githubusercontent.com/29009898/117527886-ce728680-b001-11eb-81c1-351902775993.png)
+
+
 - Production line
   - Binomial Max Heap
     - Doubly linked list
@@ -28,6 +31,7 @@ See [Problem Statement](Problem.pdf)
         int* prev_array
       end
       ```
+      ![image](https://user-images.githubusercontent.com/29009898/117526184-0378dc00-aff6-11eb-9412-193ce3edf516.png)
 
 - Peaking a production line
   - `getFirst`: `O(1)`
