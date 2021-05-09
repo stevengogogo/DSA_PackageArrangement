@@ -22,12 +22,12 @@ int main()
 
     //Heap insertion
     for (int i=1;i<40;i++){
-        pd.lines[0].heap = _insertHeap(pd.lines[0].heap, &pd.packs[i]);
+        _insertHeap(pd, 0, &pd.packs[i]);
     }
 
     //Heap extraction
     for (int i=1;i<40;i++){
-        _popMaxHeap(pd.lines[0].heap);
+        _popMaxHeap(pd, 0);
     }
 
 

@@ -44,7 +44,9 @@ void kill_packData(packData pd){
 
 //Heap
 
-hnode* _insertHeap(hnode* root, pack* pk){
+void _insertHeap(packData pd, int i, pack* pk){
+    hnode* root = pd.lines[i].heap;
+
     assert(pk->avail == 0);
     pk->avail = 1; //update availibility
 
@@ -57,8 +59,8 @@ hnode* _insertHeap(hnode* root, pack* pk){
 
     if (root==NULL){//first element
         root = create_node(NULL, pk);
-        heapRoot = root;
-        return heapRoot;
+        pd.lines[i].heap = root;
+        return;
     }
     else{
         curNode = root; //current node
@@ -89,11 +91,12 @@ hnode* _insertHeap(hnode* root, pack* pk){
 
     }
 
-    return heapRoot;
 }
 
 
-int _popMaxHeap(hnode* root){
+int _popMaxHeap(packData pd, int i){
+    hnode* root = pd.lines[i].heap;
+
     assert(root != NULL);
     hnode* curNode = root;
     hnode* nextNode = NULL;
@@ -104,7 +107,7 @@ int _popMaxHeap(hnode* root){
     //One element heap
     if (_findActLeave(root) == -1){
         free(root);
-        root = NULL;
+        pd.lines[0].heap = NULL;
         return val;
     }
     
