@@ -86,9 +86,18 @@ void _mergeHeap(hnode* rootDst, hnode* rootSrc);
 void _killHeap(hnode* root);
 
 //Linked list 
+
 void _insertlist(List*, pack*);
 void _mergelist(List* dst, List* src);
+/**
+ * @brief Pop first item. Set popped item.avail (@ref pack) to zero.
+ * @note this function can be used to pop item. No matter it is availability or not. The item's availablity will be set as 0.
+ * @return int popped ID
+ */
 int _popFirst(List*);
+/**
+ * @brief Similar to @ref _popFirst .
+ */
 int _popLast(List*);
 
 
