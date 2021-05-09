@@ -45,6 +45,9 @@ void kill_packData(packData pd){
 //Heap
 
 hnode* _insertHeap(hnode* root, pack* pk){
+    assert(pk->avail == 0);
+    pk->avail = 1; //update availibility
+
     hnode* heapRoot = NULL;
     hnode* curNode = NULL;
     pack* minPK = pk;
@@ -91,7 +94,28 @@ hnode* _insertHeap(hnode* root, pack* pk){
 
 
 int _popMaxHeap(hnode* root){
+    assert(root != NULL);
+    hnode* curNode = root;
+    hnode* nextNode = NULL;
+    int actLeafID = _findActLeave(curNode);
+    int val = root->key->ID;
+    root->key->avail = 0;
+    
+    pack pkInf = getNullPack(); //Package with minius infinity
+    pkInf.ID = INT_MIN;
+    root->key = &pkInf;
 
+    while( actLeafID != -1 ){ //There is at least a leave
+        nextNode = curNode->leaves[actLeafID];
+        _swapPackageHeap(curNode, nextNode);
+        curNode = nextNode; // move to a actual leaf
+        actLeafID = _findActLeave(curNode);
+    }
+
+    //delete node
+    free(curNode);
+
+    return val;
 }
 
 hnode* create_node(hnode* parent, pack* key){
@@ -113,6 +137,24 @@ int _findNullLeave(hnode* node){
     else{
         return -1;
     }
+}
+
+int _findActLeave(hnode* node){
+    if (node->leaves[0] != NULL){
+        return 0;
+    }
+    else if(node->leaves[1] != NULL){
+        return 1;
+    }
+    else{
+        return -1;
+    }
+}
+
+void _swapPackageHeap(hnode* a, hnode* b){
+    pack* tmp = a->key;
+    a->key = b->key;
+    b->key = tmp;
 }
 
 void _killHeap(hnode* root){

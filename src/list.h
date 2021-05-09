@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include "utils.h"
 
 #define INT_MIN -2147483647
 
@@ -86,6 +87,8 @@ void _mergeHeap(hnode* rootDst, hnode* rootSrc);
 hnode* create_node(hnode* parent, pack* key);
 /** * Return index of Null leave. -1 for occupied */
 int _findNullLeave(hnode* node);
+int _findActLeave(hnode* node);
+void _swapPackageHeap(hnode* a, hnode* b);
 void _killHeap(hnode* root);
 
 //Linked list 
