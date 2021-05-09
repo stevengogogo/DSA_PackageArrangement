@@ -183,6 +183,25 @@ Free a binary tree</h1>
 Returning a void function</h1>
 <p>Ref: <a href="https://www.cs.fsu.edu/~cop3014p/lectures/ch7/index.html">web</a></p>
 <h1><a class="anchor" id="autotoc_md14"></a>
+Function pointer</h1>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="comment">// A normal function with an int parameter</span></div>
+<div class="line"><span class="comment">// and void return type</span></div>
+<div class="line"><span class="keywordtype">void</span> fun(<span class="keywordtype">int</span> a)</div>
+<div class="line">{</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Value of a is %d\n&quot;</span>, a);</div>
+<div class="line">}</div>
+<div class="line">  </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{ </div>
+<div class="line">    void (*fun_ptr)(int) = fun;  <span class="comment">// &amp; removed</span></div>
+<div class="line">  </div>
+<div class="line">    fun_ptr(10);  <span class="comment">// * removed</span></div>
+<div class="line">  </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Ref: <a href="https://www.geeksforgeeks.org/function-pointer-in-c/">GreekforGeek</a></p>
+<h1><a class="anchor" id="autotoc_md15"></a>
 References</h1>
 <ol type="1">
 <li>Stack, Queue and Heap. [<a href="https://stephanosterburg.gitbook.io/scrapbook/coding/coding-interview/data-structures/heaps-stacks-queues">GitBook</a>] 2. </li>
