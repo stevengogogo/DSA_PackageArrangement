@@ -116,7 +116,15 @@ int _popMaxHeap(packData pd, int i){
     root->key = &pkInf;
 
     while( actLeafID != -1 ){ //There is at least a leave
-        nextNode = curNode->leaves[actLeafID];
+        if(_findNullLeave(curNode) == -1){
+            nextNode = curNode->leaves[
+                        1^(argMin(curNode->leaves[0]->key->ID,
+                               curNode->leaves[1]->key->ID))
+                        ]; //chose max node
+        }
+        else{
+            nextNode = curNode->leaves[actLeafID];
+        }
         _swapPackageHeap(curNode, nextNode);
         curNode = nextNode; // move to a actual leaf
         actLeafID = _findActLeave(curNode);
