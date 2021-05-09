@@ -125,6 +125,30 @@ Ref: [stackoverflow](https://stackoverflow.com/questions/9181146/freeing-memory-
 
 Ref: [web](https://www.cs.fsu.edu/~cop3014p/lectures/ch7/index.html)
 
+## Function pointer
+
+```c
+
+#include <stdio.h>
+// A normal function with an int parameter
+// and void return type
+void fun(int a)
+{
+    printf("Value of a is %d\n", a);
+}
+  
+int main()
+{ 
+    void (*fun_ptr)(int) = fun;  // & removed
+  
+    fun_ptr(10);  // * removed
+  
+    return 0;
+}
+```
+
+Ref: [GreekforGeek](https://www.geeksforgeeks.org/function-pointer-in-c/)
+
 ## References
 1. Stack, Queue and Heap. [[GitBook](https://stephanosterburg.gitbook.io/scrapbook/coding/coding-interview/data-structures/heaps-stacks-queues)]
 2.
