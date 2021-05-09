@@ -99,7 +99,7 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="list_8h.html#a41622136ec076e314e00e9fbe9512c61">_popFirst</a>(&amp;pd.lines[0].list);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=1;i&lt;80;i++)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        _popLast(&amp;pd.lines[0].list);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="list_8h.html#a97bf806736c5cf75cbc2b56814e66e2b">_popLast</a>(&amp;pd.lines[0].list);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    kill_packData(pd);</div>
@@ -126,9 +126,10 @@ $(function() {
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div></div>
-<div class="ttc" id="alist_8h_html_a41622136ec076e314e00e9fbe9512c61"><div class="ttname"><a href="list_8h.html#a41622136ec076e314e00e9fbe9512c61">_popFirst</a></div><div class="ttdeci">int _popFirst(List *)</div><div class="ttdoc">Pop until find an available element.</div><div class="ttdef"><b>Definition:</b> list.c:120</div></div>
+<div class="ttc" id="alist_8h_html_a41622136ec076e314e00e9fbe9512c61"><div class="ttname"><a href="list_8h.html#a41622136ec076e314e00e9fbe9512c61">_popFirst</a></div><div class="ttdeci">int _popFirst(List *)</div><div class="ttdoc">Pop first item. Set popped item.avail (pack) to zero.</div><div class="ttdef"><b>Definition:</b> list.c:120</div></div>
+<div class="ttc" id="alist_8h_html_a97bf806736c5cf75cbc2b56814e66e2b"><div class="ttname"><a href="list_8h.html#a97bf806736c5cf75cbc2b56814e66e2b">_popLast</a></div><div class="ttdeci">int _popLast(List *)</div><div class="ttdoc">Similar to _popFirst .</div><div class="ttdef"><b>Definition:</b> list.c:143</div></div>
 <div class="ttc" id="alist_8h_html_aa11f23d0e48c1d0788c6a8930a252b9c"><div class="ttname"><a href="list_8h.html#aa11f23d0e48c1d0788c6a8930a252b9c">init_packData</a></div><div class="ttdeci">packData init_packData(int n, int l)</div><div class="ttdoc">Initiate a package management problem.</div><div class="ttdef"><b>Definition:</b> list.c:3</div></div>
-<div class="ttc" id="astructpackData_html"><div class="ttname"><a href="structpackData.html">packData</a></div><div class="ttdef"><b>Definition:</b> list.h:48</div></div>
+<div class="ttc" id="astructpackData_html"><div class="ttname"><a href="structpackData.html">packData</a></div><div class="ttdef"><b>Definition:</b> list.h:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
