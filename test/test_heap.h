@@ -1,23 +1,10 @@
-/**
- * @file main.c
- * @author your name (you@domain.com)
- * @brief 
- * @version 0.1
- * @date 2021-05-08
- * 
- * @copyright Copyright (c) 2021
- * 
- */
+#ifndef TEST_HEAP_H
+#define TEST_HEAP_H
 
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "utils.h"
 #include "list.h"
+#include "acutest.h"
 
-int main()
-{
-
+void test_heap(void){
     packData pd = init_packData(100,100);
 
     //Heap insertion
@@ -30,6 +17,11 @@ int main()
         _popMaxHeap(pd.lines[0].heap);
     }
 
+    TEST_CHECK(pd.lines[0].heap == NULL);
 
-    return 0;
+    kill_packData(pd);
 }
+
+
+
+#endif

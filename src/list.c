@@ -100,6 +100,13 @@ int _popMaxHeap(hnode* root){
     int actLeafID = _findActLeave(curNode);
     int val = root->key->ID;
     root->key->avail = 0;
+
+    //One element heap
+    if (_findActLeave(root) == -1){
+        free(root);
+        root = NULL;
+        return val;
+    }
     
     pack pkInf = getNullPack(); //Package with minius infinity
     pkInf.ID = INT_MIN;
@@ -113,8 +120,15 @@ int _popMaxHeap(hnode* root){
     }
 
     //delete node
-    free(curNode);
+    if (curNode->parent->leaves[0] == curNode){
+        curNode->parent->leaves[0] = NULL;
+    }
+    else{
+        curNode->parent->leaves[1] = NULL;
+    }
 
+    free(curNode);
+    curNode = NULL;
     return val;
 }
 
