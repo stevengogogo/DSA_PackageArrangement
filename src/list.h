@@ -80,9 +80,12 @@ pack PeakMaxPack(packData, int i);
 
 
 // Heap operation
-void _insertHeap(hnode* root, pack*);
+hnode* _insertHeap(hnode* root, pack*);
 int _popMaxHeap(hnode* root);
 void _mergeHeap(hnode* rootDst, hnode* rootSrc);
+hnode* create_node(hnode* parent, pack* key);
+/** * Return index of Null leave. -1 for occupied */
+int _findNullLeave(hnode* node);
 void _killHeap(hnode* root);
 
 //Linked list 
