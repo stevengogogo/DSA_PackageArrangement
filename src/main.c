@@ -19,7 +19,7 @@ int main()
 {
 
     packData pd = init_packData(100,100);
-
+    int a = 0;
     //Heap insertion
     for (int i=1;i<40;i++){
         _insertHeap(pd, 0, &pd.packs[i]);
@@ -27,7 +27,7 @@ int main()
 
     //Heap extraction
     for (int i=1;i<40;i++){
-        _popMaxHeap(pd, 0);
+        a = _popMaxHeap(pd, 0);
     }
 
 
