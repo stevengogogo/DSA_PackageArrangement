@@ -46,7 +46,7 @@ void kill_packData(packData pd){
 
 void _insertHeap(hnode* root, pack* pk){
     if (root==NULL){
-        
+
     }
 }
 
@@ -119,22 +119,40 @@ void _mergelist(List* listDst, List* listSrc){
 
 int _popFirst(List* list){
     assert(list->first!=NULL);
-    int val = list->first->ID;
-    list->first->avail = 0; // update availability
+    int val = unAvail;
+    int avail = 0;
 
-    if(list->first == list->last){ //turn to null
-        list->first = NULL;
-        list->last = NULL;
+    while( list->first != NULL){//pop until NULL
+
+        // Save first info
+        val = list->first->ID; //Item to be popped
+        avail = list->first->avail;
+
+        //Pop
+        if(list->first == list->last){ //turn to null
+            list->first = NULL;
+            list->last = NULL;
+            
+        }
+        else{
+        //Rewiring
+        list->first = list->first->next; // move start
+        list->first->prev = NULL; // link start.prev to NULL
+
+        if(list->last == list->first) //turn End to null
+            list->last = list->first;
+
+        }
+
+        //Pop again?
+        if(avail==1){
+            list->first->avail = 0; // update availability
+            break;
+        }
+        else{
+            val = unAvail;
+        }
         
-    }
-    else{
-    //Rewiring
-    list->first = list->first->next; // move start
-    list->first->prev = NULL; // link start.prev to NULL
-
-    if(list->last == list->first) //turn to null
-        list->last = list->first;
-
     }
 
     return val;

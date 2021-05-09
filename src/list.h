@@ -17,6 +17,7 @@
 #include <assert.h>
 
 #define INT_MIN -2147483647
+#define unAvail -1
 
 /** * package */
 typedef struct pack{
@@ -88,6 +89,11 @@ void _killHeap(hnode* root);
 //Linked list 
 void _insertlist(List*, pack*);
 void _mergelist(List* dst, List* src);
+/**
+ * @brief Pop until find an available element
+ * 
+ * @return int 
+ */
 int _popFirst(List*);
 int _popLast(List*);
 
