@@ -1,5 +1,7 @@
 <map id="src/utils.h" name="src/utils.h">
-<area shape="rect" id="node1" title="General Utilities for C language." alt="" coords="67,5,146,32"/>
-<area shape="rect" id="node2" href="$main_8c.html" title=" " alt="" coords="5,80,88,107"/>
-<area shape="rect" id="node3" href="$test__utils_8h_source.html" title=" " alt="" coords="113,80,223,107"/>
+<area shape="rect" id="node1" title="General Utilities for C language." alt="" coords="81,5,159,32"/>
+<area shape="rect" id="node2" href="$list_8h.html" title=" " alt="" coords="85,80,155,107"/>
+<area shape="rect" id="node3" href="$main_8c.html" title=" " alt="" coords="5,155,88,181"/>
+<area shape="rect" id="node5" href="$test__utils_8h_source.html" title=" " alt="" coords="179,80,290,107"/>
+<area shape="rect" id="node4" href="$test__list_8h_source.html" title=" " alt="" coords="112,155,216,181"/>
 </map>

@@ -76,95 +76,99 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define INT_MIN -2147483647</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structpack.html">   22</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structpack.html">pack</a>{</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span> avail; <span class="comment">//available?</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">struct </span><a class="code" href="structpack.html">pack</a>* prev;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">struct </span><a class="code" href="structpack.html">pack</a>* next;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">int</span> ID;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="list_8h.html#a3586525e728a7be39766f22a4db66cb9">   27</a></span>&#160;} <a class="code" href="list_8h.html#a3586525e728a7be39766f22a4db66cb9">pack</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structList.html">   29</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structList.html">List</a>{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="structpack.html">pack</a>* first;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="structpack.html">pack</a>* last;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;} <a class="code" href="structList.html">List</a>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structhnode.html">   34</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structhnode.html">hnode</a>{</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">struct </span><a class="code" href="structhnode.html">hnode</a>* parent;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">struct </span><a class="code" href="structhnode.html">hnode</a>* leaves[2]; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="structpack.html">pack</a>* key;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;} <a class="code" href="structhnode.html">hnode</a>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structprodLine.html">   41</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="structList.html">List</a> list;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="structhnode.html">hnode</a>* heap;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">int</span> avail;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;} <a class="code" href="structprodLine.html">prodLine</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structpackData.html">   47</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">int</span> N_Package;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> N_Lines;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="structprodLine.html">prodLine</a>* lines;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="structpack.html">pack</a>* packs;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;} <a class="code" href="structpackData.html">packData</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define INT_MIN -2147483647</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structpack.html">   23</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structpack.html">pack</a>{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> avail; <span class="comment">//available?</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">struct </span><a class="code" href="structpack.html">pack</a>* prev;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">struct </span><a class="code" href="structpack.html">pack</a>* next;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">int</span> ID;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="list_8h.html#a3586525e728a7be39766f22a4db66cb9">   28</a></span>&#160;} <a class="code" href="list_8h.html#a3586525e728a7be39766f22a4db66cb9">pack</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structList.html">   30</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structList.html">List</a>{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="structpack.html">pack</a>* first;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="structpack.html">pack</a>* last;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;} <a class="code" href="structList.html">List</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structhnode.html">   35</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structhnode.html">hnode</a>{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">struct </span><a class="code" href="structhnode.html">hnode</a>* parent;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">struct </span><a class="code" href="structhnode.html">hnode</a>* leaves[2]; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="structpack.html">pack</a>* key;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;} <a class="code" href="structhnode.html">hnode</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structprodLine.html">   42</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="structList.html">List</a> list;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="structhnode.html">hnode</a>* heap;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> avail;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="structprodLine.html">prodLine</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structpackData.html">   48</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> N_Package;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">int</span> N_Lines;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="structprodLine.html">prodLine</a>* lines;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="structpack.html">pack</a>* packs;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;} <a class="code" href="structpackData.html">packData</a>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">// Initiation and Deletion</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<a class="code" href="structpackData.html">packData</a> <a class="code" href="list_8h.html#aa11f23d0e48c1d0788c6a8930a252b9c">init_packData</a>(<span class="keywordtype">int</span> n, <span class="keywordtype">int</span> l);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> kill_packData(<a class="code" href="structpackData.html">packData</a>);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">// Data management</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<a class="code" href="structpack.html">pack</a> PushPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<a class="code" href="structpack.html">pack</a> MergeLines(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> dst, <span class="keywordtype">int</span> src);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">//Pop</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<a class="code" href="structpack.html">pack</a> PopFirstPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<a class="code" href="structpack.html">pack</a> PopLastPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<a class="code" href="structpack.html">pack</a> PopMaxPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">// Peak Data</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<a class="code" href="structpack.html">pack</a> PeakFirstPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<a class="code" href="structpack.html">pack</a> PeakLastPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<a class="code" href="structpack.html">pack</a> PeakMaxPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// Initiation and Deletion</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<a class="code" href="structpackData.html">packData</a> <a class="code" href="list_8h.html#aa11f23d0e48c1d0788c6a8930a252b9c">init_packData</a>(<span class="keywordtype">int</span> n, <span class="keywordtype">int</span> l);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> kill_packData(<a class="code" href="structpackData.html">packData</a>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">// Data management</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<a class="code" href="structpack.html">pack</a> PushPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<a class="code" href="structpack.html">pack</a> MergeLines(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> dst, <span class="keywordtype">int</span> src);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">//Pop</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<a class="code" href="structpack.html">pack</a> PopFirstPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<a class="code" href="structpack.html">pack</a> PopLastPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<a class="code" href="structpack.html">pack</a> PopMaxPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">// Peak Data</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<a class="code" href="structpack.html">pack</a> PeakFirstPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<a class="code" href="structpack.html">pack</a> PeakLastPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<a class="code" href="structpack.html">pack</a> PeakMaxPack(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> i);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">// Heap operation</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<a class="code" href="structhnode.html">hnode</a>* _insertHeap(<a class="code" href="structhnode.html">hnode</a>* root, <a class="code" href="structpack.html">pack</a>*);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">int</span> _popMaxHeap(<a class="code" href="structhnode.html">hnode</a>* root);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">void</span> _mergeHeap(<a class="code" href="structhnode.html">hnode</a>* rootDst, <a class="code" href="structhnode.html">hnode</a>* rootSrc);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<a class="code" href="structhnode.html">hnode</a>* create_node(<a class="code" href="structhnode.html">hnode</a>* parent, <a class="code" href="structpack.html">pack</a>* key);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a7afb1b709ad6d00cd41ac19e8cd9e148">_findNullLeave</a>(<a class="code" href="structhnode.html">hnode</a>* node);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">void</span> _killHeap(<a class="code" href="structhnode.html">hnode</a>* root);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">//Linked list </span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">void</span> _insertlist(<a class="code" href="structList.html">List</a>*, <a class="code" href="structpack.html">pack</a>*);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">void</span> _mergelist(<a class="code" href="structList.html">List</a>* dst, <a class="code" href="structList.html">List</a>* src);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a41622136ec076e314e00e9fbe9512c61">_popFirst</a>(<a class="code" href="structList.html">List</a>*);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a97bf806736c5cf75cbc2b56814e66e2b">_popLast</a>(<a class="code" href="structList.html">List</a>*);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">//Struct</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<a class="code" href="structpack.html">pack</a> getNullPack(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<a class="code" href="structprodLine.html">prodLine</a> getNullProdLine(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">// Heap operation</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<a class="code" href="structhnode.html">hnode</a>* _insertHeap(<a class="code" href="structhnode.html">hnode</a>* root, <a class="code" href="structpack.html">pack</a>*);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">int</span> _popMaxHeap(<a class="code" href="structhnode.html">hnode</a>* root);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> _mergeHeap(<a class="code" href="structhnode.html">hnode</a>* rootDst, <a class="code" href="structhnode.html">hnode</a>* rootSrc);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<a class="code" href="structhnode.html">hnode</a>* create_node(<a class="code" href="structhnode.html">hnode</a>* parent, <a class="code" href="structpack.html">pack</a>* key);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a7afb1b709ad6d00cd41ac19e8cd9e148">_findNullLeave</a>(<a class="code" href="structhnode.html">hnode</a>* node);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">int</span> _findActLeave(<a class="code" href="structhnode.html">hnode</a>* node);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">void</span> _swapPackageHeap(<a class="code" href="structhnode.html">hnode</a>* a, <a class="code" href="structhnode.html">hnode</a>* b);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">void</span> _killHeap(<a class="code" href="structhnode.html">hnode</a>* root);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">//Linked list </span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">void</span> _insertlist(<a class="code" href="structList.html">List</a>*, <a class="code" href="structpack.html">pack</a>*);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keywordtype">void</span> _mergelist(<a class="code" href="structList.html">List</a>* dst, <a class="code" href="structList.html">List</a>* src);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a41622136ec076e314e00e9fbe9512c61">_popFirst</a>(<a class="code" href="structList.html">List</a>*);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a97bf806736c5cf75cbc2b56814e66e2b">_popLast</a>(<a class="code" href="structList.html">List</a>*);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">//Struct</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<a class="code" href="structpack.html">pack</a> getNullPack(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<a class="code" href="structprodLine.html">prodLine</a> getNullProdLine(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif </span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif </span></div>
 <div class="ttc" id="alist_8h_html_a3586525e728a7be39766f22a4db66cb9"><div class="ttname"><a href="list_8h.html#a3586525e728a7be39766f22a4db66cb9">pack</a></div><div class="ttdeci">struct pack pack</div></div>
-<div class="ttc" id="alist_8h_html_a41622136ec076e314e00e9fbe9512c61"><div class="ttname"><a href="list_8h.html#a41622136ec076e314e00e9fbe9512c61">_popFirst</a></div><div class="ttdeci">int _popFirst(List *)</div><div class="ttdoc">Pop first item. Set popped item.avail (pack) to zero.</div><div class="ttdef"><b>Definition:</b> list.c:179</div></div>
-<div class="ttc" id="alist_8h_html_a7afb1b709ad6d00cd41ac19e8cd9e148"><div class="ttname"><a href="list_8h.html#a7afb1b709ad6d00cd41ac19e8cd9e148">_findNullLeave</a></div><div class="ttdeci">int _findNullLeave(hnode *node)</div><div class="ttdef"><b>Definition:</b> list.c:106</div></div>
-<div class="ttc" id="alist_8h_html_a97bf806736c5cf75cbc2b56814e66e2b"><div class="ttname"><a href="list_8h.html#a97bf806736c5cf75cbc2b56814e66e2b">_popLast</a></div><div class="ttdeci">int _popLast(List *)</div><div class="ttdoc">Similar to _popFirst .</div><div class="ttdef"><b>Definition:</b> list.c:202</div></div>
+<div class="ttc" id="alist_8h_html_a41622136ec076e314e00e9fbe9512c61"><div class="ttname"><a href="list_8h.html#a41622136ec076e314e00e9fbe9512c61">_popFirst</a></div><div class="ttdeci">int _popFirst(List *)</div><div class="ttdoc">Pop first item. Set popped item.avail (pack) to zero.</div><div class="ttdef"><b>Definition:</b> list.c:221</div></div>
+<div class="ttc" id="alist_8h_html_a7afb1b709ad6d00cd41ac19e8cd9e148"><div class="ttname"><a href="list_8h.html#a7afb1b709ad6d00cd41ac19e8cd9e148">_findNullLeave</a></div><div class="ttdeci">int _findNullLeave(hnode *node)</div><div class="ttdef"><b>Definition:</b> list.c:130</div></div>
+<div class="ttc" id="alist_8h_html_a97bf806736c5cf75cbc2b56814e66e2b"><div class="ttname"><a href="list_8h.html#a97bf806736c5cf75cbc2b56814e66e2b">_popLast</a></div><div class="ttdeci">int _popLast(List *)</div><div class="ttdoc">Similar to _popFirst .</div><div class="ttdef"><b>Definition:</b> list.c:244</div></div>
 <div class="ttc" id="alist_8h_html_aa11f23d0e48c1d0788c6a8930a252b9c"><div class="ttname"><a href="list_8h.html#aa11f23d0e48c1d0788c6a8930a252b9c">init_packData</a></div><div class="ttdeci">packData init_packData(int n, int l)</div><div class="ttdoc">Initiate a package management problem.</div><div class="ttdef"><b>Definition:</b> list.c:3</div></div>
-<div class="ttc" id="astructList_html"><div class="ttname"><a href="structList.html">List</a></div><div class="ttdef"><b>Definition:</b> list.h:29</div></div>
-<div class="ttc" id="astructhnode_html"><div class="ttname"><a href="structhnode.html">hnode</a></div><div class="ttdef"><b>Definition:</b> list.h:34</div></div>
-<div class="ttc" id="astructpackData_html"><div class="ttname"><a href="structpackData.html">packData</a></div><div class="ttdef"><b>Definition:</b> list.h:47</div></div>
-<div class="ttc" id="astructpack_html"><div class="ttname"><a href="structpack.html">pack</a></div><div class="ttdef"><b>Definition:</b> list.h:22</div></div>
-<div class="ttc" id="astructprodLine_html"><div class="ttname"><a href="structprodLine.html">prodLine</a></div><div class="ttdef"><b>Definition:</b> list.h:41</div></div>
+<div class="ttc" id="astructList_html"><div class="ttname"><a href="structList.html">List</a></div><div class="ttdef"><b>Definition:</b> list.h:30</div></div>
+<div class="ttc" id="astructhnode_html"><div class="ttname"><a href="structhnode.html">hnode</a></div><div class="ttdef"><b>Definition:</b> list.h:35</div></div>
+<div class="ttc" id="astructpackData_html"><div class="ttname"><a href="structpackData.html">packData</a></div><div class="ttdef"><b>Definition:</b> list.h:48</div></div>
+<div class="ttc" id="astructpack_html"><div class="ttname"><a href="structpack.html">pack</a></div><div class="ttdef"><b>Definition:</b> list.h:23</div></div>
+<div class="ttc" id="astructprodLine_html"><div class="ttname"><a href="structprodLine.html">prodLine</a></div><div class="ttdef"><b>Definition:</b> list.h:42</div></div>
+<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div><div class="ttdoc">General Utilities for C language.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
