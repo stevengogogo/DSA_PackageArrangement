@@ -163,15 +163,20 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>kill_packData</b> (<a
 <tr class="memitem:acf2fe7c6d68f4929b6c789ce04c2470e"><td class="memItemLeft" align="right" valign="top"><a id="acf2fe7c6d68f4929b6c789ce04c2470e"></a>
 <a class="el" href="structpack.html">pack</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PeakMaxPack</b> (<a class="el" href="structpackData.html">packData</a>, int i)</td></tr>
 <tr class="separator:acf2fe7c6d68f4929b6c789ce04c2470e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c64503a1e4072f33b4057c07d692b7a"><td class="memItemLeft" align="right" valign="top"><a id="a3c64503a1e4072f33b4057c07d692b7a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>_insertHeap</b> (<a class="el" href="structhnode.html">hnode</a> *root, <a class="el" href="structpack.html">pack</a> *)</td></tr>
-<tr class="separator:a3c64503a1e4072f33b4057c07d692b7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e33bdf338bd964b1d18a02db853689e"><td class="memItemLeft" align="right" valign="top"><a id="a1e33bdf338bd964b1d18a02db853689e"></a>
+<a class="el" href="structhnode.html">hnode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_insertHeap</b> (<a class="el" href="structhnode.html">hnode</a> *root, <a class="el" href="structpack.html">pack</a> *)</td></tr>
+<tr class="separator:a1e33bdf338bd964b1d18a02db853689e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b0195ee2c1f83da0fe39e19e7a71cb8"><td class="memItemLeft" align="right" valign="top"><a id="a9b0195ee2c1f83da0fe39e19e7a71cb8"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>_popMaxHeap</b> (<a class="el" href="structhnode.html">hnode</a> *root)</td></tr>
 <tr class="separator:a9b0195ee2c1f83da0fe39e19e7a71cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac040c83b5ca69f4854b9b6e4f9335f75"><td class="memItemLeft" align="right" valign="top"><a id="ac040c83b5ca69f4854b9b6e4f9335f75"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_mergeHeap</b> (<a class="el" href="structhnode.html">hnode</a> *rootDst, <a class="el" href="structhnode.html">hnode</a> *rootSrc)</td></tr>
 <tr class="separator:ac040c83b5ca69f4854b9b6e4f9335f75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac72842d1ea31e89fe098a7dbf7e10b2"><td class="memItemLeft" align="right" valign="top"><a id="aac72842d1ea31e89fe098a7dbf7e10b2"></a>
+<a class="el" href="structhnode.html">hnode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>create_node</b> (<a class="el" href="structhnode.html">hnode</a> *parent, <a class="el" href="structpack.html">pack</a> *key)</td></tr>
+<tr class="separator:aac72842d1ea31e89fe098a7dbf7e10b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7afb1b709ad6d00cd41ac19e8cd9e148"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a7afb1b709ad6d00cd41ac19e8cd9e148">_findNullLeave</a> (<a class="el" href="structhnode.html">hnode</a> *node)</td></tr>
+<tr class="separator:a7afb1b709ad6d00cd41ac19e8cd9e148"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b1e9d4025ceb5094c788a86e22d1da4"><td class="memItemLeft" align="right" valign="top"><a id="a1b1e9d4025ceb5094c788a86e22d1da4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_killHeap</b> (<a class="el" href="structhnode.html">hnode</a> *root)</td></tr>
 <tr class="separator:a1b1e9d4025ceb5094c788a86e22d1da4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -219,6 +224,27 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a7afb1b709ad6d00cd41ac19e8cd9e148"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7afb1b709ad6d00cd41ac19e8cd9e148">&#9670;&nbsp;</a></span>_findNullLeave()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _findNullLeave </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhnode.html">hnode</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<ul>
+<li>Return index of Null leave. -1 for occupied </li>
+</ul>
+
+</div>
+</div>
 <a id="a41622136ec076e314e00e9fbe9512c61"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a41622136ec076e314e00e9fbe9512c61">&#9670;&nbsp;</a></span>_popFirst()</h2>
 
