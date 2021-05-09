@@ -79,23 +79,24 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="structpackData.html">packData</a> pd = <a class="code" href="list_8h.html#aa11f23d0e48c1d0788c6a8930a252b9c">init_packData</a>(100,100);</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="comment">//Heap insertion</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=1;i&lt;40;i++){</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        pd.lines[0].heap = _insertHeap(pd.lines[0].heap, &amp;pd.packs[i]);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=1;i&lt;=40;i++){</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        _insertHeap(pd, 0, &amp;pd.packs[i]);</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    }</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="comment">//Heap extraction</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=1;i&lt;40;i++){</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        _popMaxHeap(pd.lines[0].heap);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    TEST_CHECK(pd.lines[0].heap == NULL);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    kill_packData(pd);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=40;i&gt;=1;i--){</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        TEST_CHECK(i == _popMaxHeap(pd, 0) );</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        TEST_MSG(<span class="stringliteral">&quot;Exp: %d ; Got: %d&quot;</span>,i, _popMaxHeap(pd, 0));</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    TEST_CHECK(pd.lines[0].heap == NULL);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    kill_packData(pd);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div></div>
 <div class="ttc" id="alist_8h_html_aa11f23d0e48c1d0788c6a8930a252b9c"><div class="ttname"><a href="list_8h.html#aa11f23d0e48c1d0788c6a8930a252b9c">init_packData</a></div><div class="ttdeci">packData init_packData(int n, int l)</div><div class="ttdoc">Initiate a package management problem.</div><div class="ttdef"><b>Definition:</b> list.c:3</div></div>
 <div class="ttc" id="astructpackData_html"><div class="ttname"><a href="structpackData.html">packData</a></div><div class="ttdef"><b>Definition:</b> list.h:48</div></div>
