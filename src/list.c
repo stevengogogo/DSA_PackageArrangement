@@ -22,7 +22,7 @@ packData init_packData(int n, int l){
     // initialize
     for(int i=0;i<=pd.N_Package;i++){
         pd.packs[i] = pk;
-        pd.packs[i]->ID = i;
+        pd.packs[i].ID = i;
     }
 
     for(int i=0;i<pd.N_Lines;i++)
