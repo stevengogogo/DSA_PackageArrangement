@@ -103,6 +103,15 @@ See [Problem Statement](Problem.pdf)
     - https://en.m.wikipedia.org/wiki/Binomial_heap
 
 
+## Heap Operations
+
+<img width="368" alt="Screen Shot 2021-05-08 at 12 03 07 PM" src="https://user-images.githubusercontent.com/29009898/117526088-5d2cd680-aff5-11eb-81df-c135e8654434.png">
+<img width="392" alt="Screen Shot 2021-05-08 at 12 03 30 PM" src="https://user-images.githubusercontent.com/29009898/117526093-69189880-aff5-11eb-9402-9edd42a60745.png">
+<img width="341" alt="Screen Shot 2021-05-08 at 12 03 41 PM" src="https://user-images.githubusercontent.com/29009898/117526099-6fa71000-aff5-11eb-87a3-b8877f276d8f.png">
+<img width="437" alt="Screen Shot 2021-05-08 at 12 03 52 PM" src="https://user-images.githubusercontent.com/29009898/117526106-76358780-aff5-11eb-86ac-a091dee90265.png">
+<img width="335" alt="Screen Shot 2021-05-08 at 12 04 14 PM" src="https://user-images.githubusercontent.com/29009898/117526117-83527680-aff5-11eb-9021-f2b2f5dac965.png">
+
+
 ## Free a binary tree
 
 ```

@@ -44,6 +44,17 @@ void kill_packData(packData pd){
 
 //Heap
 
+void _insertHeap(hnode* root, pack* pk){
+    if (root==NULL){
+        
+    }
+}
+
+
+int _popMaxHeap(hnode* root){
+
+}
+
 
 void _killHeap(hnode* root){
     if (root == NULL)

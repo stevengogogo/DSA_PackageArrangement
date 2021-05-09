@@ -80,9 +80,9 @@ pack PeakMaxPack(packData, int i);
 
 
 // Heap operation
-void _insertHeap(hnode* root);
+void _insertHeap(hnode* root, pack*);
+int _popMaxHeap(hnode* root);
 void _mergeHeap(hnode* rootDst, hnode* rootSrc);
-void _extractMaxHeap(hnode* root);
 void _killHeap(hnode* root);
 
 //Linked list 
