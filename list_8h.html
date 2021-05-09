@@ -119,6 +119,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a21658776274b3d146c674318b635a334"><td class="memItemLeft" align="right" valign="top"><a id="a21658776274b3d146c674318b635a334"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>INT_MIN</b>&#160;&#160;&#160;-2147483647</td></tr>
 <tr class="separator:a21658776274b3d146c674318b635a334"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b4a8acc9e3a89beb2fcab556b55255a"><td class="memItemLeft" align="right" valign="top"><a id="a3b4a8acc9e3a89beb2fcab556b55255a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>unAvail</b>&#160;&#160;&#160;-1</td></tr>
+<tr class="separator:a3b4a8acc9e3a89beb2fcab556b55255a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -181,8 +184,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_insertlist</b> (<a c
 <tr class="memitem:af0436063a9a7c440d50f3789dd3dd83d"><td class="memItemLeft" align="right" valign="top"><a id="af0436063a9a7c440d50f3789dd3dd83d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_mergelist</b> (<a class="el" href="structList.html">List</a> *dst, <a class="el" href="structList.html">List</a> *src)</td></tr>
 <tr class="separator:af0436063a9a7c440d50f3789dd3dd83d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41622136ec076e314e00e9fbe9512c61"><td class="memItemLeft" align="right" valign="top"><a id="a41622136ec076e314e00e9fbe9512c61"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_popFirst</b> (<a class="el" href="structList.html">List</a> *)</td></tr>
+<tr class="memitem:a41622136ec076e314e00e9fbe9512c61"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a41622136ec076e314e00e9fbe9512c61">_popFirst</a> (<a class="el" href="structList.html">List</a> *)</td></tr>
+<tr class="memdesc:a41622136ec076e314e00e9fbe9512c61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pop until find an available element.  <a href="list_8h.html#a41622136ec076e314e00e9fbe9512c61">More...</a><br /></td></tr>
 <tr class="separator:a41622136ec076e314e00e9fbe9512c61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97bf806736c5cf75cbc2b56814e66e2b"><td class="memItemLeft" align="right" valign="top"><a id="a97bf806736c5cf75cbc2b56814e66e2b"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>_popLast</b> (<a class="el" href="structList.html">List</a> *)</td></tr>
@@ -218,6 +221,27 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_popLast</b> (<a class
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a41622136ec076e314e00e9fbe9512c61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41622136ec076e314e00e9fbe9512c61">&#9670;&nbsp;</a></span>_popFirst()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _popFirst </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
+          <td class="paramname"><em>list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pop until find an available element. </p>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
 <a id="aa11f23d0e48c1d0788c6a8930a252b9c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa11f23d0e48c1d0788c6a8930a252b9c">&#9670;&nbsp;</a></span>init_packData()</h2>
 

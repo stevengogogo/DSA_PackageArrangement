@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['init_5fpackdata_18',['init_packData',['../list_8h.html#aa11f23d0e48c1d0788c6a8930a252b9c',1,'list.c']]]
+  ['_5fpopfirst_19',['_popFirst',['../list_8h.html#a41622136ec076e314e00e9fbe9512c61',1,'list.c']]]
 ];
