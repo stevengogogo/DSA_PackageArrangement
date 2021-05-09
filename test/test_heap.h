@@ -6,6 +6,7 @@
 
 void test_heap(void){
     packData pd = init_packData(100,100);
+    int a;
 
     //Heap insertion
     for (int i=1;i<=40;i++){
@@ -14,8 +15,9 @@ void test_heap(void){
 
     //Heap extraction
     for (int i=40;i>=1;i--){
-        TEST_CHECK(i == _popMaxHeap(pd, 0) );
-        TEST_MSG("Exp: %d ; Got: %d",i, _popMaxHeap(pd, 0));
+        a = _popMaxHeap(pd, 0);
+        TEST_CHECK(i == a );
+        TEST_MSG("Exp: %d ; Got: %d",i, a);
     }
 
     TEST_CHECK(pd.lines[0].heap == NULL);

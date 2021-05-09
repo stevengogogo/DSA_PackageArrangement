@@ -21,12 +21,12 @@ int main()
     packData pd = init_packData(100,100);
     int a = 0;
     //Heap insertion
-    for (int i=1;i<40;i++){
+    for (int i=1;i<=40;i++){
         _insertHeap(pd, 0, &pd.packs[i]);
     }
 
     //Heap extraction
-    for (int i=1;i<40;i++){
+    for (int i=40;i>=1;i--){
         a = _popMaxHeap(pd, 0);
     }
 
