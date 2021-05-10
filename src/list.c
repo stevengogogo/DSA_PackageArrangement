@@ -3,6 +3,7 @@
 int solve(packData pd, query* qs, int n_query, int* pkOrders){
     int nPk = pd.N_Package;
     int targetPK = 0;
+    int IDpop;
     pack* PKs = pd.packs;
     pack* curPK = &PKs[pkOrders[targetPK]];
 
@@ -16,9 +17,10 @@ int solve(packData pd, query* qs, int n_query, int* pkOrders){
         }
 
         /**Try Pop**/
-        while(curPK->popfunc != NULL && targetPK <= nPk){
+        while(curPK->popfunc != NULL && targetPK < nPk){
             //Pop
-            (*(curPK->popfunc))(pd, curPK->line);
+            IDpop = (*(curPK->popfunc))(pd, curPK->line);
+            assert(pkOrders[targetPK]==IDpop);
             //Move next
             ++targetPK;
             curPK = &PKs[pkOrders[targetPK]];
@@ -26,7 +28,7 @@ int solve(packData pd, query* qs, int n_query, int* pkOrders){
 
     }
 
-    if (targetPK == nPk-1)
+    if (targetPK == nPk)
         return 1;
     else
         return 0;
@@ -156,7 +158,7 @@ int PeekFirstPack(packData pd, int i){
         return EMPTY;
     else{ 
         //Update Get method
-        pd.lines[i].list.first->popfunc = PeekFirstPack;
+        pd.lines[i].list.first->popfunc = PopFirstPack;
         return pd.lines[i].list.first->ID;
     }
 }
@@ -176,7 +178,7 @@ int PeekLastPack(packData pd, int i){
         return EMPTY;
     else{
         //Update Get method
-        pd.lines[i].list.last->popfunc = PeekLastPack;
+        pd.lines[i].list.last->popfunc = PopLastPack;
         return pd.lines[i].list.last->ID;
     }
 }
@@ -191,10 +193,13 @@ int PeekMaxPack(packData pd, int i){
     }
 
     //Return
-    if (pd.lines[i].heap == NULL)
+    if (pd.lines[i].heap == NULL){
         return EMPTY;
-    else
+    }
+    else{
+        pd.lines[i].heap->key->popfunc = PopMaxPack;
         return pd.lines[i].heap->key->ID;
+    }
 }
 
 
@@ -500,7 +505,7 @@ int _popFirst(packData pd, int iLine){
     list->first = list->first->next; // move start
     list->first->prev = NULL; // link start.prev to NULL
 
-    if(list->last == list->first) //turn to null
+    if(list->first == NULL) //turn to null
         list->last = list->first;
 
     }
@@ -516,8 +521,7 @@ int _popLast(packData pd, int iLine){
 
     if(list->first == list->last){ //turn to null
         list->first = NULL;
-        list->last = NULL;
-        
+        list->last = NULL; 
     }
 
     else{
@@ -525,7 +529,7 @@ int _popLast(packData pd, int iLine){
         list->last = list->last->prev; // move end
         list->last->next = NULL; // link end.next to NULL
 
-        if(list->first == list->last) //turn to null
+        if(list->last == NULL) //turn to null
             list->first = list->last;
     }
 
