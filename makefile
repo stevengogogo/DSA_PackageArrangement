@@ -64,3 +64,5 @@ LEAK: TEST
 	#valgrind ./build/main.out
 
 
+TESTD: BUILD	
+	./build/main.out < ./test/data/1.in
