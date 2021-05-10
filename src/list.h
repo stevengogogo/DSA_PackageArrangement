@@ -75,9 +75,11 @@ pack PopLastPack(packData, int i);
 pack PopMaxPack(packData, int i);
 
 // Peak Data
-pack PeekFirstPack(packData, int i);
-pack PeekLastPack(packData, int i);
-pack PeekMaxPack(packData, int i);
+/** * Peek first. Return NULL if the line is empty*/
+pack* PeekFirstPack(packData, int i);
+/** * Peek Last. Return NULL if the line is empty*/
+pack* PeekLastPack(packData, int i);
+pack* PeekMaxPack(packData, int i);
 
 
 // Heap operation

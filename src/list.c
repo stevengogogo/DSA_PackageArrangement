@@ -54,16 +54,22 @@ void PushPack(packData pd, int iLine, int iPack){
 
 // Peek Data
 
-pack PeekFirstPack(packData pd, int i){
-    //TODO
+pack* PeekFirstPack(packData pd, int i){
+    while(pd.lines[i].list.first->avail == 0 && pd.lines[i].list.first != NULL)
+        _popFirst(pd, i);
+    return pd.lines[i].list.first;
 }
 
-pack PeekLastPack(packData pd, int i){
-    //TODO
+pack* PeekLastPack(packData pd, int i){
+    while(pd.lines[i].list.last->avail == 0 && pd.lines[i].list.first != NULL)
+        _popLast(pd, i);
+    return pd.lines[i].list.last;
 }
 
-pack PeekMaxPack(packData pd, int i){
-    //TODO
+pack* PeekMaxPack(packData pd, int i){
+    while(pd.lines[i].heap->key->avail == 0 && pd.lines[i].heap != NULL)
+        _popMaxHeap(pd, i);
+    return pd.lines[i].heap->key;
 }
 
 
@@ -358,13 +364,12 @@ int _popLast(packData pd, int iLine){
     }
 
     else{
-    //Rewiring
-    list->last = list->last->prev; // move end
-    list->last->next = NULL; // link end.next to NULL
+        //Rewiring
+        list->last = list->last->prev; // move end
+        list->last->next = NULL; // link end.next to NULL
 
-    if(list->first == list->last) //turn to null
-        list->first = list->last;
-
+        if(list->first == list->last) //turn to null
+            list->first = list->last;
     }
 
     return val;
