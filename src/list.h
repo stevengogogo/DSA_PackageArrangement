@@ -72,7 +72,7 @@ typedef struct{
 } query;
 
 //Solve
-int solve(packData pd, query* qs, int* pkOrders);
+int solve(packData pd, query* qs, int n_query,int* pkOrders);
 
 // Initiation and Deletion
 

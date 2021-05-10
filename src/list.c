@@ -1,7 +1,26 @@
 #include "list.h"
 
-int solve(packData pd, query* qs, int* pkOrders){
-    //TODO
+int solve(packData pd, query* qs, int n_query, int* pkOrders){
+    int nPk = pd.N_Package;
+    int targetPK = 1;
+    pack* PKs = pd.packs;
+    pack* curPK = PKS[targetPK];
+
+    for(int i=0;i<n_query;i++){
+        /**Do Operation**/
+        if(qs[i].opID == PUSH){
+            PushPack(pd, qs[i].arg[1], qs[i].arg[0]);//[lineID, packID]
+        }
+        else{//qs[i].opID == MERGE){
+            MergeLines(pd, qs[i].arg[1], qs[i].arg[0]);//[Dst, Src]
+        }
+
+        /**Try Pop**/
+        if(curPK->popfunc != NULL){
+            (*(curPK->popfunc))(pd, curPK->line);
+        }
+    }
+
 }
 
 packData init_packData(int n, int l){
@@ -570,10 +589,8 @@ void interface(void){
             scanf("%d", &pkOrders[i]);
 
         //Solve
-        /*
-        sol = solve(pd, Ops, pkOrders);
+        sol = solve(pd, Ops, nQ, pkOrders);
         _printRes(sol);
-        */
 
         kill_packData(pd);
     }
