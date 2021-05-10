@@ -307,42 +307,81 @@ int _popMaxHeap(packData pd, int i){
 }
 
 void _mergeHeap(packData pd, int iDst, int iSrc){
-    hnode* listD = pd.lines[iDst].heap;
-    hnode* listS = pd.lines[iSrc].heap;
+    hnode* A = pd.lines[iDst].heap;
+    hnode* B = pd.lines[iSrc].heap;
 
-    if (listS == NULL){
+    if (B == NULL){ //Null Source
         return;
     }
-    else if (listD == NULL){
-        pd.lines[iDst].heap = listS;
+    else if (A == NULL){ // Null Destination
+        pd.lines[iDst].heap = B;
         pd.lines[iSrc].heap = NULL;
         return;
     }
+    else{
+        assert(A->parent==NULL);
+        assert(B->parent==NULL);
+        _mergeHeapLeftist(A, B);
+    }
 
-    pack pkInf = getNullPack(); 
-    pkInf.ID = INT_MIN;
-    hnode* root = _create_node(NULL, &pkInf);
-    hnode* leaf = NULL;
-
-    assert(listD->parent==NULL);
-    assert(listS->parent==NULL);
-
-    //New root
-    pd.lines[iDst].heap = root;
-    //Link to heaps
-    root->leaves[0] = listD;
-    root->leaves[1] = listS;
-    listD->parent = root;
-    listS->parent = root;
-
-    // Heapidy
-    leaf = _maxHeapify(root);
-
-    // Delete auxillary node
-    _deleteLeaf(leaf);
 
     // Empty source
     pd.lines[iSrc].heap = NULL;
+}
+
+
+
+hnode* _mergeHeapLeftist(hnode* A,hnode* B){
+    if (A==NULL){
+        return B;
+    }
+    else if(B==NULL){
+        return A;
+    }
+
+    if (B->key->ID > A->key->ID){ //Max Heap
+        swaphNode(B, A);
+    }
+
+    A->leaves[1] = _mergeHeapLeftist(A->leaves[1], B);
+    if (A->leaves[0]->dist > A->leaves[1]->dist){
+        swaphNode(A->leaves[0], A->leaves[1]);
+    }
+    if (A->leaves[1] == NULL){
+        A->leaves[1]->dist = 0;
+    }
+    else{
+        A->dist = 1 + A->leaves[1]->dist;
+    }
+    return A;
+}
+
+hnode* _popMaxHeapLeftist(hnode* root){
+    hnode* nodeMax = root;
+    nodeMax = _mergeHeapLeftist(root->leaves[0], root->leaves[1]);
+    return nodeMax;
+}
+
+hnode* _insertHeapLeftist(hnode* root, pack* pk){
+
+    //Make heap with one element
+    hnode* newNode = (hnode*)malloc(sizeof(hnode));
+    newNode->key = pk;
+    newNode->leaves[0]=NULL;
+    newNode->leaves[1]=NULL;
+    newNode->parent = NULL;
+    newNode->dist = 0;
+
+    root = _mergeHeapLeftist(root, newNode);
+
+    return root;
+}
+
+
+void swaphNode(hnode* A, hnode* B){
+    hnode* tmp = A;
+    A = B;
+    B = tmp;
 }
 
 

@@ -172,6 +172,22 @@ int (*fun[3])(packData, int)=  {PeekFirstPack, PeekLastPack, PeekMaxPack};
 
 - Ref: [What are Mutually Dependent Structures in C?](https://www.sanfoundry.com/c-tutorials-mutually-dependent-structures/)
 
+
+
+## Leftist tree
+
+
+
+
+
+
+Ref:
+1. https://tmt514.gitbooks.io/2016-09/content/tree-ds/leftist-tree.html
+2. http://sunmoon-template.blogspot.com/2014/12/leftist-tree.html
+3. https://www.humblec.com/c-implementation-leftist-tree/
+4. [Tutorial: Leftist Tree](https://www.dgp.toronto.edu/public_user/JamesStewart/378notes/10leftist/)
+
+
 ## References
 1. Stack, Queue and Heap. [[GitBook](https://stephanosterburg.gitbook.io/scrapbook/coding/coding-interview/data-structures/heaps-stacks-queues)]
 2.
