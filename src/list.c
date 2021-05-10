@@ -53,8 +53,12 @@ void PushPack(packData pd, int iLine, int iPack){
 }
 
 void MergeLines(packData pd, int iDst, int iSrc){
+    assert(pd.lines[iSrc].avail==1);
+    assert(pd.lines[iDst].avail==1);
+
     _mergeHeap(pd, iDst, iSrc);
     _mergelist(pd, iDst, iSrc);
+    pd.lines[iSrc].avail = 0;
 }
 
 
@@ -438,7 +442,7 @@ pack getNullPack(void){
 prodLine getNullProdLine(void){
     prodLine pl;
     pl.heap = NULL;
-    pl.avail = 0;
+    pl.avail = 1;
     pl.list.first = NULL;
     pl.list.last = NULL;
     return pl;

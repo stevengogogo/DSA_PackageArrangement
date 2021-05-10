@@ -33,6 +33,9 @@ void test_peek(void){
         TEST_CHECK((*fun[i])(pd, 2)==EMPTY);
     }
 
+    TEST_CHECK(PopFirstPack(pd, 0) == 1);
+    pd.lines[1].avail = 0;
+
     kill_packData(pd);
 }
 
