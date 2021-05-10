@@ -145,7 +145,9 @@ void _mergeHeap(packData pd, int iDst, int iSrc){
 
     assert(listD->parent==NULL);
     assert(listS->parent==NULL);
-    
+
+    //New root
+    pd.lines[iDst].heap = root;
     //Link to heaps
     root->leaves[0] = listD;
     root->leaves[1] = listS;
