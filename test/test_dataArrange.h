@@ -36,7 +36,10 @@ void test_peek(void){
         TEST_CHECK((*fun[i])(pd, 2)==EMPTY);
     }
 
-    PopFirstPack(pd, 0);
+    TEST_CHECK(PopFirstPack(pd, 0) == 1);
+    TEST_CHECK(PopLastPack(pd, 0) == 2);
+    TEST_CHECK(PopMaxPack(pd, 0) == 20);
+
 
 
     kill_packData(pd);
