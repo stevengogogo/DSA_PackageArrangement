@@ -69,6 +69,9 @@ void PushPack(packData pd, int iLine, int iPack){
     pack* pk = &pd.packs[iPack];
     assert(pk->avail == 0);
 
+    //Register new data
+    pk->avail = 1;
+
     //Clear first, last, max
     _clearGetMethod(pd, iLine);
 
@@ -76,8 +79,6 @@ void PushPack(packData pd, int iLine, int iPack){
     _insertHeap(pd, iLine, iPack);
     _insertlist(pd, iLine, iPack);
 
-    //Register new data
-    pk->avail = 1;
 
     //Reset first, last, max
     _setGetMethod(pd, iLine);
@@ -189,7 +190,7 @@ void _clearGetMethod(packData pd, int iLine){
     for(int i=0;i<3;i++){
         ID = (*PEEKFUNC[i])(pd, iLine);
         if (ID != EMPTY)
-            _removePack(&pd.packs[ID]);
+            _removePackGetMethod(&pd.packs[ID]);
     }    
 }
 
@@ -197,9 +198,10 @@ void _setGetMethod(packData pd, int iLine){
     int ID=0;
     for(int i=0;i<3;i++){
         ID = (*PEEKFUNC[i])(pd, iLine);
-        if (ID != EMPTY)
+        if (ID != EMPTY){
             pd.packs[ID].popfunc = PEEKFUNC[i];
             pd.packs[ID].line = iLine;
+        }
     }    
 }
 

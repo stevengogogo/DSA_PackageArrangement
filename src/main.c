@@ -18,25 +18,23 @@
 int main()
 {
 
-   packData pd = init_packData(100,100);
-    int a;
+    packData pd = init_packData(100,100);
+    pack* pk = NULL;
+    int (*fun[3])(packData, int)=  {PeekFirstPack, PeekLastPack, PeekMaxPack};
 
-    //Heap insertion
-    for (int i=1;i<=20;i++){
-        PushPack(pd, 0, i);
-    }
-    for (int i=21;i<=40;i++){
-        PushPack(pd, 1, i);
+    for (int i=1;i<=20;i++)
+        PushPack(pd, i-1, i);
+ 
+
+    for(int i=19;i>0;i--){
+        MergeLines(pd, 0, i);
+        
     }
 
-    _mergeHeap(pd, 0, 1);
 
    
-
-
-    //Heap extraction
-    for (int i=40;i>=1;i--){
-        a = _popMaxHeap(pd, 0); 
+    for (int i=0;i<3;i++){
+        (*fun[i])(pd, 2);
     }
 
 
