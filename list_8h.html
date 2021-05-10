@@ -211,6 +211,18 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_popMaxHeap</b> (<a cl
 <tr class="memitem:a2233b4ed591a2e4fc51dd6bca0bf86e2"><td class="memItemLeft" align="right" valign="top"><a id="a2233b4ed591a2e4fc51dd6bca0bf86e2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_mergeHeap</b> (<a class="el" href="structpackData.html">packData</a>, int iDst, int iSrc)</td></tr>
 <tr class="separator:a2233b4ed591a2e4fc51dd6bca0bf86e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf945f59744a1eaebb51fbf64ec94234"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhnode.html">hnode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#adf945f59744a1eaebb51fbf64ec94234">_mergeHeapLeftist</a> (<a class="el" href="structhnode.html">hnode</a> *A, <a class="el" href="structhnode.html">hnode</a> *B)</td></tr>
+<tr class="memdesc:adf945f59744a1eaebb51fbf64ec94234"><td class="mdescLeft">&#160;</td><td class="mdescRight">Merge leftist heap.  <a href="list_8h.html#adf945f59744a1eaebb51fbf64ec94234">More...</a><br /></td></tr>
+<tr class="separator:adf945f59744a1eaebb51fbf64ec94234"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5c7df87f0f91ce6f844eb3ced555d13"><td class="memItemLeft" align="right" valign="top"><a id="aa5c7df87f0f91ce6f844eb3ced555d13"></a>
+<a class="el" href="structhnode.html">hnode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_popMaxHeapLeftist</b> (<a class="el" href="structhnode.html">hnode</a> *root)</td></tr>
+<tr class="separator:aa5c7df87f0f91ce6f844eb3ced555d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5c10c39c892c6be38758777fb0ee3b6"><td class="memItemLeft" align="right" valign="top"><a id="ab5c10c39c892c6be38758777fb0ee3b6"></a>
+<a class="el" href="structhnode.html">hnode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_insertHeapLeftist</b> (<a class="el" href="structhnode.html">hnode</a> *root, <a class="el" href="structpack.html">pack</a> *pk)</td></tr>
+<tr class="separator:ab5c10c39c892c6be38758777fb0ee3b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a886255a1d41635a78ce49ebe627968c3"><td class="memItemLeft" align="right" valign="top"><a id="a886255a1d41635a78ce49ebe627968c3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>swaphNode</b> (<a class="el" href="structhnode.html">hnode</a> *A, <a class="el" href="structhnode.html">hnode</a> *B)</td></tr>
+<tr class="separator:a886255a1d41635a78ce49ebe627968c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa67eb582c1f71e7e54ec23f8a4f383d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhnode.html">hnode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#aa67eb582c1f71e7e54ec23f8a4f383d6">_maxHeapify</a> (<a class="el" href="structhnode.html">hnode</a> *)</td></tr>
 <tr class="memdesc:aa67eb582c1f71e7e54ec23f8a4f383d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max heapidity from below the input node.  <a href="list_8h.html#aa67eb582c1f71e7e54ec23f8a4f383d6">More...</a><br /></td></tr>
 <tr class="separator:aa67eb582c1f71e7e54ec23f8a4f383d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -314,6 +326,44 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>interface</b> (void)<
 
 <p>Max heapidity from below the input node. </p>
 <dl class="section return"><dt>Returns</dt><dd>the destination leaf </dd></dl>
+
+</div>
+</div>
+<a id="adf945f59744a1eaebb51fbf64ec94234"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf945f59744a1eaebb51fbf64ec94234">&#9670;&nbsp;</a></span>_mergeHeapLeftist()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structhnode.html">hnode</a>* _mergeHeapLeftist </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhnode.html">hnode</a> *&#160;</td>
+          <td class="paramname"><em>A</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhnode.html">hnode</a> *&#160;</td>
+          <td class="paramname"><em>B</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Merge leftist heap. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>heap root </td></tr>
+    <tr><td class="paramname">B</td><td>heap root </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This algorithm is inspired from <a href="https://www.dgp.toronto.edu/public_user/JamesStewart/378notes/10leftist/">CSC 378: Data Structures and Algorithm Analysis</a> </dd></dl>
 
 </div>
 </div>
