@@ -40,6 +40,10 @@ void test_peek(void){
     TEST_CHECK(PopLastPack(pd, 0) == 2);
     TEST_CHECK(PopMaxPack(pd, 0) == 20);
 
+    TEST_CHECK(pd.packs[1].avail==0);
+    TEST_CHECK(pd.packs[2].avail==0);
+    TEST_CHECK(pd.packs[20].avail==0);
+
 
 
     kill_packData(pd);
