@@ -71,9 +71,9 @@ void PushPack(packData, int iLine, int iPack);
 void MergeLines(packData, int iDst, int iSrc);
 
 //Pop
-pack PopFirstPack(packData, int i);
-pack PopLastPack(packData, int i);
-pack PopMaxPack(packData, int i);
+int PopFirstPack(packData, int iLine);
+int PopLastPack(packData, int iLine);
+int PopMaxPack(packData, int iLine);
 
 // Peak Data
 /** * Peek first. Return NULL if the line is empty*/
