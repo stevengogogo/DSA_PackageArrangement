@@ -6,6 +6,7 @@ echo "$(tput setaf 2; tput bold)Start test: Input/Output $(tput sgr0)"
 
 for i in {1..3};
 do
+    echo ""
     echo "$(tput setaf 5)Test File: $i.in$(tput sgr0)";
 
 
@@ -19,4 +20,5 @@ do
         echo "Failed (Compare: EST / Real)"; 
         diff -y test/data/$i-EST.out test/data/$i.out;
     fi
+    echo ""
 done
