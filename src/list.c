@@ -42,17 +42,23 @@ void kill_packData(packData pd){
 }
 
 // Data management
-pack PushPack(packData pd, int i_Line, int i_Pack){
-    assert(pd.packs[i].avail == 0);
+void PushPack(packData pd, int iLine, int iPack){
+    pack* pk = &pd.packs[iPack];
+    assert(pk->avail == 0);
 
+    _insertHeap(pd, iLine, iPack);
+    _insertlist(pd, iLine, iPack);
+
+    pk->avail = 1;
 }
 
 
 
 //Heap
 
-void _insertHeap(packData pd, int i, pack* pk){
-    hnode* root = pd.lines[i].heap;
+void _insertHeap(packData pd, int iLine, int iPack){
+    pack* pk = &pd.packs[iPack];
+    hnode* root = pd.lines[iLine].heap;
 
 
     hnode* heapRoot = NULL;
@@ -63,8 +69,8 @@ void _insertHeap(packData pd, int i, pack* pk){
     int nextDir = 0;//[0,1]
 
     if (root==NULL){//first element
-        root = create_node(NULL, pk);
-        pd.lines[i].heap = root;
+        root = _create_node(NULL, pk);
+        pd.lines[iLine].heap = root;
         return;
     }
     else{
@@ -85,7 +91,7 @@ void _insertHeap(packData pd, int i, pack* pk){
         availLeafID = _findNullLeave(curNode);
 
         if (availLeafID != -1){ //available site
-            curNode->leaves[availLeafID] = create_node(curNode, minPK);
+            curNode->leaves[availLeafID] = _create_node(curNode, minPK);
             break;
         }
         else{ // move to the minimum leaf
@@ -148,7 +154,7 @@ int _popMaxHeap(packData pd, int i){
     return val;
 }
 
-hnode* create_node(hnode* parent, pack* key){
+hnode* _create_node(hnode* parent, pack* key){
     hnode* newnode = (hnode*)malloc(sizeof(hnode));
     newnode->key = key;
     newnode->parent = parent;
@@ -199,7 +205,10 @@ void _killHeap(hnode* root){
 
 //Linked list 
 
-void _insertlist(List* list, pack* pk){
+void _insertlist(packData pd, int iLine, int iPack){
+    List* list = &pd.lines[iLine].list;
+    pack* pk = &pd.packs[iPack];
+
     //Check pk is new
     assert(pk->next==NULL);
     assert(pk->prev==NULL);
@@ -217,7 +226,10 @@ void _insertlist(List* list, pack* pk){
     }
 }
 
-void _mergelist(List* listDst, List* listSrc){
+void _mergelist(packData pd, int iDst, int iSrc){
+
+    List* listDst = &pd.lines[iDst].list;
+    List* listSrc = &pd.lines[iSrc].list;
 
     if (listSrc->first==NULL){ //src is null
         //Do nothing

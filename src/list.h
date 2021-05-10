@@ -66,7 +66,7 @@ packData init_packData(int n, int l);
 void kill_packData(packData);
 
 // Data management
-pack PushPack(packData, int i_Line, int i_Pack);
+void PushPack(packData, int iLine, int iPack);
 pack MergeLines(packData, int dst, int src);
 
 //Pop
@@ -81,10 +81,10 @@ pack PeakMaxPack(packData, int i);
 
 
 // Heap operation
-void _insertHeap(packData, int i, pack*);
+void _insertHeap(packData pd, int iLine, int iPack);
 int _popMaxHeap(packData, int i);
-void _mergeHeap(hnode* rootDst, hnode* rootSrc);
-hnode* create_node(hnode* parent, pack* key);
+void _mergeHeap(packData, int iDst, int iSrc);
+hnode* _create_node(hnode* parent, pack* key);
 /** * Return index of Null leave. -1 for occupied */
 int _findNullLeave(hnode* node);
 int _findActLeave(hnode* node);
@@ -93,8 +93,8 @@ void _killHeap(hnode* root);
 
 //Linked list 
 
-void _insertlist(List*, pack*);
-void _mergelist(List* dst, List* src);
+void _insertlist(packData pd, int iLine, int iPack);
+void _mergelist(packData, int iDst, int iSrc);
 /**
  * @brief Pop first item. Set popped item.avail (@ref pack) to zero.
  * @note this function can be used to pop item. No matter it is availability or not. The item's availablity will be set as 0.
