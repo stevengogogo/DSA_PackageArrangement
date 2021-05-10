@@ -54,8 +54,6 @@ pack PushPack(packData pd, int i_Line, int i_Pack){
 void _insertHeap(packData pd, int i, pack* pk){
     hnode* root = pd.lines[i].heap;
 
-    assert(pk->avail == 0);
-    pk->avail = 1; //update availibility
 
     hnode* heapRoot = NULL;
     hnode* curNode = NULL;
@@ -203,7 +201,6 @@ void _killHeap(hnode* root){
 
 void _insertlist(List* list, pack* pk){
     //Check pk is new
-    assert(pk->avail == 0);
     assert(pk->next==NULL);
     assert(pk->prev==NULL);
 
@@ -218,8 +215,6 @@ void _insertlist(List* list, pack* pk){
         pk->prev = list->last;
         list->last = pk;
     }
-
-    pk->avail = 1; 
 }
 
 void _mergelist(List* listDst, List* listSrc){
