@@ -16,9 +16,14 @@ int solve(packData pd, query* qs, int n_query, int* pkOrders){
         }
 
         /**Try Pop**/
-        if(curPK->popfunc != NULL){
+        while(curPK->popfunc != NULL){
+            //Pop
             (*(curPK->popfunc))(pd, curPK->line);
+            //Move next
+            ++targetPK;
+            curPK = &PKs[targetPK];
         }
+
     }
 
 }
@@ -122,6 +127,10 @@ int _PopOperation(packData pd, int iLine, int (*PeekFunc)(packData,int), int (*P
     assert(ID == ID_POP);
     //Mark popped
     _removePack(&pd.packs[ID]);
+    //Clear old first/last/max
+    _clearGetMethod(pd,iLine);
+    //set new first/last/max
+    _setGetMethod(pd, iLine);
     return ID_POP;
 }
 
