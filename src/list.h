@@ -62,6 +62,7 @@ typedef struct packData{
     int N_Lines;
     prodLine* lines;
     pack* packs;
+    hnode* nodes; 
 } packData;
 
 
@@ -94,7 +95,6 @@ void MergeLines(packData, int iDst, int iSrc);
 int PopFirstPack(packData, int iLine);
 int PopLastPack(packData, int iLine);
 int PopMaxPack(packData, int iLine);
-static const int (*POPFUNC[3])(packData, int) = {PopFirstPack, PopLastPack, PopMaxPack};
 /** * Use Function pointer to generalize the Pop operation*/
 int _PopOperation(packData, int,int (*PeekFunc)(packData,int), int (*PopFunc)(packData,int));
 
@@ -106,7 +106,6 @@ int PeekLastPack(packData, int i);
 int PeekMaxPack(packData, int i);
 
 /** Array of peek functions*/
-static const int (*PEEKFUNC[3])(packData, int) = {PeekFirstPack, PeekLastPack, PeekMaxPack};
 void _clearGetMethod(packData, int iLine);
 void _setGetMethod(packData, int iLine);
 
@@ -126,10 +125,10 @@ void _mergeHeap(packData, int iDst, int iSrc);
  */
 hnode* _mergeHeapLeftist(hnode* A,hnode* B);
 hnode* _popMaxHeapLeftist(hnode* root, int* val);
-hnode* _insertHeapLeftist(hnode* root, pack* pk);
+hnode* _insertHeapLeftist(hnode* root, pack* pk, hnode* newnode);
 int _getDistLeftist(hnode* node);
 void swaphNode(hnode** A, hnode** B);
-hnode* createNode(pack*);
+hnode* createNode(pack* pk, hnode* node);
 
 void _killHeap(hnode* root);
 
