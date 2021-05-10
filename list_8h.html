@@ -169,12 +169,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>PushPack</b> (<a clas
 <tr class="memitem:a79b4717532315fc4dfca8f1e80de4112"><td class="memItemLeft" align="right" valign="top"><a id="a79b4717532315fc4dfca8f1e80de4112"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_insertHeap</b> (<a class="el" href="structpackData.html">packData</a> pd, int iLine, int iPack)</td></tr>
 <tr class="separator:a79b4717532315fc4dfca8f1e80de4112"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7e1dfb1a9678c98e154467d99df66ee"><td class="memItemLeft" align="right" valign="top"><a id="aa7e1dfb1a9678c98e154467d99df66ee"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_popMaxHeap</b> (<a class="el" href="structpackData.html">packData</a>, int i)</td></tr>
-<tr class="separator:aa7e1dfb1a9678c98e154467d99df66ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad6f0fd45951835215437e68e026a563"><td class="memItemLeft" align="right" valign="top"><a id="aad6f0fd45951835215437e68e026a563"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_popMaxHeap</b> (<a class="el" href="structpackData.html">packData</a>, int iLine)</td></tr>
+<tr class="separator:aad6f0fd45951835215437e68e026a563"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2233b4ed591a2e4fc51dd6bca0bf86e2"><td class="memItemLeft" align="right" valign="top"><a id="a2233b4ed591a2e4fc51dd6bca0bf86e2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_mergeHeap</b> (<a class="el" href="structpackData.html">packData</a>, int iDst, int iSrc)</td></tr>
 <tr class="separator:a2233b4ed591a2e4fc51dd6bca0bf86e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa67eb582c1f71e7e54ec23f8a4f383d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhnode.html">hnode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#aa67eb582c1f71e7e54ec23f8a4f383d6">_maxHeapify</a> (<a class="el" href="structhnode.html">hnode</a> *)</td></tr>
+<tr class="memdesc:aa67eb582c1f71e7e54ec23f8a4f383d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max heapidity from below the input node.  <a href="list_8h.html#aa67eb582c1f71e7e54ec23f8a4f383d6">More...</a><br /></td></tr>
+<tr class="separator:aa67eb582c1f71e7e54ec23f8a4f383d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60cb1c5915fd8cde0305e398380c1806"><td class="memItemLeft" align="right" valign="top"><a id="a60cb1c5915fd8cde0305e398380c1806"></a>
 <a class="el" href="structhnode.html">hnode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_create_node</b> (<a class="el" href="structhnode.html">hnode</a> *parent, <a class="el" href="structpack.html">pack</a> *key)</td></tr>
 <tr class="separator:a60cb1c5915fd8cde0305e398380c1806"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -251,6 +254,27 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_
 <ul>
 <li>Return index of Null leave. -1 for occupied </li>
 </ul>
+
+</div>
+</div>
+<a id="aa67eb582c1f71e7e54ec23f8a4f383d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa67eb582c1f71e7e54ec23f8a4f383d6">&#9670;&nbsp;</a></span>_maxHeapify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structhnode.html">hnode</a>* _maxHeapify </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhnode.html">hnode</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Max heapidity from below the input node. </p>
+<dl class="section return"><dt>Returns</dt><dd>the destination leaf </dd></dl>
 
 </div>
 </div>
