@@ -158,6 +158,14 @@ int main()
 
 Ref: [GreekforGeek](https://www.geeksforgeeks.org/function-pointer-in-c/)
 
+
+
+### Array of function pointers
+
+```c
+int (*fun[3])(packData, int)=  {PeekFirstPack, PeekLastPack, PeekMaxPack};
+```
+
 ## References
 1. Stack, Queue and Heap. [[GitBook](https://stephanosterburg.gitbook.io/scrapbook/coding/coding-interview/data-structures/heaps-stacks-queues)]
 2.
