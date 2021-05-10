@@ -24,6 +24,7 @@
 #define MERGE -2323
 #define MAX_Q 200000
 #define MAX_N 200000
+#define MAX_OP_CHAR 20
 
 /** * package */
 typedef struct pack{
@@ -132,7 +133,8 @@ pack getNullPack(void);
 prodLine getNullProdLine(void);
 
 //Interface
-int getopID(char*);
+int _getopID(char*);
+void _getOperation(query*);
 void _printRes(int sol);
 void interface(void);
 

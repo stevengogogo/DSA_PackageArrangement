@@ -451,7 +451,7 @@ prodLine getNullProdLine(void){
 
 
 //Interface
-int getopID(char* op){
+int _getopID(char* op){
     if(strcmp(op, "push")==0)
         return PUSH;
     else if(strcmp(op, "merge")==0)
@@ -460,12 +460,21 @@ int getopID(char* op){
         return -1;
 }
 
+void _getOperation(query* Op){
+    char opStr[MAX_OP_CHAR];
+    scanf("%s",opStr);
+    scanf("%d", &Op->arg[0]);
+    scanf("%d", &Op->arg[1]);
+    Op->opID = _getopID(opStr);
+}
+
 void _printRes(int sol){
     if (sol == 1)
         printf("possible\n");
     else
         printf("impossible\n");
 }
+
 void interface(void){
     int T; // # of test cases
     int nP; // # of packages
@@ -489,23 +498,19 @@ void interface(void){
         packData pd = init_packData(nP, nL);
 
         //Operations
-        for(int i=0;i<nQ;i++){
-            scanf("%s",opStr);
-            scanf("%d", &Ops[i].arg[0]);
-            scanf("%d", &Ops[i].arg[1]);
-            Ops[i].opID = getopID(opStr);
-        }
+        for(int i=0;i<nQ;i++)
+            _getOperation(&Ops[i]);
 
         //Save package order
-        for(int i=0;i<nP;i++){
+        for(int i=0;i<nP;i++)
             scanf("%d", &pkOrders[i]);
-        }
 
         //Solve
         /*
         sol = solve(pd, Ops, pkOrders);
         _printRes(sol);
         */
+
         kill_packData(pd);
     }
 
