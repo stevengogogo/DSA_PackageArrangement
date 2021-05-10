@@ -302,13 +302,22 @@ int _popMaxHeap(packData pd, int i){
 }
 
 void _mergeHeap(packData pd, int iDst, int iSrc){
+    hnode* listD = pd.lines[iDst].heap;
+    hnode* listS = pd.lines[iSrc].heap;
+
+    if (listS == NULL){
+        return;
+    }
+    else if (listD == NULL){
+        pd.lines[iDst].heap = listS;
+        pd.lines[iSrc].heap = NULL;
+        return;
+    }
 
     pack pkInf = getNullPack(); 
     pkInf.ID = INT_MIN;
     hnode* root = _create_node(NULL, &pkInf);
     hnode* leaf = NULL;
-    hnode* listD = pd.lines[iDst].heap;
-    hnode* listS = pd.lines[iSrc].heap;
 
     assert(listD->parent==NULL);
     assert(listS->parent==NULL);
@@ -454,7 +463,7 @@ void _mergelist(packData pd, int iDst, int iSrc){
     }
     else if (listDst->first == NULL){ //dst is null
         listDst->first = listSrc->first;
-        listDst->last = listDst->last;
+        listDst->last = listSrc->last;
     }
     else{
     assert(listSrc->last != NULL);
