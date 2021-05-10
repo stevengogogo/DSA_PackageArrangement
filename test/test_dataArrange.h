@@ -29,6 +29,9 @@ void test_peek(void){
     TEST_CHECK(PeekFirstPack(pd, 0)==1);
     TEST_CHECK(PeekLastPack(pd, 0)==2);
     TEST_CHECK(PeekMaxPack(pd, 0)==20);
+    for (int i=0;i<3;i++){
+        TEST_CHECK((*fun[i])(pd, 2)==EMPTY);
+    }
 
     kill_packData(pd);
 }
