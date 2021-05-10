@@ -10,7 +10,7 @@ void test_heap(void){
 
     //Heap insertion
     for (int i=1;i<=40;i++){
-        _insertHeap(pd, 0, &pd.packs[i]);
+        _insertHeap(pd, 0, i);
     }
 
     //Heap extraction
