@@ -195,13 +195,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_insertlist</b> (<a c
 <tr class="memitem:a4b8549e9713fe901c70f08f332ab917f"><td class="memItemLeft" align="right" valign="top"><a id="a4b8549e9713fe901c70f08f332ab917f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_mergelist</b> (<a class="el" href="structpackData.html">packData</a>, int iDst, int iSrc)</td></tr>
 <tr class="separator:a4b8549e9713fe901c70f08f332ab917f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41622136ec076e314e00e9fbe9512c61"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a41622136ec076e314e00e9fbe9512c61">_popFirst</a> (<a class="el" href="structList.html">List</a> *)</td></tr>
-<tr class="memdesc:a41622136ec076e314e00e9fbe9512c61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pop first item. Set popped item.avail (<a class="el" href="structpack.html">pack</a>) to zero.  <a href="list_8h.html#a41622136ec076e314e00e9fbe9512c61">More...</a><br /></td></tr>
-<tr class="separator:a41622136ec076e314e00e9fbe9512c61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97bf806736c5cf75cbc2b56814e66e2b"><td class="memItemLeft" align="right" valign="top"><a id="a97bf806736c5cf75cbc2b56814e66e2b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a97bf806736c5cf75cbc2b56814e66e2b">_popLast</a> (<a class="el" href="structList.html">List</a> *)</td></tr>
-<tr class="memdesc:a97bf806736c5cf75cbc2b56814e66e2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Similar to <a class="el" href="list_8h.html#a41622136ec076e314e00e9fbe9512c61">_popFirst</a> . <br /></td></tr>
-<tr class="separator:a97bf806736c5cf75cbc2b56814e66e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a691ab00b6d9bc08b99e7a2b3f730395e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a691ab00b6d9bc08b99e7a2b3f730395e">_popFirst</a> (<a class="el" href="structpackData.html">packData</a> pd, int iLine)</td></tr>
+<tr class="memdesc:a691ab00b6d9bc08b99e7a2b3f730395e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pop first item. Set popped item.avail (<a class="el" href="structpack.html">pack</a>) to zero.  <a href="list_8h.html#a691ab00b6d9bc08b99e7a2b3f730395e">More...</a><br /></td></tr>
+<tr class="separator:a691ab00b6d9bc08b99e7a2b3f730395e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c511b11dc618edb1d76312ef5b1dbe2"><td class="memItemLeft" align="right" valign="top"><a id="a8c511b11dc618edb1d76312ef5b1dbe2"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a8c511b11dc618edb1d76312ef5b1dbe2">_popLast</a> (<a class="el" href="structpackData.html">packData</a> pd, int iLine)</td></tr>
+<tr class="memdesc:a8c511b11dc618edb1d76312ef5b1dbe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Similar to <a class="el" href="list_8h.html#a691ab00b6d9bc08b99e7a2b3f730395e">_popFirst</a> . <br /></td></tr>
+<tr class="separator:a8c511b11dc618edb1d76312ef5b1dbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a8a2cd73623b631ce36798b952362f0"><td class="memItemLeft" align="right" valign="top"><a id="a3a8a2cd73623b631ce36798b952362f0"></a>
 <a class="el" href="structpack.html">pack</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getNullPack</b> (void)</td></tr>
 <tr class="separator:a3a8a2cd73623b631ce36798b952362f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -254,8 +254,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_
 
 </div>
 </div>
-<a id="a41622136ec076e314e00e9fbe9512c61"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41622136ec076e314e00e9fbe9512c61">&#9670;&nbsp;</a></span>_popFirst()</h2>
+<a id="a691ab00b6d9bc08b99e7a2b3f730395e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a691ab00b6d9bc08b99e7a2b3f730395e">&#9670;&nbsp;</a></span>_popFirst()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -263,9 +263,19 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_
         <tr>
           <td class="memname">int _popFirst </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
-          <td class="paramname"><em>list</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structpackData.html">packData</a>&#160;</td>
+          <td class="paramname"><em>pd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iLine</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

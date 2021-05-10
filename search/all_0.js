@@ -1,6 +1,6 @@
 var searchData=
 [
   ['_5ffindnullleave_0',['_findNullLeave',['../list_8h.html#a7afb1b709ad6d00cd41ac19e8cd9e148',1,'list.c']]],
-  ['_5fpopfirst_1',['_popFirst',['../list_8h.html#a41622136ec076e314e00e9fbe9512c61',1,'list.c']]],
-  ['_5fpoplast_2',['_popLast',['../list_8h.html#a97bf806736c5cf75cbc2b56814e66e2b',1,'list.c']]]
+  ['_5fpopfirst_1',['_popFirst',['../list_8h.html#a691ab00b6d9bc08b99e7a2b3f730395e',1,'list.c']]],
+  ['_5fpoplast_2',['_popLast',['../list_8h.html#a8c511b11dc618edb1d76312ef5b1dbe2',1,'list.c']]]
 ];
