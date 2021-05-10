@@ -52,6 +52,11 @@ void PushPack(packData pd, int iLine, int iPack){
     pk->avail = 1;
 }
 
+void MergeLines(packData pd, int iDst, int iSrc){
+    _mergeHeap(pd, iDst, iSrc);
+    _mergelist(pd, iDst, iSrc);
+}
+
 // Peek Data
 
 int PeekFirstPack(packData pd, int i){
