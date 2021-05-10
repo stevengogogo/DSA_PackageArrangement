@@ -161,6 +161,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>PopLastPack</b> (<a cl
 <tr class="memitem:af9327ab6a530ea1728516d2ce9207b3d"><td class="memItemLeft" align="right" valign="top"><a id="af9327ab6a530ea1728516d2ce9207b3d"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>PopMaxPack</b> (<a class="el" href="structpackData.html">packData</a>, int iLine)</td></tr>
 <tr class="separator:af9327ab6a530ea1728516d2ce9207b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b8600370f485ba1023008ed4cbc1842"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a6b8600370f485ba1023008ed4cbc1842">_PopOperation</a> (<a class="el" href="structpackData.html">packData</a>, int, int(*PeekFunc)(<a class="el" href="structpackData.html">packData</a>, int), int(*PopFunc)(<a class="el" href="structpackData.html">packData</a>, int))</td></tr>
+<tr class="separator:a6b8600370f485ba1023008ed4cbc1842"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfdfeb59630f39a44fa693f6f5f1c05e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#adfdfeb59630f39a44fa693f6f5f1c05e">PeekFirstPack</a> (<a class="el" href="structpackData.html">packData</a>, int i)</td></tr>
 <tr class="separator:adfdfeb59630f39a44fa693f6f5f1c05e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae14d787a867e918b7cf2b832c90f0446"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#ae14d787a867e918b7cf2b832c90f0446">PeekLastPack</a> (<a class="el" href="structpackData.html">packData</a>, int i)</td></tr>
@@ -312,6 +314,49 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_
 <p>Pop first item. Set popped item.avail (<a class="el" href="structpack.html">pack</a>) to zero. </p>
 <dl class="section note"><dt>Note</dt><dd>this function can be used to pop item. No matter it is availability or not. The item's availablity will be set as 0. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>int popped ID </dd></dl>
+
+</div>
+</div>
+<a id="a6b8600370f485ba1023008ed4cbc1842"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b8600370f485ba1023008ed4cbc1842">&#9670;&nbsp;</a></span>_PopOperation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _PopOperation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structpackData.html">packData</a>&#160;</td>
+          <td class="paramname"><em>pd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iLine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int(*)(<a class="el" href="structpackData.html">packData</a>, int)&#160;</td>
+          <td class="paramname"><em>PeekFunc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int(*)(<a class="el" href="structpackData.html">packData</a>, int)&#160;</td>
+          <td class="paramname"><em>PopFunc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<ul>
+<li>Use Function pointer to generalize the Pop operation </li>
+</ul>
 
 </div>
 </div>
