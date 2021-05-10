@@ -80,6 +80,7 @@ int _PopOperation(packData pd, int iLine, int (*PeekFunc)(packData,int), int (*P
     int ID_POP = (*PopFunc)(pd, iLine);
     assert(ID == ID_POP);
     pd.packs[ID].avail = 0;
+    return ID_POP;
 }
 
 // Peek Data
