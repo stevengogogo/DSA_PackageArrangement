@@ -110,8 +110,7 @@ int _popMaxHeap(packData pd, int i){
 
     assert(root != NULL);
     hnode* curNode = root;
-    hnode* nextNode = NULL;
-    int actLeafID = _findActLeave(curNode);
+
     int val = root->key->ID;
     root->key->avail = 0;
 
@@ -122,39 +121,21 @@ int _popMaxHeap(packData pd, int i){
         return val;
     }
     
-    pack pkInf = getNullPack(); //Package with minius infinity
+    //Set root as minius infinity
+    pack pkInf = getNullPack(); 
     pkInf.ID = INT_MIN;
     root->key = &pkInf;
 
-    
+    //Max heapidity
+    curNode = _maxHeapify(curNode);
 
-    while( actLeafID != -1 ){ //There is at least a leave
-        if(_findNullLeave(curNode) == -1){
-            nextNode = curNode->leaves[
-                        1^(argMin(curNode->leaves[0]->key->ID,
-                               curNode->leaves[1]->key->ID))
-                        ]; //chose max node
-        }
-        else{
-            nextNode = curNode->leaves[actLeafID];
-        }
-        _swapPackageHeap(curNode, nextNode);
-        curNode = nextNode; // move to a actual leaf
-        actLeafID = _findActLeave(curNode);
-    }
+    //delete leaf
+    _deleteLeaf(curNode);
 
-    //delete node
-    if (curNode->parent->leaves[0] == curNode){
-        curNode->parent->leaves[0] = NULL;
-    }
-    else{
-        curNode->parent->leaves[1] = NULL;
-    }
-
-    free(curNode);
-    curNode = NULL;
     return val;
 }
+
+
 
 
 hnode* _maxHeapify(hnode* node){
@@ -164,7 +145,7 @@ hnode* _maxHeapify(hnode* node){
     int nextDir=0;
 
     while(actLeafID != -1){
-        if(_findNullLeave(node) == -1){
+        if(_findNullLeave(curNode) == -1){
             nextDir = 1^(argMin(curNode->leaves[0]->key->ID,         
                                 curNode->leaves[1]->key->ID));
             nextNode = curNode->leaves[nextDir];
@@ -219,6 +200,20 @@ void _swapPackageHeap(hnode* a, hnode* b){
     b->key = tmp;
 }
 
+void _deleteLeaf(hnode* leaf){
+    assert(leaf->leaves[0] == NULL);
+    assert(leaf->leaves[1] == NULL);
+    if (leaf->parent->leaves[0] == leaf){
+        leaf->parent->leaves[0] = NULL;
+    }
+    else{
+        leaf->parent->leaves[1] = NULL;
+    }
+
+    free(leaf);
+    leaf = NULL;
+}
+
 void _killHeap(hnode* root){
     if (root == NULL)
         return ;
@@ -228,6 +223,8 @@ void _killHeap(hnode* root){
 
     free(root);
 }
+
+
 
 //Linked list 
 

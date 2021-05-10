@@ -94,6 +94,7 @@ hnode* _create_node(hnode* parent, pack* key);
 int _findNullLeave(hnode* node);
 int _findActLeave(hnode* node);
 void _swapPackageHeap(hnode* a, hnode* b);
+void _deleteLeaf(hnode* leaf);
 void _killHeap(hnode* root);
 
 //Linked list 
