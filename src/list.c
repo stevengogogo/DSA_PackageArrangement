@@ -577,9 +577,9 @@ void _getOperation(query* Op){
 
 void _printRes(int sol){
     if (sol == 1)
-        printf("possible\n");
+        printf("possible");
     else
-        printf("impossible\n");
+        printf("impossible");
 }
 
 void interface(void){
@@ -615,6 +615,10 @@ void interface(void){
         //Solve
         sol = solve(pd, Ops, nQ, pkOrders);
         _printRes(sol);
+
+        if(t!=T-1){
+            printf("\n");
+        }
 
         kill_packData(pd);
     }

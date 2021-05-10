@@ -36,7 +36,7 @@ RUNTEST: MERGETEST
 	gcc -g3 -o $(testbuild)/test.out test_TEMP/*.c
 	./$(testbuild)/test.out 
 
-TEST: MERGETEST RUNTEST cleantest
+TEST: MERGETEST RUNTEST TESTD cleantest
 
 
 RUN:
@@ -64,5 +64,5 @@ LEAK: TEST
 	#valgrind ./build/main.out
 
 
-TESTD: BUILD	
-	./build/main.out < ./test/data/1.in
+TESTD: BUILD
+	sudo bash ./test/testData.sh
