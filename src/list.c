@@ -128,9 +128,11 @@ int _PopOperation(packData pd, int iLine, int (*PeekFunc)(packData,int), int (*P
 
 int PeekFirstPack(packData pd, int i){
     if(pd.lines[i].list.first != NULL){
-        while(pd.lines[i].list.first->avail == 0 && pd.lines[i].list.first != NULL){
+        while(pd.lines[i].list.first->avail == 0 ){
             //Remove unavailable item
             _popFirst(pd, i);
+            if(pd.lines[i].list.first == NULL)
+                break;
         }
     }
 
@@ -147,8 +149,11 @@ int PeekFirstPack(packData pd, int i){
 
 int PeekLastPack(packData pd, int i){
     if(pd.lines[i].list.first != NULL){
-        while(pd.lines[i].list.last->avail == 0 && pd.lines[i].list.first != NULL)
+        while(pd.lines[i].list.last->avail == 0 ){
             _popLast(pd, i);
+            if(pd.lines[i].list.first == NULL)
+                break;
+        }
     }
 
 
@@ -164,8 +169,11 @@ int PeekLastPack(packData pd, int i){
 
 int PeekMaxPack(packData pd, int i){
     if(pd.lines[i].heap != NULL){
-        while(pd.lines[i].heap->key->avail == 0 && pd.lines[i].heap != NULL)
+        while(pd.lines[i].heap->key->avail == 0 ){
             _popMaxHeap(pd, i);
+            if (pd.lines[i].heap == NULL)
+                break;
+        }
     }
 
     //Return
@@ -260,7 +268,7 @@ int _popMaxHeap(packData pd, int i){
     //One element heap
     if (_findActLeave(root) == -1){
         free(root);
-        pd.lines[0].heap = NULL;
+        pd.lines[i].heap = NULL;
         return val;
     }
     
@@ -283,6 +291,7 @@ void _mergeHeap(packData pd, int iDst, int iSrc){
     pack pkInf = getNullPack(); 
     pkInf.ID = INT_MIN;
     hnode* root = _create_node(NULL, &pkInf);
+    hnode* leaf = NULL;
     hnode* listD = pd.lines[iDst].heap;
     hnode* listS = pd.lines[iSrc].heap;
 
@@ -298,10 +307,10 @@ void _mergeHeap(packData pd, int iDst, int iSrc){
     listS->parent = root;
 
     // Heapidy
-    root = _maxHeapify(root);
+    leaf = _maxHeapify(root);
 
     // Delete auxillary node
-    _deleteLeaf(root);
+    _deleteLeaf(leaf);
 
     // Empty source
     pd.lines[iSrc].heap = NULL;
