@@ -262,7 +262,7 @@ void _mergeHeap(packData pd, int iDst, int iSrc){
         pd.lines[iDst].heap = _mergeHeapLeftist(A, B);
     }
 
-
+ 
     // Empty source
     pd.lines[iSrc].heap = NULL;
 }
