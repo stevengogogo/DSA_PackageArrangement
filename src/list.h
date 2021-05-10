@@ -27,17 +27,22 @@
 #define MAX_OP_CHAR 20
 
 /** * package */
+struct packData;
+
 typedef struct pack{
     int avail; //available?
     struct pack* prev;
     struct pack* next;
     int ID;
+    int (*popfunc)(struct packData, int);
+    int line;
 } pack;
 
 typedef struct List{
     pack* first;
     pack* last;
 } List;
+
 
 typedef struct hnode{
     struct hnode* parent;
@@ -52,12 +57,14 @@ typedef struct{
     int avail;
 } prodLine;
 
-typedef struct{
+typedef struct packData{
     int N_Package;
     int N_Lines;
     prodLine* lines;
     pack* packs;
 } packData;
+
+
 
 typedef struct{
     int opID;
