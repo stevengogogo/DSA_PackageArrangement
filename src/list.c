@@ -57,6 +57,24 @@ void MergeLines(packData pd, int iDst, int iSrc){
     _mergelist(pd, iDst, iSrc);
 }
 
+
+// Pop
+int PopFirstPack(packData pd, int iLine){
+    PeekFirstPack(pd, iLine);
+    _popFirst(pd, iLine);
+
+}
+
+int PopLastPack(packData pd, int iLine){
+    PeekLastPack(pd, iLine);
+    _popLast(pd, iLine);
+}
+
+int PopMaxPack(packData pd, int iLine){
+    PeekMaxPack(pd, iLine);
+    _popMaxHeap(pd, iLine);
+}
+
 // Peek Data
 
 int PeekFirstPack(packData pd, int i){
