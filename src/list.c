@@ -16,7 +16,7 @@ int solve(packData pd, query* qs, int n_query, int* pkOrders){
         }
 
         /**Try Pop**/
-        while(curPK->popfunc != NULL){
+        while(curPK->popfunc != NULL && targetPK <= nPk){
             //Pop
             (*(curPK->popfunc))(pd, curPK->line);
             //Move next
@@ -26,6 +26,10 @@ int solve(packData pd, query* qs, int n_query, int* pkOrders){
 
     }
 
+    if (targetPK-1 == nPk)
+        return 1;
+    else
+        return 0;
 }
 
 packData init_packData(int n, int l){
