@@ -23,6 +23,9 @@ void test_peek(void){
 
     for(int i=19;i>0;i--){
         MergeLines(pd, 0, i);
+        TEST_CHECK(pd.lines[i].avail == 0);
+        TEST_CHECK(pd.lines[i].heap == NULL);
+        TEST_CHECK(pd.lines[i].list.first == NULL);
     }
 
 
@@ -32,6 +35,16 @@ void test_peek(void){
     for (int i=0;i<3;i++){
         TEST_CHECK((*fun[i])(pd, 2)==EMPTY);
     }
+
+    TEST_CHECK(PopFirstPack(pd, 0) == 1);
+    TEST_CHECK(PopLastPack(pd, 0) == 2);
+    TEST_CHECK(PopMaxPack(pd, 0) == 20);
+
+    TEST_CHECK(pd.packs[1].avail==0);
+    TEST_CHECK(pd.packs[2].avail==0);
+    TEST_CHECK(pd.packs[20].avail==0);
+
+
 
     kill_packData(pd);
 }

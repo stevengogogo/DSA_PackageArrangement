@@ -53,8 +53,34 @@ void PushPack(packData pd, int iLine, int iPack){
 }
 
 void MergeLines(packData pd, int iDst, int iSrc){
+    assert(pd.lines[iSrc].avail==1);
+    assert(pd.lines[iDst].avail==1);
+
     _mergeHeap(pd, iDst, iSrc);
     _mergelist(pd, iDst, iSrc);
+    pd.lines[iSrc].avail = 0;
+}
+
+
+// Pop
+int PopFirstPack(packData pd, int iLine){
+    return _PopOperation(pd, iLine, PeekFirstPack, _popFirst);
+}
+
+int PopLastPack(packData pd, int iLine){
+    return _PopOperation(pd, iLine, PeekLastPack, _popLast);
+}
+
+int PopMaxPack(packData pd, int iLine){
+    return _PopOperation(pd, iLine, PeekMaxPack, _popMaxHeap);
+}
+
+int _PopOperation(packData pd, int iLine, int (*PeekFunc)(packData,int), int (*PopFunc)(packData,int)){
+    int ID = (*PeekFunc)(pd, iLine);
+    int ID_POP = (*PopFunc)(pd, iLine);
+    assert(ID == ID_POP);
+    pd.packs[ID].avail = 0;
+    return ID_POP;
 }
 
 // Peek Data
@@ -97,6 +123,7 @@ int PeekMaxPack(packData pd, int i){
     else
         return pd.lines[i].heap->key->ID;
 }
+
 
 
 //Heap
@@ -416,7 +443,7 @@ pack getNullPack(void){
 prodLine getNullProdLine(void){
     prodLine pl;
     pl.heap = NULL;
-    pl.avail = 0;
+    pl.avail = 1;
     pl.list.first = NULL;
     pl.list.last = NULL;
     return pl;
