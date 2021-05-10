@@ -4,7 +4,7 @@ int solve(packData pd, query* qs, int n_query, int* pkOrders){
     int nPk = pd.N_Package;
     int targetPK = 1;
     pack* PKs = pd.packs;
-    pack* curPK = PKS[targetPK];
+    pack* curPK = &PKs[targetPK];
 
     for(int i=0;i<n_query;i++){
         /**Do Operation**/
@@ -78,7 +78,6 @@ void PushPack(packData pd, int iLine, int iPack){
 
     //Register new data
     pk->avail = 1;
-    pk->line = iLine;
 
     //Reset first, last, max
     _setGetMethod(pd, iLine);
@@ -182,7 +181,7 @@ void _clearGetMethod(packData pd, int iLine){
     for(int i=0;i<3;i++){
         ID = (*PEEKFUNC[i])(pd, iLine);
         if (ID != EMPTY)
-            _removePackGetMethod(&pd.packs[ID]);
+            _removePack(&pd.packs[ID]);
     }    
 }
 
@@ -192,6 +191,7 @@ void _setGetMethod(packData pd, int iLine){
         ID = (*PEEKFUNC[i])(pd, iLine);
         if (ID != EMPTY)
             pd.packs[ID].popfunc = PEEKFUNC[i];
+            pd.packs[ID].line = iLine;
     }    
 }
 
