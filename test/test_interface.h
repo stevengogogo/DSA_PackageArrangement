@@ -6,8 +6,8 @@
 
 void test_stringOp(void){
     char a[20] = "push";
-    TEST_CHECK(getopID(a) == PUSH);
-    TEST_CHECK(getopID("merge") == MERGE);
+    TEST_CHECK(_getopID(a) == PUSH);
+    TEST_CHECK(_getopID("merge") == MERGE);
 }
 
 
