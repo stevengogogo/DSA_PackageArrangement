@@ -135,6 +135,26 @@ int _popMaxHeap(packData pd, int i){
     return val;
 }
 
+void _mergeHeap(packData pd, int iDst, int iSrc){
+    pack pkInf = getNullPack(); 
+    pkInf.ID = INT_MIN;
+    hnode* root = (hnode*)malloc(sizeof(hnode));
+    root->key = &pkInf;
+    hnode* listD = pd.lines[iDst].heap;
+    hnode* listS = pd.lines[iSrc].heap;
+
+    //Link to heaps
+    root->leaves[0] = listD;
+    root->leaves[1] = listS;
+    listD->parent = root;
+    listS->parent = root;
+
+    // Heapidy
+    root = _maxHeapify(root);
+
+    // Delete auxillary node
+    _deleteLeaf(root);
+}
 
 
 
