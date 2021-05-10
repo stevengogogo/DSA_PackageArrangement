@@ -14,5 +14,6 @@ TEST_LIST = {
     {"problem initiation", test_init},
     {"linked list", test_linklist},
     {"Heap", test_heap},
+    {"Heap Merge", test_heapMerge},
     {NULL, NULL} // Terminate the test
 };
