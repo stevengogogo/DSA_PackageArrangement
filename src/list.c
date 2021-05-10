@@ -2,9 +2,9 @@
 
 int solve(packData pd, query* qs, int n_query, int* pkOrders){
     int nPk = pd.N_Package;
-    int targetPK = 1;
+    int targetPK = 0;
     pack* PKs = pd.packs;
-    pack* curPK = &PKs[targetPK];
+    pack* curPK = &PKs[pkOrders[targetPK]];
 
     for(int i=0;i<n_query;i++){
         /**Do Operation**/
@@ -21,12 +21,12 @@ int solve(packData pd, query* qs, int n_query, int* pkOrders){
             (*(curPK->popfunc))(pd, curPK->line);
             //Move next
             ++targetPK;
-            curPK = &PKs[targetPK];
+            curPK = &PKs[pkOrders[targetPK]];
         }
 
     }
 
-    if (targetPK-1 == nPk)
+    if (targetPK == nPk-1)
         return 1;
     else
         return 0;
