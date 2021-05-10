@@ -68,7 +68,7 @@ void kill_packData(packData);
 
 // Data management
 void PushPack(packData, int iLine, int iPack);
-pack MergeLines(packData, int dst, int src);
+void MergeLines(packData, int iDst, int iSrc);
 
 //Pop
 pack PopFirstPack(packData, int i);
