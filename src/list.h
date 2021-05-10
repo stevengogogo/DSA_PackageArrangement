@@ -64,6 +64,9 @@ typedef struct{
     int arg[2];
 } query;
 
+//Solve
+int solve(packData pd, query* qs, int* pkOrders);
+
 // Initiation and Deletion
 
 /**

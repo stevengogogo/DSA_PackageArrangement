@@ -1,5 +1,9 @@
 #include "list.h"
 
+int solve(packData pd, query* qs, int* pkOrders){
+    //TODO
+}
+
 packData init_packData(int n, int l){
     packData pd;
 
