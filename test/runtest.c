@@ -7,7 +7,7 @@
 #include "test_utils.h"
 #include "test_list.h"
 #include "test_dataArrange.h"
-
+#include "test_interface.h"
 
 
 // Run TESTs 
@@ -18,5 +18,6 @@ TEST_LIST = {
     {"Heap", test_heap},
     {"Heap Merge", test_heapMerge},
     {"Peek Data", test_peek},
+    {"Test Get op ID", test_stringOp},
     {NULL, NULL} // Terminate the test
 };

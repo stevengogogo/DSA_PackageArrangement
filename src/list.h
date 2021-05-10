@@ -13,12 +13,18 @@
 #define LIST_H
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <assert.h>
 #include "utils.h"
 
 #define INT_MIN -2147483647
 #define EMPTY -23432
+#define PUSH -232310
+#define MERGE -2323
+#define MAX_Q 200000
+#define MAX_N 200000
+#define MAX_OP_CHAR 20
 
 /** * package */
 typedef struct pack{
@@ -53,6 +59,10 @@ typedef struct{
     pack* packs;
 } packData;
 
+typedef struct{
+    int opID;
+    int arg[2];
+} query;
 
 // Initiation and Deletion
 
@@ -122,7 +132,10 @@ int _popLast(packData pd, int iLine);
 pack getNullPack(void);
 prodLine getNullProdLine(void);
 
-
-
+//Interface
+int _getopID(char*);
+void _getOperation(query*);
+void _printRes(int sol);
+void interface(void);
 
 #endif 

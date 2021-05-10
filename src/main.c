@@ -18,24 +18,7 @@
 int main()
 {
 
-    packData pd = init_packData(100,100);
-    pack* pk = NULL;
-    int (*fun[3])(packData, int)=  {PeekFirstPack, PeekLastPack, PeekMaxPack};
-
-    for (int i=1;i<=20;i++)
-        PushPack(pd, i-1, i);
-    
-    
-
-    for(int i=19;i>0;i--){
-        MergeLines(pd, 0, i);
-    }
-
-
-    PopFirstPack(pd, 0);
-
-
-    kill_packData(pd);
+    interface();
 
     return 0;
 }
