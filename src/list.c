@@ -217,7 +217,7 @@ void _setGetMethod(packData pd, int iLine){
     for(int i=0;i<3;i++){
         ID = (*PEEKFUNC[i])(pd, iLine);
         if (ID != EMPTY){
-            pd.packs[ID].popfunc = PEEKFUNC[i];
+            pd.packs[ID].popfunc = POPFUNC[i];
             pd.packs[ID].line = iLine;
         }
     }    

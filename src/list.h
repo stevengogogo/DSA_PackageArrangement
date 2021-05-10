@@ -94,6 +94,7 @@ void MergeLines(packData, int iDst, int iSrc);
 int PopFirstPack(packData, int iLine);
 int PopLastPack(packData, int iLine);
 int PopMaxPack(packData, int iLine);
+static const int (*POPFUNC[3])(packData, int) = {PopFirstPack, PopLastPack, PopMaxPack};
 /** * Use Function pointer to generalize the Pop operation*/
 int _PopOperation(packData, int,int (*PeekFunc)(packData,int), int (*PopFunc)(packData,int));
 
