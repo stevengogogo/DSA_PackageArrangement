@@ -100,11 +100,11 @@ void _mergelist(packData, int iDst, int iSrc);
  * @note this function can be used to pop item. No matter it is availability or not. The item's availablity will be set as 0.
  * @return int popped ID
  */
-int _popFirst(List*);
+int _popFirst(packData pd, int iLine);
 /**
  * @brief Similar to @ref _popFirst .
  */
-int _popLast(List*);
+int _popLast(packData pd, int iLine);
 
 
 //Struct

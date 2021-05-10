@@ -257,7 +257,8 @@ void _mergelist(packData pd, int iDst, int iSrc){
 }
 
 
-int _popFirst(List* list){
+int _popFirst(packData pd, int iLine){
+    List* list = &pd.lines[iLine].list;
     assert(list->first!=NULL);
     int val = list->first->ID;
     list->first->avail = 0; // update availability
@@ -280,7 +281,8 @@ int _popFirst(List* list){
     return val;
 }
 
-int _popLast(List* list){
+int _popLast(packData pd, int iLine){
+    List* list = &pd.lines[iLine].list;
     assert(list->first!=NULL);
     int val = list->last->ID;
     list->last->avail = 0; // update availability
