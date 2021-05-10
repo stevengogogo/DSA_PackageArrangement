@@ -61,7 +61,7 @@ MERGE_MAIN:
 
 LEAK: #TEST
 	#valgrind --leak-check=full --show-leak-kinds=all --verbose ./test/build/test.out
-	valgrind --track-origins=yes  -s ./build/main.out <./test/data/3.in 
+	valgrind  ./build/main.out <./test/data/3.in 
 
 PROF: BUILD 
 	gprof  ./build/main.out <./test/data/3.in 
