@@ -52,6 +52,19 @@ void PushPack(packData pd, int iLine, int iPack){
     pk->avail = 1;
 }
 
+// Peek Data
+
+pack PeekFirstPack(packData pd, int i){
+    //TODO
+}
+
+pack PeekLastPack(packData pd, int i){
+    //TODO
+}
+
+pack PeekMaxPack(packData pd, int i){
+    //TODO
+}
 
 
 //Heap

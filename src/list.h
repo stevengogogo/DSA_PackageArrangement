@@ -75,9 +75,9 @@ pack PopLastPack(packData, int i);
 pack PopMaxPack(packData, int i);
 
 // Peak Data
-pack PeakFirstPack(packData, int i);
-pack PeakLastPack(packData, int i);
-pack PeakMaxPack(packData, int i);
+pack PeekFirstPack(packData, int i);
+pack PeekLastPack(packData, int i);
+pack PeekMaxPack(packData, int i);
 
 
 // Heap operation
