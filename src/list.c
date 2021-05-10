@@ -22,7 +22,7 @@ packData init_packData(int n, int l){
     // initialize
     for(int i=0;i<=pd.N_Package;i++){
         pd.packs[i] = pk;
-        pd.packs->ID = i;
+        pd.packs[i].ID = i;
     }
 
     for(int i=0;i<pd.N_Lines;i++)
@@ -44,17 +44,143 @@ void kill_packData(packData pd){
 
 //Heap
 
-void _insertHeap(hnode* root, pack* pk){
-    if (root==NULL){
-        
+void _insertHeap(packData pd, int i, pack* pk){
+    hnode* root = pd.lines[i].heap;
+
+    assert(pk->avail == 0);
+    pk->avail = 1; //update availibility
+
+    hnode* heapRoot = NULL;
+    hnode* curNode = NULL;
+    pack* minPK = pk;
+    pack* tmp;
+    int availLeafID = -1;//[0,1,-1]
+    int nextDir = 0;//[0,1]
+
+    if (root==NULL){//first element
+        root = create_node(NULL, pk);
+        pd.lines[i].heap = root;
+        return;
+    }
+    else{
+        curNode = root; //current node
+        heapRoot = root;
+    }
+
+    while(curNode != NULL){
+
+        //swap minimum
+        if (minPK->ID > curNode->key->ID){ 
+            tmp = curNode->key;
+            curNode->key = minPK;
+            minPK = tmp;
+        }
+
+        //Find available leaves
+        availLeafID = _findNullLeave(curNode);
+
+        if (availLeafID != -1){ //available site
+            curNode->leaves[availLeafID] = create_node(curNode, minPK);
+            break;
+        }
+        else{ // move to the minimum leaf
+            nextDir =  argMin(curNode->leaves[0]->key->ID, 
+                              curNode->leaves[1]->key->ID);
+            curNode = curNode->leaves[nextDir];
+        }
+
+    }
+
+}
+
+
+int _popMaxHeap(packData pd, int i){
+    hnode* root = pd.lines[i].heap;
+
+    assert(root != NULL);
+    hnode* curNode = root;
+    hnode* nextNode = NULL;
+    int actLeafID = _findActLeave(curNode);
+    int val = root->key->ID;
+    root->key->avail = 0;
+
+    //One element heap
+    if (_findActLeave(root) == -1){
+        free(root);
+        pd.lines[0].heap = NULL;
+        return val;
+    }
+    
+    pack pkInf = getNullPack(); //Package with minius infinity
+    pkInf.ID = INT_MIN;
+    root->key = &pkInf;
+
+    while( actLeafID != -1 ){ //There is at least a leave
+        if(_findNullLeave(curNode) == -1){
+            nextNode = curNode->leaves[
+                        1^(argMin(curNode->leaves[0]->key->ID,
+                               curNode->leaves[1]->key->ID))
+                        ]; //chose max node
+        }
+        else{
+            nextNode = curNode->leaves[actLeafID];
+        }
+        _swapPackageHeap(curNode, nextNode);
+        curNode = nextNode; // move to a actual leaf
+        actLeafID = _findActLeave(curNode);
+    }
+
+    //delete node
+    if (curNode->parent->leaves[0] == curNode){
+        curNode->parent->leaves[0] = NULL;
+    }
+    else{
+        curNode->parent->leaves[1] = NULL;
+    }
+
+    free(curNode);
+    curNode = NULL;
+    return val;
+}
+
+hnode* create_node(hnode* parent, pack* key){
+    hnode* newnode = (hnode*)malloc(sizeof(hnode));
+    newnode->key = key;
+    newnode->parent = parent;
+    newnode->leaves[0] = NULL;
+    newnode->leaves[1] = NULL;
+    return newnode;    
+}
+
+int _findNullLeave(hnode* node){
+    if (node->leaves[0] == NULL){
+        return 0;
+    }
+    else if(node->leaves[1] == NULL){
+        return 1;
+    }
+    else{
+        return -1;
     }
 }
 
-
-int _popMaxHeap(hnode* root){
-
+int _findActLeave(hnode* node){
+    if (node->leaves[0] != NULL){
+        return 0;
+    }
+    else if(node->leaves[1] != NULL){
+        return 1;
+    }
+    else{
+        return -1;
+    }
 }
 
+void _swapPackageHeap(hnode* a, hnode* b){
+    pack* tmp = a->key;
+    a->key = b->key;
+    b->key = tmp;
+}
 
 void _killHeap(hnode* root){
     if (root == NULL)

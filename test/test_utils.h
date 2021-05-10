@@ -6,7 +6,9 @@
 
 void test_utils(void)
 {
-   
+   TEST_CHECK(argMin(-1212,3) == 0);
+   TEST_CHECK(argMin(3, -1212) == 1);
+   TEST_CHECK(argMin(-1212,-1212) == 1);
 }
 
 

@@ -11,5 +11,6 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+int argMin(int a, int b);
 
 #endif
