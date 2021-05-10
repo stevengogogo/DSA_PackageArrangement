@@ -60,19 +60,22 @@ void MergeLines(packData pd, int iDst, int iSrc){
 
 // Pop
 int PopFirstPack(packData pd, int iLine){
-    PeekFirstPack(pd, iLine);
-    _popFirst(pd, iLine);
-
+    return _PopOperation(pd, iLine, PeekFirstPack, _popFirst);
 }
 
 int PopLastPack(packData pd, int iLine){
-    PeekLastPack(pd, iLine);
-    _popLast(pd, iLine);
+    return _PopOperation(pd, iLine, PeekLastPack, _popLast);
 }
 
 int PopMaxPack(packData pd, int iLine){
-    PeekMaxPack(pd, iLine);
-    _popMaxHeap(pd, iLine);
+    return _PopOperation(pd, iLine, PeekMaxPack, _popMaxHeap);
+}
+
+int _PopOperation(packData pd, int iLine, int (*PeekFunc)(packData,int), int (*PopFunc)(packData,int)){
+    int ID = (*PeekFunc)(pd, iLine);
+    int ID_POP = (*PopFunc)(pd, ID);
+    assert(ID == ID_POP);
+    pd.packs[ID].avail = 0;
 }
 
 // Peek Data
@@ -115,6 +118,7 @@ int PeekMaxPack(packData pd, int i){
     else
         return pd.lines[i].heap->key->ID;
 }
+
 
 
 //Heap

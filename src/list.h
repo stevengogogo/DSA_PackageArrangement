@@ -74,6 +74,8 @@ void MergeLines(packData, int iDst, int iSrc);
 int PopFirstPack(packData, int iLine);
 int PopLastPack(packData, int iLine);
 int PopMaxPack(packData, int iLine);
+/** * Use Function pointer to generalize the Pop operation*/
+int _PopOperation(packData, int,int (*PeekFunc)(packData,int), int (*PopFunc)(packData,int));
 
 // Peak Data
 /** * Peek first. Return NULL if the line is empty*/
