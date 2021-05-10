@@ -18,6 +18,7 @@
 #include "utils.h"
 
 #define INT_MIN -2147483647
+#define EMPTY -23432
 
 /** * package */
 typedef struct pack{
@@ -76,10 +77,10 @@ pack PopMaxPack(packData, int i);
 
 // Peak Data
 /** * Peek first. Return NULL if the line is empty*/
-pack* PeekFirstPack(packData, int i);
+int PeekFirstPack(packData, int i);
 /** * Peek Last. Return NULL if the line is empty*/
-pack* PeekLastPack(packData, int i);
-pack* PeekMaxPack(packData, int i);
+int PeekLastPack(packData, int i);
+int PeekMaxPack(packData, int i);
 
 
 // Heap operation

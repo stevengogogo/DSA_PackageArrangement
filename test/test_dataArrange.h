@@ -7,7 +7,7 @@
 void test_peek(void){
     packData pd = init_packData(100,100);
     pack* pk = NULL;
-    pack* (*fun[3])(packData, int)=  {PeekFirstPack, 
+    int (*fun[3])(packData, int)=  {PeekFirstPack, 
                                         PeekLastPack, 
                                         PeekMaxPack};
 
@@ -15,13 +15,11 @@ void test_peek(void){
         PushPack(pd, i-1, i);
     
     for (int i=0;i<3;i++){
-        pk = (*fun[i])(pd, 0);
-        TEST_CHECK(pk->ID==1);
+        TEST_CHECK((*fun[i])(pd, 0)==1);
     }
 
     for (int i=0;i<3;i++){
-        pk = (*fun[i])(pd, 99);
-        TEST_CHECK(pk==NULL);
+        TEST_CHECK((*fun[i])(pd, 99)==EMPTY);
     }
     
 

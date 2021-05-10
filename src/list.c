@@ -54,32 +54,43 @@ void PushPack(packData pd, int iLine, int iPack){
 
 // Peek Data
 
-pack* PeekFirstPack(packData pd, int i){
+int PeekFirstPack(packData pd, int i){
     if(pd.lines[i].list.first != NULL){
         while(pd.lines[i].list.first->avail == 0 && pd.lines[i].list.first != NULL)
             _popFirst(pd, i);
     }
-    return pd.lines[i].list.first;
+
+    //Return
+    if(pd.lines[i].list.first == NULL)
+        return EMPTY;
+    else 
+        return pd.lines[i].list.first->ID;
 }
 
-pack* PeekLastPack(packData pd, int i){
+int PeekLastPack(packData pd, int i){
     if(pd.lines[i].list.first != NULL){
         while(pd.lines[i].list.last->avail == 0 && pd.lines[i].list.first != NULL)
             _popLast(pd, i);
     }
-    return pd.lines[i].list.last;
+
+    //Return
+    if(pd.lines[i].list.last == NULL)
+        return EMPTY;
+    else 
+        return pd.lines[i].list.last->ID;
 }
 
-pack* PeekMaxPack(packData pd, int i){
+int PeekMaxPack(packData pd, int i){
     if(pd.lines[i].heap != NULL){
         while(pd.lines[i].heap->key->avail == 0 && pd.lines[i].heap != NULL)
             _popMaxHeap(pd, i);
     }
 
+    //Return
     if (pd.lines[i].heap == NULL)
-        return NULL;
+        return EMPTY;
     else
-        return pd.lines[i].heap->key;
+        return pd.lines[i].heap->key->ID;
 }
 
 
