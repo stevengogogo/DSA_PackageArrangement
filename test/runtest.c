@@ -6,6 +6,8 @@
 #include "test_heap.h"
 #include "test_utils.h"
 #include "test_list.h"
+#include "test_dataArrange.h"
+
 
 
 // Run TESTs 
@@ -15,5 +17,6 @@ TEST_LIST = {
     {"linked list", test_linklist},
     {"Heap", test_heap},
     {"Heap Merge", test_heapMerge},
+    {"Peek Data", test_peek},
     {NULL, NULL} // Terminate the test
 };

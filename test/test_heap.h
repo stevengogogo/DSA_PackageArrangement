@@ -32,10 +32,10 @@ void test_heapMerge(void){
 
     //Heap insertion
     for (int i=1;i<=20;i++){
-        _insertHeap(pd, 0, i);
+        PushPack(pd, 0, i);
     }
     for (int i=21;i<=40;i++){
-        _insertHeap(pd, 1, i);
+        PushPack(pd, 1, i);
     }
 
     _mergeHeap(pd, 0, 1);
