@@ -83,7 +83,8 @@ int _PopOperation(packData pd, int iLine, int (*PeekFunc)(packData,int), int (*P
     int ID = (*PeekFunc)(pd, iLine);
     int ID_POP = (*PopFunc)(pd, iLine);
     assert(ID == ID_POP);
-    pd.packs[ID].avail = 0;
+    //Mark popped
+    _removePack(&pd.packs[ID]);
     return ID_POP;
 }
 
@@ -91,9 +92,14 @@ int _PopOperation(packData pd, int iLine, int (*PeekFunc)(packData,int), int (*P
 
 int PeekFirstPack(packData pd, int i){
     if(pd.lines[i].list.first != NULL){
-        while(pd.lines[i].list.first->avail == 0 && pd.lines[i].list.first != NULL)
+        while(pd.lines[i].list.first->avail == 0 && pd.lines[i].list.first != NULL){
+            //Remove unavailable item
             _popFirst(pd, i);
+        }
     }
+
+    //Update Get method
+    pd.lines[i].list.first->popfunc = PeekFirstPack;
 
     //Return
     if(pd.lines[i].list.first == NULL)
@@ -107,6 +113,9 @@ int PeekLastPack(packData pd, int i){
         while(pd.lines[i].list.last->avail == 0 && pd.lines[i].list.first != NULL)
             _popLast(pd, i);
     }
+
+    //Update Get method
+    pd.lines[i].list.last->popfunc = PeekLastPack;
 
     //Return
     if(pd.lines[i].list.last == NULL)
@@ -432,6 +441,12 @@ int _popLast(packData pd, int iLine){
     return val;
 }
 
+//Remove Item
+void _removePack(pack* pk){
+    pk->avail = 0;
+    pk->line = EMPTY;
+    pk->popfunc = NULL;
+}
 
 //Struct
 
@@ -441,6 +456,8 @@ pack getNullPack(void){
     pk.prev = NULL;
     pk.next = NULL;
     pk.ID = INT_MIN;
+    pk.popfunc = NULL;
+    pk.line = EMPTY;
     return pk;
 }
 

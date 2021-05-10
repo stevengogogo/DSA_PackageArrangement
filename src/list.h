@@ -138,6 +138,9 @@ int _popFirst(packData pd, int iLine);
 int _popLast(packData pd, int iLine);
 
 
+//Remove Item
+void _removePack(pack*);
+
 //Struct
 pack getNullPack(void);
 prodLine getNullProdLine(void);

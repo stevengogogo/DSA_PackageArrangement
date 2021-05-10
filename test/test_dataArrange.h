@@ -44,7 +44,7 @@ void test_peek(void){
     TEST_CHECK(pd.packs[2].avail==0);
     TEST_CHECK(pd.packs[20].avail==0);
 
-
+    TEST_CHECK( (*(pd.packs[0].popfunc))(pd, pd.packs[0].line) == pd.packs[0].ID);
 
     kill_packData(pd);
 }
