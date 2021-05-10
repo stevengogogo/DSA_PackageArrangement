@@ -27,17 +27,22 @@
 #define MAX_OP_CHAR 20
 
 /** * package */
+struct packData;
+
 typedef struct pack{
     int avail; //available?
     struct pack* prev;
     struct pack* next;
     int ID;
+    int (*popfunc)(struct packData, int);
+    int line;
 } pack;
 
 typedef struct List{
     pack* first;
     pack* last;
 } List;
+
 
 typedef struct hnode{
     struct hnode* parent;
@@ -52,17 +57,22 @@ typedef struct{
     int avail;
 } prodLine;
 
-typedef struct{
+typedef struct packData{
     int N_Package;
     int N_Lines;
     prodLine* lines;
     pack* packs;
 } packData;
 
+
+
 typedef struct{
     int opID;
     int arg[2];
 } query;
+
+//Solve
+int solve(packData pd, query* qs, int n_query,int* pkOrders);
 
 // Initiation and Deletion
 
@@ -84,6 +94,7 @@ void MergeLines(packData, int iDst, int iSrc);
 int PopFirstPack(packData, int iLine);
 int PopLastPack(packData, int iLine);
 int PopMaxPack(packData, int iLine);
+static const int (*POPFUNC[3])(packData, int) = {PopFirstPack, PopLastPack, PopMaxPack};
 /** * Use Function pointer to generalize the Pop operation*/
 int _PopOperation(packData, int,int (*PeekFunc)(packData,int), int (*PopFunc)(packData,int));
 
@@ -93,6 +104,11 @@ int PeekFirstPack(packData, int i);
 /** * Peek Last. Return NULL if the line is empty*/
 int PeekLastPack(packData, int i);
 int PeekMaxPack(packData, int i);
+
+/** Array of peek functions*/
+static const int (*PEEKFUNC[3])(packData, int) = {PeekFirstPack, PeekLastPack, PeekMaxPack};
+void _clearGetMethod(packData, int iLine);
+void _setGetMethod(packData, int iLine);
 
 
 // Heap operation
@@ -127,6 +143,10 @@ int _popFirst(packData pd, int iLine);
  */
 int _popLast(packData pd, int iLine);
 
+
+//Remove Item
+void _removePack(pack*);
+void _removePackGetMethod(pack*);
 
 //Struct
 pack getNullPack(void);

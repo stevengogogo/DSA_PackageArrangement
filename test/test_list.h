@@ -43,7 +43,7 @@ void test_linklist(void){
 
     for(int i=0;i<101;i++)
         _popFirst(pd, 1);
-
+ 
     TEST_CHECK(pd.lines[0].list.first == NULL);
     TEST_CHECK(pd.lines[0].list.last == NULL);
     TEST_CHECK(pd.lines[1].list.first == NULL);

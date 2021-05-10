@@ -166,6 +166,12 @@ Ref: [GreekforGeek](https://www.geeksforgeeks.org/function-pointer-in-c/)
 int (*fun[3])(packData, int)=  {PeekFirstPack, PeekLastPack, PeekMaxPack};
 ```
 
+### What are Mutually Dependent Structures in C?
+
+- Partial declaration
+
+- Ref: [What are Mutually Dependent Structures in C?](https://www.sanfoundry.com/c-tutorials-mutually-dependent-structures/)
+
 ## References
 1. Stack, Queue and Heap. [[GitBook](https://stephanosterburg.gitbook.io/scrapbook/coding/coding-interview/data-structures/heaps-stacks-queues)]
 2.

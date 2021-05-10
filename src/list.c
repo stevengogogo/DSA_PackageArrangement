@@ -1,5 +1,39 @@
 #include "list.h"
 
+int solve(packData pd, query* qs, int n_query, int* pkOrders){
+    int nPk = pd.N_Package;
+    int targetPK = 0;
+    int IDpop;
+    pack* PKs = pd.packs;
+    pack* curPK = &PKs[pkOrders[targetPK]];
+
+    for(int i=0;i<n_query;i++){
+        /**Do Operation**/
+        if(qs[i].opID == PUSH){
+            PushPack(pd, qs[i].arg[1], qs[i].arg[0]);//[lineID, packID]
+        }
+        else{//qs[i].opID == MERGE){
+            MergeLines(pd, qs[i].arg[1], qs[i].arg[0]);//[Dst, Src]
+        }
+
+        /**Try Pop**/
+        while(curPK->popfunc != NULL && targetPK < nPk){
+            //Pop
+            IDpop = (*(curPK->popfunc))(pd, curPK->line);
+            assert(pkOrders[targetPK]==IDpop);
+            //Move next
+            ++targetPK;
+            curPK = &PKs[pkOrders[targetPK]];
+        }
+
+    }
+
+    if (targetPK == nPk)
+        return 1;
+    else
+        return 0;
+}
+
 packData init_packData(int n, int l){
     packData pd;
 
@@ -46,19 +80,37 @@ void PushPack(packData pd, int iLine, int iPack){
     pack* pk = &pd.packs[iPack];
     assert(pk->avail == 0);
 
+    //Register new data
+    pk->avail = 1;
+
+    //Clear first, last, max
+    _clearGetMethod(pd, iLine);
+
+    //Insertion
     _insertHeap(pd, iLine, iPack);
     _insertlist(pd, iLine, iPack);
 
-    pk->avail = 1;
+
+    //Reset first, last, max
+    _setGetMethod(pd, iLine);
 }
 
 void MergeLines(packData pd, int iDst, int iSrc){
     assert(pd.lines[iSrc].avail==1);
     assert(pd.lines[iDst].avail==1);
 
+    //Clear first, last, max
+    _clearGetMethod(pd, iSrc);
+    _clearGetMethod(pd, iDst);
+
+
     _mergeHeap(pd, iDst, iSrc);
     _mergelist(pd, iDst, iSrc);
     pd.lines[iSrc].avail = 0;
+
+    //Reset first, last, max
+    _setGetMethod(pd, iSrc);
+    _setGetMethod(pd, iDst);
 }
 
 
@@ -79,7 +131,12 @@ int _PopOperation(packData pd, int iLine, int (*PeekFunc)(packData,int), int (*P
     int ID = (*PeekFunc)(pd, iLine);
     int ID_POP = (*PopFunc)(pd, iLine);
     assert(ID == ID_POP);
-    pd.packs[ID].avail = 0;
+    //Mark popped
+    _removePack(&pd.packs[ID]);
+    //Clear old first/last/max
+    _clearGetMethod(pd,iLine);
+    //set new first/last/max
+    _setGetMethod(pd, iLine);
     return ID_POP;
 }
 
@@ -87,41 +144,83 @@ int _PopOperation(packData pd, int iLine, int (*PeekFunc)(packData,int), int (*P
 
 int PeekFirstPack(packData pd, int i){
     if(pd.lines[i].list.first != NULL){
-        while(pd.lines[i].list.first->avail == 0 && pd.lines[i].list.first != NULL)
+        while(pd.lines[i].list.first->avail == 0 ){
+            //Remove unavailable item
             _popFirst(pd, i);
+            if(pd.lines[i].list.first == NULL)
+                break;
+        }
     }
+
 
     //Return
     if(pd.lines[i].list.first == NULL)
         return EMPTY;
-    else 
+    else{ 
+        //Update Get method
+        pd.lines[i].list.first->popfunc = PopFirstPack;
         return pd.lines[i].list.first->ID;
+    }
 }
 
 int PeekLastPack(packData pd, int i){
     if(pd.lines[i].list.first != NULL){
-        while(pd.lines[i].list.last->avail == 0 && pd.lines[i].list.first != NULL)
+        while(pd.lines[i].list.last->avail == 0 ){
             _popLast(pd, i);
+            if(pd.lines[i].list.first == NULL)
+                break;
+        }
     }
+
 
     //Return
     if(pd.lines[i].list.last == NULL)
         return EMPTY;
-    else 
+    else{
+        //Update Get method
+        pd.lines[i].list.last->popfunc = PopLastPack;
         return pd.lines[i].list.last->ID;
+    }
 }
 
 int PeekMaxPack(packData pd, int i){
     if(pd.lines[i].heap != NULL){
-        while(pd.lines[i].heap->key->avail == 0 && pd.lines[i].heap != NULL)
+        while(pd.lines[i].heap->key->avail == 0 ){
             _popMaxHeap(pd, i);
+            if (pd.lines[i].heap == NULL)
+                break;
+        }
     }
 
     //Return
-    if (pd.lines[i].heap == NULL)
+    if (pd.lines[i].heap == NULL){
         return EMPTY;
-    else
+    }
+    else{
+        pd.lines[i].heap->key->popfunc = PopMaxPack;
         return pd.lines[i].heap->key->ID;
+    }
+}
+
+
+void _clearGetMethod(packData pd, int iLine){
+    int ID=0;
+    for(int i=0;i<3;i++){
+        ID = (*PEEKFUNC[i])(pd, iLine);
+        if (ID != EMPTY)
+            _removePackGetMethod(&pd.packs[ID]);
+    }    
+}
+
+void _setGetMethod(packData pd, int iLine){
+    int ID=0;
+    for(int i=0;i<3;i++){
+        ID = (*PEEKFUNC[i])(pd, iLine);
+        if (ID != EMPTY){
+            pd.packs[ID].popfunc = POPFUNC[i];
+            pd.packs[ID].line = iLine;
+        }
+    }    
 }
 
 
@@ -189,7 +288,7 @@ int _popMaxHeap(packData pd, int i){
     //One element heap
     if (_findActLeave(root) == -1){
         free(root);
-        pd.lines[0].heap = NULL;
+        pd.lines[i].heap = NULL;
         return val;
     }
     
@@ -208,12 +307,22 @@ int _popMaxHeap(packData pd, int i){
 }
 
 void _mergeHeap(packData pd, int iDst, int iSrc){
+    hnode* listD = pd.lines[iDst].heap;
+    hnode* listS = pd.lines[iSrc].heap;
+
+    if (listS == NULL){
+        return;
+    }
+    else if (listD == NULL){
+        pd.lines[iDst].heap = listS;
+        pd.lines[iSrc].heap = NULL;
+        return;
+    }
 
     pack pkInf = getNullPack(); 
     pkInf.ID = INT_MIN;
     hnode* root = _create_node(NULL, &pkInf);
-    hnode* listD = pd.lines[iDst].heap;
-    hnode* listS = pd.lines[iSrc].heap;
+    hnode* leaf = NULL;
 
     assert(listD->parent==NULL);
     assert(listS->parent==NULL);
@@ -227,10 +336,10 @@ void _mergeHeap(packData pd, int iDst, int iSrc){
     listS->parent = root;
 
     // Heapidy
-    root = _maxHeapify(root);
+    leaf = _maxHeapify(root);
 
     // Delete auxillary node
-    _deleteLeaf(root);
+    _deleteLeaf(leaf);
 
     // Empty source
     pd.lines[iSrc].heap = NULL;
@@ -359,7 +468,7 @@ void _mergelist(packData pd, int iDst, int iSrc){
     }
     else if (listDst->first == NULL){ //dst is null
         listDst->first = listSrc->first;
-        listDst->last = listDst->last;
+        listDst->last = listSrc->last;
     }
     else{
     assert(listSrc->last != NULL);
@@ -396,7 +505,7 @@ int _popFirst(packData pd, int iLine){
     list->first = list->first->next; // move start
     list->first->prev = NULL; // link start.prev to NULL
 
-    if(list->last == list->first) //turn to null
+    if(list->first == NULL) //turn to null
         list->last = list->first;
 
     }
@@ -412,8 +521,7 @@ int _popLast(packData pd, int iLine){
 
     if(list->first == list->last){ //turn to null
         list->first = NULL;
-        list->last = NULL;
-        
+        list->last = NULL; 
     }
 
     else{
@@ -421,13 +529,23 @@ int _popLast(packData pd, int iLine){
         list->last = list->last->prev; // move end
         list->last->next = NULL; // link end.next to NULL
 
-        if(list->first == list->last) //turn to null
+        if(list->last == NULL) //turn to null
             list->first = list->last;
     }
 
     return val;
 }
 
+//Remove Item
+void _removePack(pack* pk){
+    pk->avail = 0;
+    pk->line = EMPTY;
+    _removePackGetMethod(pk);
+}
+
+void _removePackGetMethod(pack* pk){
+    pk->popfunc = NULL;
+}
 
 //Struct
 
@@ -437,6 +555,8 @@ pack getNullPack(void){
     pk.prev = NULL;
     pk.next = NULL;
     pk.ID = INT_MIN;
+    pk.popfunc = NULL;
+    pk.line = EMPTY;
     return pk;
 }
 
@@ -470,9 +590,9 @@ void _getOperation(query* Op){
 
 void _printRes(int sol){
     if (sol == 1)
-        printf("possible\n");
+        printf("possible");
     else
-        printf("impossible\n");
+        printf("impossible");
 }
 
 void interface(void){
@@ -506,10 +626,12 @@ void interface(void){
             scanf("%d", &pkOrders[i]);
 
         //Solve
-        /*
-        sol = solve(pd, Ops, pkOrders);
+        sol = solve(pd, Ops, nQ, pkOrders);
         _printRes(sol);
-        */
+
+        if(t!=T-1){
+            printf("\n");
+        }
 
         kill_packData(pd);
     }
