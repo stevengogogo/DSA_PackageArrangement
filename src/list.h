@@ -45,8 +45,8 @@ typedef struct List{
 
 
 typedef struct hnode{
-    struct hnode* parent;
     struct hnode* leaves[2]; 
+    int dist;
     pack* key;
 } hnode;
 
@@ -116,16 +116,21 @@ void _insertHeap(packData pd, int iLine, int iPack);
 int _popMaxHeap(packData, int iLine);
 void _mergeHeap(packData, int iDst, int iSrc);
 
-/** @brief Max heapidity from below the input node
- * @return the destination leaf
-*/
-hnode* _maxHeapify(hnode*);
-hnode* _create_node(hnode* parent, pack* key);
-/** * Return index of Null leave. -1 for occupied */
-int _findNullLeave(hnode* node);
-int _findActLeave(hnode* node);
-void _swapPackageHeap(hnode* a, hnode* b);
-void _deleteLeaf(hnode* leaf);
+//Leftist Heap 
+/**
+ * @brief Merge leftist heap
+ * 
+ * @param A heap root 
+ * @param B heap root
+ * @note This algorithm is inspired from [CSC 378: Data Structures and Algorithm Analysis](https://www.dgp.toronto.edu/public_user/JamesStewart/378notes/10leftist/)
+ */
+hnode* _mergeHeapLeftist(hnode* A,hnode* B);
+hnode* _popMaxHeapLeftist(hnode* root, int* val);
+hnode* _insertHeapLeftist(hnode* root, pack* pk);
+int _getDistLeftist(hnode* node);
+void swaphNode(hnode** A, hnode** B);
+hnode* createNode(pack*);
+
 void _killHeap(hnode* root);
 
 //Linked list 
