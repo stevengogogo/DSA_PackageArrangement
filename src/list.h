@@ -82,8 +82,13 @@ pack PeakMaxPack(packData, int i);
 
 // Heap operation
 void _insertHeap(packData pd, int iLine, int iPack);
-int _popMaxHeap(packData, int i);
+int _popMaxHeap(packData, int iLine);
 void _mergeHeap(packData, int iDst, int iSrc);
+
+/** @brief Max heapidity from below the input node
+ * @return the destination leaf
+*/
+hnode* _maxHeapify(hnode*);
 hnode* _create_node(hnode* parent, pack* key);
 /** * Return index of Null leave. -1 for occupied */
 int _findNullLeave(hnode* node);

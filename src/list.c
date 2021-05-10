@@ -126,6 +126,8 @@ int _popMaxHeap(packData pd, int i){
     pkInf.ID = INT_MIN;
     root->key = &pkInf;
 
+    
+
     while( actLeafID != -1 ){ //There is at least a leave
         if(_findNullLeave(curNode) == -1){
             nextNode = curNode->leaves[
@@ -152,6 +154,30 @@ int _popMaxHeap(packData pd, int i){
     free(curNode);
     curNode = NULL;
     return val;
+}
+
+
+hnode* _maxHeapify(hnode* node){
+    int actLeafID = _findActLeave(node);
+    hnode* nextNode = NULL;
+    hnode* curNode = node;
+    int nextDir=0;
+
+    while(actLeafID != -1){
+        if(_findNullLeave(node) == -1){
+            nextDir = 1^(argMin(curNode->leaves[0]->key->ID,         
+                                curNode->leaves[1]->key->ID));
+            nextNode = curNode->leaves[nextDir];
+        }
+        else{
+            nextNode = curNode->leaves[actLeafID];
+        }
+        _swapPackageHeap(curNode, nextNode);
+        curNode = nextNode;
+        actLeafID = _findActLeave(curNode);
+    }
+
+    return curNode;
 }
 
 hnode* _create_node(hnode* parent, pack* key){
