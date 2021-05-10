@@ -19,5 +19,6 @@ TEST_LIST = {
     {"Heap Merge", test_heapMerge},
     {"Peek Data", test_peek},
     {"Test Get op ID", test_stringOp},
+    {"Test Function Pointer", test_func_pointer},
     {NULL, NULL} // Terminate the test
 };

@@ -104,6 +104,11 @@ int PeekFirstPack(packData, int i);
 int PeekLastPack(packData, int i);
 int PeekMaxPack(packData, int i);
 
+/** Array of peek functions*/
+static const int (*PEEKFUNC[3])(packData, int) = {PeekFirstPack, PeekLastPack, PeekMaxPack};
+void _clearGetMethod(packData, int iLine);
+void _setGetMethod(packData, int iLine);
+
 
 // Heap operation
 void _insertHeap(packData pd, int iLine, int iPack);
@@ -140,6 +145,7 @@ int _popLast(packData pd, int iLine);
 
 //Remove Item
 void _removePack(pack*);
+void _removePackGetMethod(pack*);
 
 //Struct
 pack getNullPack(void);

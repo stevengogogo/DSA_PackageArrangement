@@ -18,7 +18,11 @@
 int main()
 {
 
-    interface();
+    packData pd = init_packData(100,100);
+    pack* pk = &pd.packs[1];
+    PushPack(pd, 0, 1);
+    (*(pk->popfunc))(pd, pk->line) == pk->ID;
+    //interface();
 
     return 0;
 }

@@ -50,19 +50,37 @@ void PushPack(packData pd, int iLine, int iPack){
     pack* pk = &pd.packs[iPack];
     assert(pk->avail == 0);
 
+    //Clear first, last, max
+    _clearGetMethod(pd, iLine);
+
+    //Insertion
     _insertHeap(pd, iLine, iPack);
     _insertlist(pd, iLine, iPack);
 
+    //Register new data
     pk->avail = 1;
+    pk->line = iLine;
+
+    //Reset first, last, max
+    _setGetMethod(pd, iLine);
 }
 
 void MergeLines(packData pd, int iDst, int iSrc){
     assert(pd.lines[iSrc].avail==1);
     assert(pd.lines[iDst].avail==1);
 
+    //Clear first, last, max
+    _clearGetMethod(pd, iSrc);
+    _clearGetMethod(pd, iDst);
+
+
     _mergeHeap(pd, iDst, iSrc);
     _mergelist(pd, iDst, iSrc);
     pd.lines[iSrc].avail = 0;
+
+    //Reset first, last, max
+    _setGetMethod(pd, iSrc);
+    _setGetMethod(pd, iDst);
 }
 
 
@@ -98,14 +116,15 @@ int PeekFirstPack(packData pd, int i){
         }
     }
 
-    //Update Get method
-    pd.lines[i].list.first->popfunc = PeekFirstPack;
 
     //Return
     if(pd.lines[i].list.first == NULL)
         return EMPTY;
-    else 
+    else{ 
+        //Update Get method
+        pd.lines[i].list.first->popfunc = PeekFirstPack;
         return pd.lines[i].list.first->ID;
+    }
 }
 
 int PeekLastPack(packData pd, int i){
@@ -114,14 +133,15 @@ int PeekLastPack(packData pd, int i){
             _popLast(pd, i);
     }
 
-    //Update Get method
-    pd.lines[i].list.last->popfunc = PeekLastPack;
 
     //Return
     if(pd.lines[i].list.last == NULL)
         return EMPTY;
-    else 
+    else{
+        //Update Get method
+        pd.lines[i].list.last->popfunc = PeekLastPack;
         return pd.lines[i].list.last->ID;
+    }
 }
 
 int PeekMaxPack(packData pd, int i){
@@ -135,6 +155,25 @@ int PeekMaxPack(packData pd, int i){
         return EMPTY;
     else
         return pd.lines[i].heap->key->ID;
+}
+
+
+void _clearGetMethod(packData pd, int iLine){
+    int ID=0;
+    for(int i=0;i<3;i++){
+        ID = (*PEEKFUNC[i])(pd, iLine);
+        if (ID != EMPTY)
+            _removePackGetMethod(&pd.packs[ID]);
+    }    
+}
+
+void _setGetMethod(packData pd, int iLine){
+    int ID=0;
+    for(int i=0;i<3;i++){
+        ID = (*PEEKFUNC[i])(pd, iLine);
+        if (ID != EMPTY)
+            pd.packs[ID].popfunc = PEEKFUNC[i];
+    }    
 }
 
 
@@ -445,6 +484,10 @@ int _popLast(packData pd, int iLine){
 void _removePack(pack* pk){
     pk->avail = 0;
     pk->line = EMPTY;
+    _removePackGetMethod(pk);
+}
+
+void _removePackGetMethod(pack* pk){
     pk->popfunc = NULL;
 }
 

@@ -44,11 +44,16 @@ void test_peek(void){
     TEST_CHECK(pd.packs[2].avail==0);
     TEST_CHECK(pd.packs[20].avail==0);
 
-    TEST_CHECK( (*(pd.packs[0].popfunc))(pd, pd.packs[0].line) == pd.packs[0].ID);
 
     kill_packData(pd);
 }
 
+void test_func_pointer(void){
+    packData pd = init_packData(100,100);
+    pack* pk = &pd.packs[1]; // Pack ID: 1
+    PushPack(pd, 0, 1);
+    TEST_CHECK( (*(pk->popfunc))(pd, pk->line) == pk->ID);
+}
 
 
 #endif
