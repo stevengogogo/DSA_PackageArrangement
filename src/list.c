@@ -77,7 +77,7 @@ int PopMaxPack(packData pd, int iLine){
 
 int _PopOperation(packData pd, int iLine, int (*PeekFunc)(packData,int), int (*PopFunc)(packData,int)){
     int ID = (*PeekFunc)(pd, iLine);
-    int ID_POP = (*PopFunc)(pd, ID);
+    int ID_POP = (*PopFunc)(pd, iLine);
     assert(ID == ID_POP);
     pd.packs[ID].avail = 0;
 }
