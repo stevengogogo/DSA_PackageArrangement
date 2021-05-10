@@ -41,6 +41,13 @@ void kill_packData(packData pd){
     free(pd.packs);
 }
 
+// Data management
+pack PushPack(packData pd, int i_Line, int i_Pack){
+    assert(pd.packs[i].avail == 0);
+
+}
+
+
 
 //Heap
 
