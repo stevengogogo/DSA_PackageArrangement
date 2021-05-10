@@ -69,65 +69,66 @@ $(function() {
 <div class="title">test_dataArrange.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef TEST_DATAARRANGE_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define TEST_DATAARRANGE_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="list_8h.html">list.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;acutest.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> test_peek(<span class="keywordtype">void</span>){</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="structpackData.html">packData</a> pd = <a class="code" href="list_8h.html#aa11f23d0e48c1d0788c6a8930a252b9c">init_packData</a>(100,100);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="structpack.html">pack</a>* pk = NULL;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    int (*fun[3])(<a class="code" href="structpackData.html">packData</a>, int)=  {<a class="code" href="list_8h.html#adfdfeb59630f39a44fa693f6f5f1c05e">PeekFirstPack</a>, <a class="code" href="list_8h.html#ae14d787a867e918b7cf2b832c90f0446">PeekLastPack</a>, PeekMaxPack};</div>
+<a href="test__dataArrange_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef TEST_DATAARRANGE_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define TEST_DATAARRANGE_H</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=1;i&lt;=20;i++)</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        PushPack(pd, i-1, i);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;3;i++){</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        TEST_CHECK((*fun[i])(pd, 0)==1);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;3;i++){</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        TEST_CHECK((*fun[i])(pd, 99)==EMPTY);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="list_8h.html">list.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;acutest.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> test_peek(<span class="keywordtype">void</span>){</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="structpackData.html">packData</a> pd = <a class="code" href="list_8h.html#aa11f23d0e48c1d0788c6a8930a252b9c">init_packData</a>(100,100);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="structpack.html">pack</a>* pk = NULL;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    int (*fun[3])(<a class="code" href="structpackData.html">packData</a>, int)=  {<a class="code" href="list_8h.html#adfdfeb59630f39a44fa693f6f5f1c05e">PeekFirstPack</a>, <a class="code" href="list_8h.html#ae14d787a867e918b7cf2b832c90f0446">PeekLastPack</a>, PeekMaxPack};</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=1;i&lt;=20;i++)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        PushPack(pd, i-1, i);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=19;i&gt;0;i--){</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        MergeLines(pd, 0, i);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        TEST_CHECK(pd.lines[i].avail == 0);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        TEST_CHECK(pd.lines[i].heap == NULL);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        TEST_CHECK(pd.lines[i].list.first == NULL);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;3;i++){</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        TEST_CHECK((*fun[i])(pd, 0)==1);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;3;i++){</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        TEST_CHECK((*fun[i])(pd, 99)==EMPTY);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    TEST_CHECK(<a class="code" href="list_8h.html#adfdfeb59630f39a44fa693f6f5f1c05e">PeekFirstPack</a>(pd, 0)==1);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    TEST_CHECK(<a class="code" href="list_8h.html#ae14d787a867e918b7cf2b832c90f0446">PeekLastPack</a>(pd, 0)==2);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    TEST_CHECK(PeekMaxPack(pd, 0)==20);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;3;i++){</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        TEST_CHECK((*fun[i])(pd, 2)==EMPTY);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=19;i&gt;0;i--){</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        MergeLines(pd, 0, i);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        TEST_CHECK(pd.lines[i].avail == 0);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        TEST_CHECK(pd.lines[i].heap == NULL);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        TEST_CHECK(pd.lines[i].list.first == NULL);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    TEST_CHECK(PopFirstPack(pd, 0) == 1);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    TEST_CHECK(PopLastPack(pd, 0) == 2);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    TEST_CHECK(PopMaxPack(pd, 0) == 20);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    TEST_CHECK(pd.packs[1].avail==0);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    TEST_CHECK(pd.packs[2].avail==0);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    TEST_CHECK(pd.packs[20].avail==0);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    TEST_CHECK(<a class="code" href="list_8h.html#adfdfeb59630f39a44fa693f6f5f1c05e">PeekFirstPack</a>(pd, 0)==1);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    TEST_CHECK(<a class="code" href="list_8h.html#ae14d787a867e918b7cf2b832c90f0446">PeekLastPack</a>(pd, 0)==2);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    TEST_CHECK(PeekMaxPack(pd, 0)==20);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;3;i++){</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        TEST_CHECK((*fun[i])(pd, 2)==EMPTY);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    kill_packData(pd);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    TEST_CHECK(PopFirstPack(pd, 0) == 1);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    TEST_CHECK(PopLastPack(pd, 0) == 2);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    TEST_CHECK(PopMaxPack(pd, 0) == 20);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> test_func_pointer(<span class="keywordtype">void</span>){</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="structpackData.html">packData</a> pd = <a class="code" href="list_8h.html#aa11f23d0e48c1d0788c6a8930a252b9c">init_packData</a>(100,100);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="structpack.html">pack</a>* pk = &amp;pd.packs[1]; <span class="comment">// Pack ID: 1</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    PushPack(pd, 0, 1);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    TEST_CHECK( (*(pk-&gt;popfunc))(pd, pk-&gt;line) == pk-&gt;ID);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    TEST_CHECK(pd.packs[1].avail==0);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    TEST_CHECK(pd.packs[2].avail==0);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    TEST_CHECK(pd.packs[20].avail==0);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    kill_packData(pd);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">void</span> test_func_pointer(<span class="keywordtype">void</span>){</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="structpackData.html">packData</a> pd = <a class="code" href="list_8h.html#aa11f23d0e48c1d0788c6a8930a252b9c">init_packData</a>(100,100);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="structpack.html">pack</a>* pk = &amp;pd.packs[1]; <span class="comment">// Pack ID: 1</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    PushPack(pd, 0, 1);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    TEST_CHECK( (*(pk-&gt;popfunc))(pd, pk-&gt;line) == pk-&gt;ID);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div></div>
 <div class="ttc" id="alist_8h_html_aa11f23d0e48c1d0788c6a8930a252b9c"><div class="ttname"><a href="list_8h.html#aa11f23d0e48c1d0788c6a8930a252b9c">init_packData</a></div><div class="ttdeci">packData init_packData(int n, int l)</div><div class="ttdoc">Initiate a package management problem.</div><div class="ttdef"><b>Definition:</b> list.c:43</div></div>
 <div class="ttc" id="alist_8h_html_adfdfeb59630f39a44fa693f6f5f1c05e"><div class="ttname"><a href="list_8h.html#adfdfeb59630f39a44fa693f6f5f1c05e">PeekFirstPack</a></div><div class="ttdeci">int PeekFirstPack(packData, int i)</div><div class="ttdef"><b>Definition:</b> list.c:152</div></div>
