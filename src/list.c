@@ -283,18 +283,18 @@ hnode* _mergeHeapLeftist(hnode* A,hnode* B){
     }
 
     if (A->key->ID < B->key->ID ){ //Max Heap
-        swaphNode(A, B);
+        swaphNode(&A, &B);
     }
 
     A->leaves[1] = _mergeHeapLeftist(A->leaves[1], B);
-    if (_getDistLeftist(A->leaves[0]) > _getDistLeftist(A->leaves[1])){
-        swaphNode(A->leaves[0], A->leaves[1]);
+    if (_getDistLeftist(A->leaves[1]) > _getDistLeftist(A->leaves[0])){
+        swaphNode(&(A->leaves[0]), &(A->leaves[1]));
     }
     if (A->leaves[1] == NULL){
-        A->leaves[1]->dist = 0;
+        A->dist = 0;
     }
     else{
-        A->dist = 1 + A->leaves[1]->dist;
+        A->dist = 1 + _getDistLeftist(A->leaves[1]);
     }
     return A;
 }
@@ -330,10 +330,10 @@ int _getDistLeftist(hnode* node){
     }
 }
 
-void swaphNode(hnode* A, hnode* B){
-    hnode* tmp = A;
-    A = B;
-    B = tmp;
+void swaphNode(hnode** A, hnode** B){
+    hnode* tmp = *A;
+    *A = *B;
+    *B = tmp;
 }
 
 hnode* createNode(pack* pk){
