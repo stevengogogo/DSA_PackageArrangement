@@ -448,3 +448,68 @@ prodLine getNullProdLine(void){
     pl.list.last = NULL;
     return pl;
 }
+
+
+//Interface
+int getopID(char* op){
+    if(strcmp(op, "push")==0)
+        return PUSH;
+    else if(strcmp(op, "merge")==0)
+        return MERGE;
+    else 
+        return -1;
+}
+
+void _printRes(int sol){
+    if (sol == 1)
+        printf("possible\n");
+    else
+        printf("impossible\n");
+}
+void interface(void){
+    int T; // # of test cases
+    int nP; // # of packages
+    int nQ; // # of queries
+    int nL; // # of Lines
+    char opStr[20];
+    int sol;
+    query* Ops = (query*)malloc(MAX_Q * sizeof(query));
+    int* pkOrders = (int*)malloc(MAX_N*sizeof(int));
+
+    scanf("%d", &T);
+
+    for(int t=0;t<T;t++){
+
+        // Problem Info
+        scanf("%d", &nP);
+        scanf("%d", &nQ);
+        scanf("%d", &nL);
+
+        //Initiation
+        packData pd = init_packData(nP, nL);
+
+        //Operations
+        for(int i=0;i<nQ;i++){
+            scanf("%s",opStr);
+            scanf("%d", &Ops[i].arg[0]);
+            scanf("%d", &Ops[i].arg[1]);
+            Ops[i].opID = getopID(opStr);
+        }
+
+        //Save package order
+        for(int i=0;i<nP;i++){
+            scanf("%d", &pkOrders[i]);
+        }
+
+        //Solve
+        /*
+        sol = solve(pd, Ops, pkOrders);
+        _printRes(sol);
+        */
+        kill_packData(pd);
+    }
+
+    //Free
+    free(Ops);
+    free(pkOrders);
+}
