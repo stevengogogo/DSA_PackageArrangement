@@ -170,37 +170,38 @@ $(function() {
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<a class="code" href="structhnode.html">hnode</a>* _insertHeapLeftist(<a class="code" href="structhnode.html">hnode</a>* root, <a class="code" href="structpack.html">pack</a>* pk);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">int</span> _getDistLeftist(<a class="code" href="structhnode.html">hnode</a>* node);</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keywordtype">void</span> swaphNode(<a class="code" href="structhnode.html">hnode</a>* A, <a class="code" href="structhnode.html">hnode</a>* B);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keywordtype">void</span> _killHeap(<a class="code" href="structhnode.html">hnode</a>* root);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">//Linked list </span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keywordtype">void</span> _insertlist(<a class="code" href="structpackData.html">packData</a> pd, <span class="keywordtype">int</span> iLine, <span class="keywordtype">int</span> iPack);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keywordtype">void</span> _mergelist(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> iDst, <span class="keywordtype">int</span> iSrc);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a691ab00b6d9bc08b99e7a2b3f730395e">_popFirst</a>(<a class="code" href="structpackData.html">packData</a> pd, <span class="keywordtype">int</span> iLine);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a8c511b11dc618edb1d76312ef5b1dbe2">_popLast</a>(<a class="code" href="structpackData.html">packData</a> pd, <span class="keywordtype">int</span> iLine);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<a class="code" href="structhnode.html">hnode</a>* createNode(<a class="code" href="structpack.html">pack</a>*);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keywordtype">void</span> _killHeap(<a class="code" href="structhnode.html">hnode</a>* root);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">//Linked list </span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keywordtype">void</span> _insertlist(<a class="code" href="structpackData.html">packData</a> pd, <span class="keywordtype">int</span> iLine, <span class="keywordtype">int</span> iPack);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keywordtype">void</span> _mergelist(<a class="code" href="structpackData.html">packData</a>, <span class="keywordtype">int</span> iDst, <span class="keywordtype">int</span> iSrc);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a691ab00b6d9bc08b99e7a2b3f730395e">_popFirst</a>(<a class="code" href="structpackData.html">packData</a> pd, <span class="keywordtype">int</span> iLine);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a8c511b11dc618edb1d76312ef5b1dbe2">_popLast</a>(<a class="code" href="structpackData.html">packData</a> pd, <span class="keywordtype">int</span> iLine);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">//Remove Item</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keywordtype">void</span> _removePack(<a class="code" href="structpack.html">pack</a>*);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">void</span> _removePackGetMethod(<a class="code" href="structpack.html">pack</a>*);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">//Struct</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<a class="code" href="structpack.html">pack</a> getNullPack(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<a class="code" href="structprodLine.html">prodLine</a> getNullProdLine(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">//Interface</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="keywordtype">int</span> _getopID(<span class="keywordtype">char</span>*);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keywordtype">void</span> _getOperation(<a class="code" href="structquery.html">query</a>*);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keywordtype">void</span> _printRes(<span class="keywordtype">int</span> sol);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keywordtype">void</span> interface(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">#endif </span></div>
-<div class="ttc" id="alist_8h_html_a691ab00b6d9bc08b99e7a2b3f730395e"><div class="ttname"><a href="list_8h.html#a691ab00b6d9bc08b99e7a2b3f730395e">_popFirst</a></div><div class="ttdeci">int _popFirst(packData pd, int iLine)</div><div class="ttdoc">Pop first item. Set popped item.avail (pack) to zero.</div><div class="ttdef"><b>Definition:</b> list.c:406</div></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">//Remove Item</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">void</span> _removePack(<a class="code" href="structpack.html">pack</a>*);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keywordtype">void</span> _removePackGetMethod(<a class="code" href="structpack.html">pack</a>*);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">//Struct</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<a class="code" href="structpack.html">pack</a> getNullPack(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<a class="code" href="structprodLine.html">prodLine</a> getNullProdLine(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">//Interface</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keywordtype">int</span> _getopID(<span class="keywordtype">char</span>*);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keywordtype">void</span> _getOperation(<a class="code" href="structquery.html">query</a>*);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keywordtype">void</span> _printRes(<span class="keywordtype">int</span> sol);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">void</span> interface(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#endif </span></div>
+<div class="ttc" id="alist_8h_html_a691ab00b6d9bc08b99e7a2b3f730395e"><div class="ttname"><a href="list_8h.html#a691ab00b6d9bc08b99e7a2b3f730395e">_popFirst</a></div><div class="ttdeci">int _popFirst(packData pd, int iLine)</div><div class="ttdoc">Pop first item. Set popped item.avail (pack) to zero.</div><div class="ttdef"><b>Definition:</b> list.c:416</div></div>
 <div class="ttc" id="alist_8h_html_a6b8600370f485ba1023008ed4cbc1842"><div class="ttname"><a href="list_8h.html#a6b8600370f485ba1023008ed4cbc1842">_PopOperation</a></div><div class="ttdeci">int _PopOperation(packData, int, int(*PeekFunc)(packData, int), int(*PopFunc)(packData, int))</div><div class="ttdef"><b>Definition:</b> list.c:130</div></div>
-<div class="ttc" id="alist_8h_html_a8c511b11dc618edb1d76312ef5b1dbe2"><div class="ttname"><a href="list_8h.html#a8c511b11dc618edb1d76312ef5b1dbe2">_popLast</a></div><div class="ttdeci">int _popLast(packData pd, int iLine)</div><div class="ttdoc">Similar to _popFirst .</div><div class="ttdef"><b>Definition:</b> list.c:430</div></div>
+<div class="ttc" id="alist_8h_html_a8c511b11dc618edb1d76312ef5b1dbe2"><div class="ttname"><a href="list_8h.html#a8c511b11dc618edb1d76312ef5b1dbe2">_popLast</a></div><div class="ttdeci">int _popLast(packData pd, int iLine)</div><div class="ttdoc">Similar to _popFirst .</div><div class="ttdef"><b>Definition:</b> list.c:440</div></div>
 <div class="ttc" id="alist_8h_html_aa11f23d0e48c1d0788c6a8930a252b9c"><div class="ttname"><a href="list_8h.html#aa11f23d0e48c1d0788c6a8930a252b9c">init_packData</a></div><div class="ttdeci">packData init_packData(int n, int l)</div><div class="ttdoc">Initiate a package management problem.</div><div class="ttdef"><b>Definition:</b> list.c:37</div></div>
-<div class="ttc" id="alist_8h_html_adf945f59744a1eaebb51fbf64ec94234"><div class="ttname"><a href="list_8h.html#adf945f59744a1eaebb51fbf64ec94234">_mergeHeapLeftist</a></div><div class="ttdeci">hnode * _mergeHeapLeftist(hnode *A, hnode *B)</div><div class="ttdoc">Merge leftist heap.</div><div class="ttdef"><b>Definition:</b> list.c:272</div></div>
+<div class="ttc" id="alist_8h_html_adf945f59744a1eaebb51fbf64ec94234"><div class="ttname"><a href="list_8h.html#adf945f59744a1eaebb51fbf64ec94234">_mergeHeapLeftist</a></div><div class="ttdeci">hnode * _mergeHeapLeftist(hnode *A, hnode *B)</div><div class="ttdoc">Merge leftist heap.</div><div class="ttdef"><b>Definition:</b> list.c:277</div></div>
 <div class="ttc" id="alist_8h_html_adfdfeb59630f39a44fa693f6f5f1c05e"><div class="ttname"><a href="list_8h.html#adfdfeb59630f39a44fa693f6f5f1c05e">PeekFirstPack</a></div><div class="ttdeci">int PeekFirstPack(packData, int i)</div><div class="ttdef"><b>Definition:</b> list.c:145</div></div>
 <div class="ttc" id="alist_8h_html_ae109425a33454644f20e8371db60aab8"><div class="ttname"><a href="list_8h.html#ae109425a33454644f20e8371db60aab8">solve</a></div><div class="ttdeci">int solve(packData pd, query *qs, int n_query, int *pkOrders)</div><div class="ttdef"><b>Definition:</b> list.c:3</div></div>
 <div class="ttc" id="alist_8h_html_ae14d787a867e918b7cf2b832c90f0446"><div class="ttname"><a href="list_8h.html#ae14d787a867e918b7cf2b832c90f0446">PeekLastPack</a></div><div class="ttdeci">int PeekLastPack(packData, int i)</div><div class="ttdef"><b>Definition:</b> list.c:166</div></div>
