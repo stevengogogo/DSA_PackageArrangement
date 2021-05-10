@@ -30,6 +30,7 @@ int main()
         a = _popMaxHeap(pd, 0);
     }
 
+    kill_packData(pd);
 
     return 0;
 }
