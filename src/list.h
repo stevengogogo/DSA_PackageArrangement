@@ -129,6 +129,7 @@ hnode* _popMaxHeapLeftist(hnode* root, int* val);
 hnode* _insertHeapLeftist(hnode* root, pack* pk);
 int _getDistLeftist(hnode* node);
 void swaphNode(hnode* A, hnode* B);
+hnode* createNode(pack*);
 
 void _killHeap(hnode* root);
 

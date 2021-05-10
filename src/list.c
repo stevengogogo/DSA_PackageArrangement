@@ -232,7 +232,12 @@ void _insertHeap(packData pd, int iLine, int iPack){
     hnode* root = pd.lines[iLine].heap;
 
 
-    pd.lines[iLine].heap =_insertHeapLeftist(root, pk);
+    if (root!=NULL)
+        pd.lines[iLine].heap = _insertHeapLeftist(root, pk);
+    else{
+        pd.lines[iLine].heap = createNode(pk);
+    }
+
 }
 
 
@@ -277,8 +282,8 @@ hnode* _mergeHeapLeftist(hnode* A,hnode* B){
         return A;
     }
 
-    if (B->key->ID > A->key->ID){ //Max Heap
-        swaphNode(B, A);
+    if (A->key->ID < B->key->ID ){ //Max Heap
+        swaphNode(A, B);
     }
 
     A->leaves[1] = _mergeHeapLeftist(A->leaves[1], B);
@@ -300,6 +305,8 @@ hnode* _popMaxHeapLeftist(hnode* root, int* val){
 
     root = _mergeHeapLeftist(root->leaves[0], root->leaves[1]);
 
+    delNode->leaves[0] = NULL;
+    delNode->leaves[1] = NULL;
     free(delNode);
     return root;
 }
@@ -307,11 +314,7 @@ hnode* _popMaxHeapLeftist(hnode* root, int* val){
 hnode* _insertHeapLeftist(hnode* root, pack* pk){
 
     //Make heap with one element
-    hnode* newNode = (hnode*)malloc(sizeof(hnode));
-    newNode->key = pk;
-    newNode->leaves[0]=NULL;
-    newNode->leaves[1]=NULL;
-    newNode->dist = 0;
+    hnode* newNode = createNode(pk);
 
     root = _mergeHeapLeftist(root, newNode);
 
@@ -333,7 +336,14 @@ void swaphNode(hnode* A, hnode* B){
     B = tmp;
 }
 
-
+hnode* createNode(pack* pk){
+    hnode* newNode = (hnode*)malloc(sizeof(hnode));
+    newNode->key = pk;
+    newNode->leaves[0]=NULL;
+    newNode->leaves[1]=NULL;
+    newNode->dist = 0;
+    return newNode;
+}
 
 
 
