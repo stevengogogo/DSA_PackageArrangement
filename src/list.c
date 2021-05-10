@@ -1,5 +1,11 @@
 #include "list.h"
 
+
+//Array of operations
+int (*POPFUNC[3])(packData, int) = {PopFirstPack, PopLastPack, PopMaxPack};
+static const int (*PEEKFUNC[3])(packData, int) = {PeekFirstPack, PeekLastPack, PeekMaxPack};
+
+
 int solve(packData pd, query* qs, int n_query, int* pkOrders){
     int nPk = pd.N_Package;
     int targetPK = 0;
@@ -48,10 +54,12 @@ packData init_packData(int n, int l){
     //Memory
     size_t sizePacks = (pd.N_Package + 1)*sizeof(pack); //[0,1,n]
     size_t sizeLines = pd.N_Lines*sizeof(prodLine);  //[0,l-1]
+    size_t sizeNodes = (pd.N_Package+1)*sizeof(hnode);
 
     // Allocate 
     pd.packs = (pack*)malloc(sizePacks);
     pd.lines = (prodLine*)malloc(sizeLines);
+    pd.nodes = (hnode*)malloc(sizeNodes);
 
     // initialize
     for(int i=0;i<=pd.N_Package;i++){
@@ -68,8 +76,7 @@ packData init_packData(int n, int l){
 
 void kill_packData(packData pd){
     //kill heaps
-    for(int i=0;i<pd.N_Lines;i++)
-        _killHeap(pd.lines[i].heap);
+    free(pd.nodes);
     
     free(pd.lines);
     free(pd.packs);
@@ -230,12 +237,12 @@ void _setGetMethod(packData pd, int iLine){
 void _insertHeap(packData pd, int iLine, int iPack){
     pack* pk = &pd.packs[iPack];
     hnode* root = pd.lines[iLine].heap;
-
+    hnode* newnode = createNode(pk, &pd.nodes[pk->ID]);
 
     if (root!=NULL)
-        pd.lines[iLine].heap = _insertHeapLeftist(root, pk);
+        pd.lines[iLine].heap = _insertHeapLeftist(root, pk, newnode);
     else{
-        pd.lines[iLine].heap = createNode(pk);
+        pd.lines[iLine].heap = newnode;
     }
 
 }
@@ -243,7 +250,6 @@ void _insertHeap(packData pd, int iLine, int iPack){
 
 int _popMaxHeap(packData pd, int i){
     hnode* root = pd.lines[i].heap;
-    hnode* popNode=NULL;
     int val=0;
     assert(root != NULL);
     
@@ -307,15 +313,12 @@ hnode* _popMaxHeapLeftist(hnode* root, int* val){
 
     delNode->leaves[0] = NULL;
     delNode->leaves[1] = NULL;
-    free(delNode);
     return root;
 }
 
-hnode* _insertHeapLeftist(hnode* root, pack* pk){
+hnode* _insertHeapLeftist(hnode* root, pack* pk, hnode* newNode){
 
     //Make heap with one element
-    hnode* newNode = createNode(pk);
-
     root = _mergeHeapLeftist(root, newNode);
 
     return root;
@@ -336,8 +339,8 @@ void swaphNode(hnode** A, hnode** B){
     *B = tmp;
 }
 
-hnode* createNode(pack* pk){
-    hnode* newNode = (hnode*)malloc(sizeof(hnode));
+hnode* createNode(pack* pk, hnode* node){
+    hnode* newNode = node;
     newNode->key = pk;
     newNode->leaves[0]=NULL;
     newNode->leaves[1]=NULL;
@@ -524,8 +527,7 @@ void interface(void){
     int nP; // # of packages
     int nQ; // # of queries
     int nL; // # of Lines
-    char opStr[20];
-    int sol;
+    int sol=0;
     query* Ops = (query*)malloc(MAX_Q * sizeof(query));
     int* pkOrders = (int*)malloc(MAX_N*sizeof(int));
 
