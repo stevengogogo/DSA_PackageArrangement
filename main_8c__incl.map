@@ -1,9 +1,9 @@
 <map id="src/main.c" name="src/main.c">
-<area shape="rect" id="node1" title=" " alt="" coords="87,5,170,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,65,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="55,155,117,181"/>
-<area shape="rect" id="node4" href="$utils_8h.html" title="General Utilities for C language." alt="" coords="142,155,198,181"/>
-<area shape="rect" id="node5" href="$list_8h.html" title=" " alt="" coords="192,80,241,107"/>
-<area shape="rect" id="node6" title=" " alt="" coords="222,155,286,181"/>
-<area shape="rect" id="node7" title=" " alt="" coords="311,155,379,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="117,5,199,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,155,65,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="89,155,152,181"/>
+<area shape="rect" id="node4" href="$utils_8h.html" title="General Utilities for C language." alt="" coords="357,155,413,181"/>
+<area shape="rect" id="node5" href="$list_8h.html" title=" " alt="" coords="179,80,228,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="269,155,333,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="176,155,244,181"/>
 </map>
