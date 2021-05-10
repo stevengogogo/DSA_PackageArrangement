@@ -232,77 +232,17 @@ void _insertHeap(packData pd, int iLine, int iPack){
     hnode* root = pd.lines[iLine].heap;
 
 
-    hnode* heapRoot = NULL;
-    hnode* curNode = NULL;
-    pack* minPK = pk;
-    pack* tmp;
-    int availLeafID = -1;//[0,1,-1]
-    int nextDir = 0;//[0,1]
-
-    if (root==NULL){//first element
-        root = _create_node(NULL, pk);
-        pd.lines[iLine].heap = root;
-        return;
-    }
-    else{
-        curNode = root; //current node
-        heapRoot = root;
-    }
-
-    while(curNode != NULL){
-
-        //swap minimum
-        if (minPK->ID > curNode->key->ID){ 
-            tmp = curNode->key;
-            curNode->key = minPK;
-            minPK = tmp;
-        }
-
-        //Find available leaves
-        availLeafID = _findNullLeave(curNode);
-
-        if (availLeafID != -1){ //available site
-            curNode->leaves[availLeafID] = _create_node(curNode, minPK);
-            break;
-        }
-        else{ // move to the minimum leaf
-            nextDir =  argMin(curNode->leaves[0]->key->ID, 
-                              curNode->leaves[1]->key->ID);
-            curNode = curNode->leaves[nextDir];
-        }
-
-    }
-
+    pd.lines[iLine].heap =_insertHeapLeftist(root, pk);
 }
 
 
 int _popMaxHeap(packData pd, int i){
     hnode* root = pd.lines[i].heap;
-
+    hnode* popNode=NULL;
+    int val=0;
     assert(root != NULL);
-    hnode* curNode = root;
-
-    int val = root->key->ID;
-    root->key->avail = 0;
-
-    //One element heap
-    if (_findActLeave(root) == -1){
-        free(root);
-        pd.lines[i].heap = NULL;
-        return val;
-    }
     
-    //Set root as minius infinity
-    pack pkInf = getNullPack(); 
-    pkInf.ID = INT_MIN;
-    root->key = &pkInf;
-
-    //Max heapidity
-    curNode = _maxHeapify(curNode);
-
-    //delete leaf
-    _deleteLeaf(curNode);
-
+    pd.lines[i].heap = _popMaxHeapLeftist(root, &val);
     return val;
 }
 
@@ -319,9 +259,7 @@ void _mergeHeap(packData pd, int iDst, int iSrc){
         return;
     }
     else{
-        assert(A->parent==NULL);
-        assert(B->parent==NULL);
-        _mergeHeapLeftist(A, B);
+        pd.lines[iDst].heap = _mergeHeapLeftist(A, B);
     }
 
 
@@ -344,7 +282,7 @@ hnode* _mergeHeapLeftist(hnode* A,hnode* B){
     }
 
     A->leaves[1] = _mergeHeapLeftist(A->leaves[1], B);
-    if (A->leaves[0]->dist > A->leaves[1]->dist){
+    if (_getDistLeftist(A->leaves[0]) > _getDistLeftist(A->leaves[1])){
         swaphNode(A->leaves[0], A->leaves[1]);
     }
     if (A->leaves[1] == NULL){
@@ -356,10 +294,14 @@ hnode* _mergeHeapLeftist(hnode* A,hnode* B){
     return A;
 }
 
-hnode* _popMaxHeapLeftist(hnode* root){
-    hnode* nodeMax = root;
-    nodeMax = _mergeHeapLeftist(root->leaves[0], root->leaves[1]);
-    return nodeMax;
+hnode* _popMaxHeapLeftist(hnode* root, int* val){
+    hnode* delNode = root;
+    *val = root->key->ID;
+
+    root = _mergeHeapLeftist(root->leaves[0], root->leaves[1]);
+
+    free(delNode);
+    return root;
 }
 
 hnode* _insertHeapLeftist(hnode* root, pack* pk){
@@ -369,7 +311,6 @@ hnode* _insertHeapLeftist(hnode* root, pack* pk){
     newNode->key = pk;
     newNode->leaves[0]=NULL;
     newNode->leaves[1]=NULL;
-    newNode->parent = NULL;
     newNode->dist = 0;
 
     root = _mergeHeapLeftist(root, newNode);
@@ -377,6 +318,14 @@ hnode* _insertHeapLeftist(hnode* root, pack* pk){
     return root;
 }
 
+int _getDistLeftist(hnode* node){
+    if (node==NULL){
+        return -1;
+    }
+    else{
+        return node->dist;
+    }
+}
 
 void swaphNode(hnode* A, hnode* B){
     hnode* tmp = A;
@@ -386,81 +335,7 @@ void swaphNode(hnode* A, hnode* B){
 
 
 
-hnode* _maxHeapify(hnode* node){
-    int actLeafID = _findActLeave(node);
-    hnode* nextNode = NULL;
-    hnode* curNode = node;
-    int nextDir=0;
 
-    while(actLeafID != -1){
-        if(_findNullLeave(curNode) == -1){
-            nextDir = 1^(argMin(curNode->leaves[0]->key->ID,         
-                                curNode->leaves[1]->key->ID));
-            nextNode = curNode->leaves[nextDir];
-        }
-        else{
-            nextNode = curNode->leaves[actLeafID];
-        }
-        _swapPackageHeap(curNode, nextNode);
-        curNode = nextNode;
-        actLeafID = _findActLeave(curNode);
-    }
-
-    return curNode;
-}
-
-hnode* _create_node(hnode* parent, pack* key){
-    hnode* newnode = (hnode*)malloc(sizeof(hnode));
-    newnode->key = key;
-    newnode->parent = parent;
-    newnode->leaves[0] = NULL;
-    newnode->leaves[1] = NULL;
-    return newnode;    
-}
-
-int _findNullLeave(hnode* node){
-    if (node->leaves[0] == NULL){
-        return 0;
-    }
-    else if(node->leaves[1] == NULL){
-        return 1;
-    }
-    else{
-        return -1;
-    }
-}
-
-int _findActLeave(hnode* node){
-    if (node->leaves[0] != NULL){
-        return 0;
-    }
-    else if(node->leaves[1] != NULL){
-        return 1;
-    }
-    else{
-        return -1;
-    }
-}
-
-void _swapPackageHeap(hnode* a, hnode* b){
-    pack* tmp = a->key;
-    a->key = b->key;
-    b->key = tmp;
-}
-
-void _deleteLeaf(hnode* leaf){
-    assert(leaf->leaves[0] == NULL);
-    assert(leaf->leaves[1] == NULL);
-    if (leaf->parent->leaves[0] == leaf){
-        leaf->parent->leaves[0] = NULL;
-    }
-    else{
-        leaf->parent->leaves[1] = NULL;
-    }
-
-    free(leaf);
-    leaf = NULL;
-}
 
 void _killHeap(hnode* root){
     if (root == NULL)

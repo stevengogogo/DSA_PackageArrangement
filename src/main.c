@@ -18,7 +18,23 @@
 int main()
 {
 
-    interface();
+    packData pd = init_packData(100,100);
+    int a;
+
+    //Heap insertion
+    for (int i=1;i<=40;i++){
+        _insertHeap(pd, 0, i);
+    }
+
+    //Heap extraction
+    for (int i=40;i>=1;i--){
+        a = _popMaxHeap(pd, 0);
+    }
+
+
+    kill_packData(pd);
+
+    //interface();
 
     return 0;
 }
