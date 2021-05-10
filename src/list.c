@@ -52,6 +52,46 @@ void PushPack(packData pd, int iLine, int iPack){
     pk->avail = 1;
 }
 
+// Peek Data
+
+int PeekFirstPack(packData pd, int i){
+    if(pd.lines[i].list.first != NULL){
+        while(pd.lines[i].list.first->avail == 0 && pd.lines[i].list.first != NULL)
+            _popFirst(pd, i);
+    }
+
+    //Return
+    if(pd.lines[i].list.first == NULL)
+        return EMPTY;
+    else 
+        return pd.lines[i].list.first->ID;
+}
+
+int PeekLastPack(packData pd, int i){
+    if(pd.lines[i].list.first != NULL){
+        while(pd.lines[i].list.last->avail == 0 && pd.lines[i].list.first != NULL)
+            _popLast(pd, i);
+    }
+
+    //Return
+    if(pd.lines[i].list.last == NULL)
+        return EMPTY;
+    else 
+        return pd.lines[i].list.last->ID;
+}
+
+int PeekMaxPack(packData pd, int i){
+    if(pd.lines[i].heap != NULL){
+        while(pd.lines[i].heap->key->avail == 0 && pd.lines[i].heap != NULL)
+            _popMaxHeap(pd, i);
+    }
+
+    //Return
+    if (pd.lines[i].heap == NULL)
+        return EMPTY;
+    else
+        return pd.lines[i].heap->key->ID;
+}
 
 
 //Heap
@@ -345,13 +385,12 @@ int _popLast(packData pd, int iLine){
     }
 
     else{
-    //Rewiring
-    list->last = list->last->prev; // move end
-    list->last->next = NULL; // link end.next to NULL
+        //Rewiring
+        list->last = list->last->prev; // move end
+        list->last->next = NULL; // link end.next to NULL
 
-    if(list->first == list->last) //turn to null
-        list->first = list->last;
-
+        if(list->first == list->last) //turn to null
+            list->first = list->last;
     }
 
     return val;
