@@ -3,7 +3,7 @@ var indexSectionsWithContent =
   0: "_hilmpu",
   1: "hlp",
   2: "lmu",
-  3: "_i",
+  3: "_ip",
   4: "p",
   5: "p"
 };

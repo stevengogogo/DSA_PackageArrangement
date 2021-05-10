@@ -157,15 +157,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>PushPack</b> (<a clas
 <tr class="memitem:adceb3cbc5312a73a1ce5770134300322"><td class="memItemLeft" align="right" valign="top"><a id="adceb3cbc5312a73a1ce5770134300322"></a>
 <a class="el" href="structpack.html">pack</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PopMaxPack</b> (<a class="el" href="structpackData.html">packData</a>, int i)</td></tr>
 <tr class="separator:adceb3cbc5312a73a1ce5770134300322"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3568f13a509aaf1deae261cba9cc8bd8"><td class="memItemLeft" align="right" valign="top"><a id="a3568f13a509aaf1deae261cba9cc8bd8"></a>
-<a class="el" href="structpack.html">pack</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PeekFirstPack</b> (<a class="el" href="structpackData.html">packData</a>, int i)</td></tr>
-<tr class="separator:a3568f13a509aaf1deae261cba9cc8bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac012fc4e56c4bf756650776cb6109788"><td class="memItemLeft" align="right" valign="top"><a id="ac012fc4e56c4bf756650776cb6109788"></a>
-<a class="el" href="structpack.html">pack</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PeekLastPack</b> (<a class="el" href="structpackData.html">packData</a>, int i)</td></tr>
-<tr class="separator:ac012fc4e56c4bf756650776cb6109788"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d85cdc2abc975ab80ac36d33119ede2"><td class="memItemLeft" align="right" valign="top"><a id="a7d85cdc2abc975ab80ac36d33119ede2"></a>
-<a class="el" href="structpack.html">pack</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PeekMaxPack</b> (<a class="el" href="structpackData.html">packData</a>, int i)</td></tr>
-<tr class="separator:a7d85cdc2abc975ab80ac36d33119ede2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfdd6824acbfc5f164c3d31b20167ad2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structpack.html">pack</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#abfdd6824acbfc5f164c3d31b20167ad2">PeekFirstPack</a> (<a class="el" href="structpackData.html">packData</a>, int i)</td></tr>
+<tr class="separator:abfdd6824acbfc5f164c3d31b20167ad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65bd5f624ed0b3d0df44f20d191456a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structpack.html">pack</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a65bd5f624ed0b3d0df44f20d191456a0">PeekLastPack</a> (<a class="el" href="structpackData.html">packData</a>, int i)</td></tr>
+<tr class="separator:a65bd5f624ed0b3d0df44f20d191456a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad54e3502c315cce6f21f4adb44bd170e"><td class="memItemLeft" align="right" valign="top"><a id="ad54e3502c315cce6f21f4adb44bd170e"></a>
+<a class="el" href="structpack.html">pack</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PeekMaxPack</b> (<a class="el" href="structpackData.html">packData</a>, int i)</td></tr>
+<tr class="separator:ad54e3502c315cce6f21f4adb44bd170e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79b4717532315fc4dfca8f1e80de4112"><td class="memItemLeft" align="right" valign="top"><a id="a79b4717532315fc4dfca8f1e80de4112"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_insertHeap</b> (<a class="el" href="structpackData.html">packData</a> pd, int iLine, int iPack)</td></tr>
 <tr class="separator:a79b4717532315fc4dfca8f1e80de4112"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -348,6 +346,68 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structpackData.html">packData</a> </dd></dl>
+
+</div>
+</div>
+<a id="abfdd6824acbfc5f164c3d31b20167ad2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfdd6824acbfc5f164c3d31b20167ad2">&#9670;&nbsp;</a></span>PeekFirstPack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structpack.html">pack</a>* PeekFirstPack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structpackData.html">packData</a>&#160;</td>
+          <td class="paramname"><em>pd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<ul>
+<li>Peek first. Return NULL if the line is empty </li>
+</ul>
+
+</div>
+</div>
+<a id="a65bd5f624ed0b3d0df44f20d191456a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65bd5f624ed0b3d0df44f20d191456a0">&#9670;&nbsp;</a></span>PeekLastPack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structpack.html">pack</a>* PeekLastPack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structpackData.html">packData</a>&#160;</td>
+          <td class="paramname"><em>pd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<ul>
+<li>Peek Last. Return NULL if the line is empty </li>
+</ul>
 
 </div>
 </div>
